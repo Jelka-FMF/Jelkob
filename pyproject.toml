@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "jelkob"
+description = "Main website for managing Christmas tree at FMF"
+license = "GPL-3.0-or-later"
+version = "0.0.0"
+
+homepage = "https://github.com/Jelka-FMF/Jelkob"
+repository = "https://github.com/Jelka-FMF/Jelkob"
+authors = ["Programerski klub FMF"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.1.2"
+djangorestframework = "^3.15.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.1"
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "UP", "DJ", "B", "G", "RUF"]
+ignore = ["E203", "E501", "F401"]
+
+[tool.poetry-dynamic-versioning]
+enable = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry.core.masonry.api"
