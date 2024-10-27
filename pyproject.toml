@@ -12,6 +12,8 @@ authors = ["Programerski klub FMF"]
 python = "^3.10"
 django = "^5.1.2"
 djangorestframework = "^3.15.2"
+django-filter = "^24.3"
+django-simple-history = "^3.7.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.7.1"
@@ -21,7 +23,7 @@ line-length = 110
 
 [tool.ruff.lint]
 select = ["F", "E", "W", "UP", "DJ", "B", "G", "RUF"]
-ignore = ["E203", "E501", "F401"]
+ignore = ["E203", "E501", "F401", "RUF012"]
 
 [tool.poetry-dynamic-versioning]
 enable = true
