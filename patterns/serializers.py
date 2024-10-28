@@ -3,6 +3,10 @@ from rest_framework import serializers
 from .models import Pattern, State
 
 
+class EmptySerializer(serializers.Serializer):
+    pass
+
+
 class PatternSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pattern
@@ -24,7 +28,3 @@ class StateStartedSerializer(serializers.Serializer):
 
 class StateStoppedSerializer(serializers.Serializer):
     pattern = serializers.SlugRelatedField(queryset=Pattern.objects.all(), slug_field="identifier")
-
-
-class StatePingSerializer(serializers.Serializer):
-    pass

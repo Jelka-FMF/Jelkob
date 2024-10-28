@@ -7,8 +7,8 @@ from rest_framework.response import Response
 
 from .models import Pattern, State
 from .serializers import (
+    EmptySerializer,
     PatternSerializer,
-    StatePingSerializer,
     StateSerializer,
     StateStartedSerializer,
     StateStoppedSerializer,
@@ -36,24 +36,24 @@ class PatternViewSet(viewsets.ModelViewSet):
         except Http404:
             return super().create(request, *args, **kwargs)
 
-    @action(detail=True, methods=["post"])
-    def enable(self, request, pk=None):
+    @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
+    def enable(self, request, identifier=None):
         pattern = self.get_object()
         pattern.enabled = True
         pattern.save()
 
         return Response({"status": "Pattern enabled"})
 
-    @action(detail=True, methods=["post"])
-    def disable(self, request, pk=None):
+    @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
+    def disable(self, request, identifier=None):
         pattern = self.get_object()
         pattern.enabled = False
         pattern.save()
 
         return Response({"status": "Pattern disabled"})
 
-    @action(detail=True, methods=["post"])
-    def run(self, request, pk=None):
+    @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
+    def run(self, request, identifier=None):
         return Response({"status": "Not implemented yet"})
 
 
@@ -67,7 +67,7 @@ class StateViewSet(viewsets.GenericViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=["post"], serializer_class=StateStartedSerializer)
-    def started(self, request, pk=None):
+    def started(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -80,7 +80,7 @@ class StateViewSet(viewsets.GenericViewSet):
         return Response({"status": "OK"})
 
     @action(detail=False, methods=["post"], serializer_class=StateStoppedSerializer)
-    def stopped(self, request, pk=None):
+    def stopped(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -92,8 +92,8 @@ class StateViewSet(viewsets.GenericViewSet):
 
         return Response({"status": "OK"})
 
-    @action(detail=False, methods=["post"], serializer_class=StatePingSerializer)
-    def ping(self, request, pk=None):
+    @action(detail=False, methods=["post"], serializer_class=EmptySerializer)
+    def ping(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
