@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-28 16:09+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+
+#: .\patterns\admin.py:15
+msgid "Enable selected patterns"
+msgstr "Omogoči izbrane vzorce"
+
+#: .\patterns\admin.py:19
+msgid "Disable selected patterns"
+msgstr "Onemogoči izbrane vzorce"
+
+#: .\patterns\admin.py:25
+msgid "Delete selected patterns"
+msgstr "Izbriši izbrane vzorce"
+
+#: .\patterns\apps.py:8
+msgid "Patterns"
+msgstr "Vzorci"
+
+#: .\patterns\models.py:7
+msgid "identifier"
+msgstr "identifikator"
+
+#: .\patterns\models.py:8
+msgid "name"
+msgstr "ime"
+
+#: .\patterns\models.py:9
+msgid "docker"
+msgstr "docker"
+
+#: .\patterns\models.py:10
+msgid "duration"
+msgstr "trajanje"
+
+#: .\patterns\models.py:11
+msgid "author"
+msgstr "avtor"
+
+#: .\patterns\models.py:12
+msgid "school"
+msgstr "šola"
+
+#: .\patterns\models.py:13
+msgid "enabled"
+msgstr "omogočen"
+
+#: .\patterns\models.py:18
+msgid "pattern"
+msgstr "vzorec"
+
+#: .\patterns\models.py:19
+msgid "patterns"
+msgstr "vzorci"
