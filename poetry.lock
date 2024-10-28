@@ -66,6 +66,21 @@ files = [
 django = ">=4.2"
 
 [[package]]
+name = "django-solo"
+version = "2.4.0"
+description = "Django Solo helps working with singletons"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "django_solo-2.4.0-py3-none-any.whl", hash = "sha256:62e9c7d929620a61848515839833750ca142840051595cf5c8e617dcefc9e5cf"},
+    {file = "django_solo-2.4.0.tar.gz", hash = "sha256:ec92dc00aec75034a3f93b3a85152e57c4b03d7987f8cfd0ea8a47cc6e3c2084"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+typing-extensions = {version = ">=4.0.1", markers = "python_version < \"3.11\""}
+
+[[package]]
 name = "djangorestframework"
 version = "3.15.2"
 description = "Web APIs for Django, made easy."
@@ -146,4 +161,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ced31a18567472ae0974f6dd6dd3d27a2e7776aa58bfaf127b6e8d7c8d06d5e8"
+content-hash = "dea0e0685405fe797fb2e5bef8491f7c068f3337116d8c9a24e2c6f18afc2ff5"

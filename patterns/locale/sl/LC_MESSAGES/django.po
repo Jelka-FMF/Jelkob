@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-28 16:09+0100\n"
+"POT-Creation-Date: 2024-10-28 19:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,15 +13,15 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: .\patterns\admin.py:15
+#: .\patterns\admin.py:16
 msgid "Enable selected patterns"
 msgstr "Omogoči izbrane vzorce"
 
-#: .\patterns\admin.py:19
+#: .\patterns\admin.py:20
 msgid "Disable selected patterns"
 msgstr "Onemogoči izbrane vzorce"
 
-#: .\patterns\admin.py:25
+#: .\patterns\admin.py:26
 msgid "Delete selected patterns"
 msgstr "Izbriši izbrane vzorce"
 
@@ -29,38 +29,54 @@ msgstr "Izbriši izbrane vzorce"
 msgid "Patterns"
 msgstr "Vzorci"
 
-#: .\patterns\models.py:7
+#: .\patterns\models.py:10
 msgid "identifier"
 msgstr "identifikator"
 
-#: .\patterns\models.py:8
+#: .\patterns\models.py:11
 msgid "name"
 msgstr "ime"
 
-#: .\patterns\models.py:9
+#: .\patterns\models.py:12
 msgid "docker"
 msgstr "docker"
 
-#: .\patterns\models.py:10
+#: .\patterns\models.py:13
 msgid "duration"
 msgstr "trajanje"
 
-#: .\patterns\models.py:11
+#: .\patterns\models.py:14
 msgid "author"
 msgstr "avtor"
 
-#: .\patterns\models.py:12
+#: .\patterns\models.py:15
 msgid "school"
 msgstr "šola"
 
-#: .\patterns\models.py:13
+#: .\patterns\models.py:16
 msgid "enabled"
 msgstr "omogočen"
 
-#: .\patterns\models.py:18
+#: .\patterns\models.py:21 .\patterns\models.py:29
 msgid "pattern"
 msgstr "vzorec"
 
-#: .\patterns\models.py:19
+#: .\patterns\models.py:22
 msgid "patterns"
 msgstr "vzorci"
+
+#: .\patterns\models.py:30
+msgid "start time"
+msgstr "čas začetka"
+
+#: .\patterns\models.py:31
+msgid "active time"
+msgstr "čas aktivnosti"
+
+#: .\patterns\models.py:34
+msgid "state"
+msgstr "stanje"
+
+#: .\patterns\models.py:37
+msgid "State"
+msgstr "Stanje"

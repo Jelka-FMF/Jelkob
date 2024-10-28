@@ -1,11 +1,12 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from patterns.views import PatternViewSet
+from .views import PatternViewSet, StateViewSet
 
-router = DefaultRouter()
-router.register("", PatternViewSet, basename="pattern")
+router = DefaultRouter(trailing_slash=False)
+router.register("patterns", PatternViewSet, basename="pattern")
+router.register("state", StateViewSet, basename="state")
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("api/", include(router.urls)),
 ]

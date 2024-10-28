@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from simple_history.admin import SimpleHistoryAdmin
+from solo.admin import SingletonModelAdmin
 
-from .models import Pattern
+from .models import Pattern, State
 
 
 @admin.register(Pattern)
@@ -24,3 +25,8 @@ class PatternAdmin(SimpleHistoryAdmin):
         actions = super().get_actions(request)
         actions["delete_selected"][0].short_description = _("Delete selected patterns")
         return actions
+
+
+@admin.register(State)
+class StateAdmin(SingletonModelAdmin):
+    pass
