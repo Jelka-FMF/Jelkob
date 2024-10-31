@@ -64,7 +64,6 @@ ROOT_URLCONF = "jelkob.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -117,7 +116,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "static/"
+
+
+# Media files (uploads)
+# https://docs.djangoproject.com/en/5.1/topics/files/
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+MEDIA_URL = "uploads/"
 
 
 # Default primary key field type
