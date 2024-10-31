@@ -2,7 +2,7 @@ from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
 
-class PatternsConfig(AppConfig):
+class RunnerConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "patterns"
-    verbose_name = _("Patterns")
+    name = "runner"
+    verbose_name = _("Runner")

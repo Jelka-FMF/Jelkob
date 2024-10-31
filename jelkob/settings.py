@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "simple_history",
     "solo",
     # Local apps
-    "patterns.apps.PatternsConfig",
+    "runner.apps.RunnerConfig",
 ]
 
 MIDDLEWARE = [

@@ -10,7 +10,18 @@ class EmptySerializer(serializers.Serializer):
 class PatternSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pattern
-        fields = ("identifier", "name", "docker", "duration", "author", "school", "enabled")
+
+        fields = (
+            "identifier",
+            "name",
+            "description",
+            "source",
+            "docker",
+            "duration",
+            "author",
+            "school",
+            "enabled",
+        )
 
 
 class StateSerializer(serializers.ModelSerializer):
@@ -27,4 +38,4 @@ class StateStartedSerializer(serializers.Serializer):
 
 
 class StateStoppedSerializer(serializers.Serializer):
-    pattern = serializers.SlugRelatedField(queryset=Pattern.objects.all(), slug_field="identifier")
+    pass

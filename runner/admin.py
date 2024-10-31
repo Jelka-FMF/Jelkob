@@ -9,7 +9,16 @@ from .models import Pattern, State
 @admin.register(Pattern)
 class PatternAdmin(SimpleHistoryAdmin):
     list_display = ("identifier", "name", "docker", "duration", "author", "school", "enabled")
-    list_filter = ("enabled",)
+    list_filter = ("enabled", "author", "school")
+
+    search_fields = ("identifier", "name", "docker", "author", "school")
+
+    fieldsets = (
+        (None, {"fields": ("identifier", "name", "description", "source")}),
+        (_("Runner Information"), {"fields": ("docker", "duration")}),
+        (_("Author Information"), {"fields": ("author", "school")}),
+        (_("Pattern Status"), {"fields": ("enabled",)}),
+    )
 
     actions = ("enable", "disable")
 

@@ -8,5 +8,5 @@ router.register("patterns", PatternViewSet, basename="pattern")
 router.register("state", StateViewSet, basename="state")
 
 urlpatterns = [
-    path("api/", include(router.urls)),
+    path("", include(router.urls)),
 ]

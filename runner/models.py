@@ -1,18 +1,38 @@
-from django.db.models import BooleanField, CharField, DateTimeField, ForeignKey, IntegerField, Model, SET_NULL
+from django.db.models import (
+    BooleanField,
+    CharField,
+    DateTimeField,
+    ForeignKey,
+    IntegerField,
+    Model,
+    PositiveIntegerField,
+    SET_NULL,
+    URLField,
+)
 from django.utils.translation import gettext, gettext_lazy as _
 from simple_history.models import HistoricalRecords
 from solo.models import SingletonModel
 
 
 class Pattern(Model):
+    # Base Information
     identifier = CharField(max_length=50, unique=True, verbose_name=_("identifier"))
     name = CharField(max_length=255, verbose_name=_("name"))
+    description = CharField(max_length=255, blank=True, verbose_name=_("description"))
+    source = URLField(max_length=255, blank=True, verbose_name=_("source"))
+
+    # Runner Information
     docker = CharField(max_length=255, verbose_name=_("docker"))
-    duration = IntegerField(blank=True, null=True, verbose_name=_("duration"))
+    duration = PositiveIntegerField(blank=True, null=True, verbose_name=_("duration"))
+
+    # Author Information
     author = CharField(max_length=255, blank=True, verbose_name=_("author"))
     school = CharField(max_length=255, blank=True, verbose_name=_("school"))
+
+    # Pattern Status
     enabled = BooleanField(default=True, verbose_name=_("enabled"))
 
+    # Pattern History
     history = HistoricalRecords()
 
     class Meta:
