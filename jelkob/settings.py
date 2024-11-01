@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "solo",
     # Local apps
     "runner.apps.RunnerConfig",
+    "editor.apps.EditorConfig",
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,8 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ],
 }
+
+
+# Application settings
+
+EDITOR_URL = "http://localhost:8084/"
