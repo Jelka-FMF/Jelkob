@@ -3,7 +3,7 @@ from django.db.models import (
     CharField,
     DateTimeField,
     ForeignKey,
-    IntegerField,
+    Index,
     Model,
     PositiveIntegerField,
     SET_NULL,
@@ -17,17 +17,17 @@ from solo.models import SingletonModel
 class Pattern(Model):
     # Base Information
     identifier = CharField(max_length=50, unique=True, verbose_name=_("identifier"))
-    name = CharField(max_length=255, verbose_name=_("name"))
-    description = CharField(max_length=255, blank=True, verbose_name=_("description"))
-    source = URLField(max_length=255, blank=True, verbose_name=_("source"))
+    name = CharField(max_length=50, verbose_name=_("name"))
+    description = CharField(max_length=200, blank=True, verbose_name=_("description"))
+    source = URLField(max_length=200, blank=True, verbose_name=_("source"))
 
     # Runner Information
-    docker = CharField(max_length=255, verbose_name=_("docker"))
+    docker = CharField(max_length=200, verbose_name=_("docker"))
     duration = PositiveIntegerField(blank=True, null=True, verbose_name=_("duration"))
 
     # Author Information
-    author = CharField(max_length=255, blank=True, verbose_name=_("author"))
-    school = CharField(max_length=255, blank=True, verbose_name=_("school"))
+    author = CharField(max_length=50, blank=True, verbose_name=_("author"))
+    school = CharField(max_length=100, blank=True, verbose_name=_("school"))
 
     # Pattern Status
     enabled = BooleanField(default=True, verbose_name=_("enabled"))
@@ -38,6 +38,10 @@ class Pattern(Model):
     class Meta:
         verbose_name = _("pattern")
         verbose_name_plural = _("patterns")
+
+        indexes = [
+            Index(fields=["identifier"]),
+        ]
 
     def __str__(self):
         return self.name
