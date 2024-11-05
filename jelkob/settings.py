@@ -152,3 +152,4 @@ REST_FRAMEWORK = {
 # Application settings
 
 EDITOR_URL = "http://localhost:8084/"
+EDITOR_ACTION = "sandbox"

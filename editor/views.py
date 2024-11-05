@@ -6,8 +6,8 @@ from django.views import View
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import Project
-from .serializers import ProjectCreateSerializer, ProjectSerializer
+from .models import Project, Submission
+from .serializers import ProjectCreateSerializer, ProjectSerializer, ProjectSubmitSerializer
 
 
 class ProjectByLongIdView(generics.RetrieveAPIView):
@@ -59,15 +59,20 @@ class CreateProjectView(generics.CreateAPIView):
         return Response(data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+class SubmitProjectView(generics.CreateAPIView):
+    queryset = Submission.objects.all()
+    serializer_class = ProjectSubmitSerializer
+
+
 class ShareProjectByLongIdView(View):
     @staticmethod
     def get(request, longid):
         project = get_object_or_404(Project, longid=longid)
-        return redirect(f"{settings.EDITOR_URL}/#sandbox:{project.longid}")
+        return redirect(f"{settings.EDITOR_URL}#{settings.EDITOR_ACTION}:{project.longid}")
 
 
 class ShareProjectByShortIdView(View):
     @staticmethod
     def get(request, shortid):
         project = get_object_or_404(Project, shortid=shortid)
-        return redirect(f"{settings.EDITOR_URL}/#sandbox:{project.longid}")
+        return redirect(f"{settings.EDITOR_URL}#{settings.EDITOR_ACTION}:{project.longid}")

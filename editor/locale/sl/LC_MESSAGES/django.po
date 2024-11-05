@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-01 22:08+0100\n"
+"POT-Creation-Date: 2024-11-05 21:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,54 +21,106 @@ msgstr "Podatki o identifikatorju"
 msgid "Environment Information"
 msgstr "Podatki o okolju"
 
-#: .\editor\admin.py:28
+#: .\editor\admin.py:20
+msgid "Content Information"
+msgstr "Podatki o vsebini"
+
+#: .\editor\admin.py:23 .\editor\admin.py:55
+msgid "URL"
+msgstr "URL"
+
+#: .\editor\admin.py:29 .\editor\admin.py:61
 msgid "Open"
 msgstr "Odpri"
+
+#: .\editor\admin.py:42
+msgid "Runner Information"
+msgstr "Podatki o izvajanju"
+
+#: .\editor\admin.py:43
+msgid "Author Information"
+msgstr "Podatki o avtorju"
+
+#: .\editor\admin.py:44
+msgid "Submission Content"
+msgstr "Vsebina oddaje"
+
+#: .\editor\admin.py:45
+msgid "Submission Status"
+msgstr "Stanje oddaje"
+
+#: .\editor\admin.py:48 .\editor\models.py:34
+msgid "created"
+msgstr "ustvarjen"
 
 #: .\editor\apps.py:8
 msgid "Editor"
 msgstr "Urejevalnik"
 
-#: .\editor\models.py:16
+#: .\editor\models.py:28
 msgid "short ID"
 msgstr "kratek ID"
 
-#: .\editor\models.py:17
+#: .\editor\models.py:29
 msgid "long ID"
 msgstr "dolg ID"
 
-#: .\editor\models.py:19
+#: .\editor\models.py:32 .\editor\models.py:66
 msgid "name"
 msgstr "ime"
 
-#: .\editor\models.py:20
+#: .\editor\models.py:33 .\editor\models.py:67
 msgid "description"
 msgstr "opis"
 
-#: .\editor\models.py:21
-msgid "created"
-msgstr "ustvarjen"
-
-#: .\editor\models.py:23
+#: .\editor\models.py:37
 msgid "target"
 msgstr "vrsta"
 
-#: .\editor\models.py:24
+#: .\editor\models.py:38
 msgid "editor"
 msgstr "urejevalnik"
 
-#: .\editor\models.py:26
+#: .\editor\models.py:41
 msgid "meta"
 msgstr "meta"
 
-#: .\editor\models.py:27
+#: .\editor\models.py:42
 msgid "content"
 msgstr "vsebina"
 
-#: .\editor\models.py:30
+#: .\editor\models.py:45 .\editor\models.py:81
 msgid "project"
 msgstr "projekt"
 
-#: .\editor\models.py:31
+#: .\editor\models.py:46
 msgid "projects"
 msgstr "projekti"
+
+#: .\editor\models.py:70
+msgid "duration"
+msgstr "trajanje"
+
+#: .\editor\models.py:73
+msgid "author"
+msgstr "avtor"
+
+#: .\editor\models.py:74
+msgid "school"
+msgstr "šola"
+
+#: .\editor\models.py:77
+msgid "reviewed"
+msgstr "pregledan"
+
+#: .\editor\models.py:78
+msgid "approved"
+msgstr "odobren"
+
+#: .\editor\models.py:84
+msgid "submission"
+msgstr "oddaja"
+
+#: .\editor\models.py:85
+msgid "submissions"
+msgstr "oddaje"

@@ -4,7 +4,7 @@ import json
 from django.core.files.base import ContentFile
 from rest_framework import serializers
 
-from .models import Project
+from .models import Project, Submission
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -46,8 +46,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class ProjectCreateSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    name = serializers.CharField(max_length=255, allow_blank=True)
-    description = serializers.CharField(max_length=255, allow_blank=True)
+    name = serializers.CharField(max_length=50, allow_blank=True)
+    description = serializers.CharField(max_length=200, allow_blank=True)
     target = serializers.CharField(max_length=50)
     targetVersion = serializers.CharField(max_length=50)
     editor = serializers.CharField(max_length=50)
@@ -56,25 +56,41 @@ class ProjectCreateSerializer(serializers.Serializer):
     meta = serializers.JSONField()
 
     @staticmethod
-    def validate_target(value):
+    def validate_target(value: str):
         if value != "jelka":
             raise serializers.ValidationError("Must be a valid target.")
+
         return value
 
     @staticmethod
-    def validate_header(value):
+    def validate_header(value: str):
+        if len(value) > 100 * 1024:
+            raise serializers.ValidationError("Must not be larger than 100 KiB.")
+
         try:
             json.loads(value)
         except json.JSONDecodeError as error:
             raise serializers.ValidationError("Must be a valid JSON content.") from error
+
         return value
 
     @staticmethod
-    def validate_text(value):
+    def validate_text(value: str):
+        if len(value) > 1024 * 1024:
+            raise serializers.ValidationError("Must not be larger than 1 MiB.")
+
         try:
             json.loads(value)
         except json.JSONDecodeError as error:
             raise serializers.ValidationError("Must be a valid JSON content.") from error
+
+        return value
+
+    @staticmethod
+    def validate_meta(value: dict):
+        if len(json.dumps(value)) > 100 * 1024:
+            raise serializers.ValidationError("Must not be larger than 100 KiB.")
+
         return value
 
     def create(self, validated):
@@ -91,3 +107,12 @@ class ProjectCreateSerializer(serializers.Serializer):
 
         project.save()
         return project
+
+
+class ProjectSubmitSerializer(serializers.ModelSerializer):
+    project = serializers.SlugRelatedField(queryset=Project.objects.all(), slug_field="shortid")
+
+    class Meta:
+        model = Submission
+
+        fields = ("name", "description", "duration", "author", "school", "project")

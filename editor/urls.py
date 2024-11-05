@@ -8,6 +8,7 @@ from .views import (
     ProjectByShortIdView,
     ShareProjectByLongIdView,
     ShareProjectByShortIdView,
+    SubmitProjectView,
 )
 
 urlpatterns = [
@@ -35,6 +36,11 @@ urlpatterns = [
         "pxt/scripts",
         CreateProjectView.as_view(),
         name="project-create",
+    ),
+    path(
+        "pxt/submit",
+        SubmitProjectView.as_view(),
+        name="project-submit",
     ),
     re_path(
         r"^share/(?P<longid>\d{5}-\d{5}-\d{5}-\d{5})$",
