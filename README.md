@@ -1,3 +1,3 @@
 # Jelkob
 
-Main website for managing Christmas tree at FMF.
+Main website for accessing and managing Jelka FMF.

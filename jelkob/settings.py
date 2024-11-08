@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "simple_history",
     "solo",
+    "macros",
     # Local apps
     "runner.apps.RunnerConfig",
     "editor.apps.EditorConfig",
+    "frontend.apps.FrontendConfig",
 ]
 
 MIDDLEWARE = [
@@ -102,15 +104,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Authentication
+# https://docs.djangoproject.com/en/5.1/topics/auth/
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = None
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = "sl"
-
 TIME_ZONE = "Europe/Ljubljana"
 
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -149,7 +156,7 @@ REST_FRAMEWORK = {
 }
 
 
-# Application settings
+# Custom
 
 EDITOR_URL = "http://localhost:8084/"
 EDITOR_ACTION = "sandbox"

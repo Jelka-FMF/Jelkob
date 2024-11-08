@@ -21,6 +21,7 @@ class PatternSerializer(serializers.ModelSerializer):
             "author",
             "school",
             "enabled",
+            "visible",
         )
 
 

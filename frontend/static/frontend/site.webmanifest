@@ -1,0 +1,28 @@
+{
+  "name": "Jelka FMF",
+  "description": "Novoletna jelka na Fakulteti za matematiko in fiziko Univerze v Ljubljani",
+  "display": "standalone",
+  "theme_color": "#0257d5",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "./icons/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "./icons/favicon-maskable.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/favicon-monochrome.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "monochrome"
+    }
+  ]
+}

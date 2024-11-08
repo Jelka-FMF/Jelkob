@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-08 21:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+
+#: .\frontend\templates\frontend\base.html:60
+msgid "Toggle navigation"
+msgstr "Preklopi navigacijo"
+
+#: .\frontend\templates\frontend\base.html:74
+msgid "Log Out"
+msgstr "Odjava"
+
+#: .\frontend\templates\frontend\base.html:78
+#: .\frontend\templates\frontend\login.html:31
+msgid "Log In"
+msgstr "Prijava"
+
+#: .\frontend\templates\frontend\login.html:5
+msgid "Login"
+msgstr "Prijava"
+
+#: .\frontend\templates\frontend\login.html:9
+msgid "Your username and password didn't match. Please try again."
+msgstr "Vaše uporabniško ime in geslo se ne ujemata. Poskusite znova."
+
+#: .\frontend\templates\frontend\login.html:14
+msgid ""
+"Your account doesn't have access to this page. To proceed, please log in "
+"with an account that has access."
+msgstr ""
+"Vaš račun nima dostopa do te strani. Za nadaljevanje se prijavite z računom, "
+"ki ima dostop."
+
+#: .\frontend\templates\frontend\login.html:16
+msgid "Please log in to see this page."
+msgstr "Za ogled te strani se prijavite."
+
+#: .\frontend\templates\frontend\logout.html:5
+msgid "Logout"
+msgstr "Odjava"
+
+#: .\frontend\templates\frontend\logout.html:8
+msgid "You have been logged out successfully."
+msgstr "Uspešno ste se odjavili."

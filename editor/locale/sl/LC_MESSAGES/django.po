@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-05 21:49+0100\n"
+"POT-Creation-Date: 2024-11-08 21:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,43 +13,43 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: .\editor\admin.py:18
+#: .\editor\admin.py:19
 msgid "Identifier Information"
 msgstr "Podatki o identifikatorju"
 
-#: .\editor\admin.py:19
+#: .\editor\admin.py:20
 msgid "Environment Information"
 msgstr "Podatki o okolju"
 
-#: .\editor\admin.py:20
+#: .\editor\admin.py:21
 msgid "Content Information"
 msgstr "Podatki o vsebini"
 
-#: .\editor\admin.py:23 .\editor\admin.py:55
+#: .\editor\admin.py:24 .\editor\admin.py:56
 msgid "URL"
 msgstr "URL"
 
-#: .\editor\admin.py:29 .\editor\admin.py:61
+#: .\editor\admin.py:30 .\editor\admin.py:62
 msgid "Open"
 msgstr "Odpri"
 
-#: .\editor\admin.py:42
+#: .\editor\admin.py:43
 msgid "Runner Information"
 msgstr "Podatki o izvajanju"
 
-#: .\editor\admin.py:43
+#: .\editor\admin.py:44
 msgid "Author Information"
 msgstr "Podatki o avtorju"
 
-#: .\editor\admin.py:44
+#: .\editor\admin.py:45
 msgid "Submission Content"
 msgstr "Vsebina oddaje"
 
-#: .\editor\admin.py:45
+#: .\editor\admin.py:46
 msgid "Submission Status"
 msgstr "Stanje oddaje"
 
-#: .\editor\admin.py:48 .\editor\models.py:34
+#: .\editor\admin.py:49 .\editor\models.py:34
 msgid "created"
 msgstr "ustvarjen"
 

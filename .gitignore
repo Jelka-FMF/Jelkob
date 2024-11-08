@@ -91,6 +91,6 @@ tmp/
 *.tmp
 
 # Dynamic data
-static/
-uploads/
+/static/
+/uploads/
 *.db

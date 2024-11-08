@@ -31,6 +31,7 @@ class Pattern(Model):
 
     # Pattern Status
     enabled = BooleanField(default=True, verbose_name=_("enabled"))
+    visible = BooleanField(default=True, verbose_name=_("visible"))
 
     # Pattern History
     history = HistoricalRecords()

@@ -8,8 +8,8 @@ from .models import Pattern, State
 
 @admin.register(Pattern)
 class PatternAdmin(SimpleHistoryAdmin):
-    list_display = ("identifier", "name", "duration", "author", "school", "enabled")
-    list_filter = ("enabled", "author", "school")
+    list_display = ("identifier", "name", "duration", "author", "school", "enabled", "visible")
+    list_filter = ("enabled", "visible", "author", "school")
 
     search_fields = ("identifier", "name", "docker", "author", "school")
 
@@ -17,7 +17,7 @@ class PatternAdmin(SimpleHistoryAdmin):
         (None, {"fields": ("identifier", "name", "description", "source")}),
         (_("Runner Information"), {"fields": ("docker", "duration")}),
         (_("Author Information"), {"fields": ("author", "school")}),
-        (_("Pattern Status"), {"fields": ("enabled",)}),
+        (_("Pattern Status"), {"fields": ("enabled", "visible")}),
     )
 
     actions = ("enable", "disable")

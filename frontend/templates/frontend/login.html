@@ -1,0 +1,33 @@
+{% extends "frontend/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Login" %} - Jelka FMF{% endblock %}
+
+{% block content %}
+  {% if form.errors %}
+    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>{% trans "Your account doesn't have access to this page. To proceed, please log in with an account that has access." %}</p>
+    {% else %}
+      <p>{% trans "Please log in to see this page." %}</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}" style="max-width: 500px;">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="login-form-username" class="form-label">{{ form.username.label_tag }}</label>
+      <input type="text" class="form-control" id="login-form-username" name="username" required />
+    </div>
+    <div class="mb-3">
+      <label for="login-form-password" class="form-label">{{ form.password.label_tag }}</label>
+      <input type="password" class="form-control" id="login-form-password" name="password" required />
+    </div>
+    <input type="hidden" name="next" value="{{ next }}" />
+    <button type="submit" class="btn btn-primary">{% trans "Log In" %}</button>
+  </form>
+{% endblock %}

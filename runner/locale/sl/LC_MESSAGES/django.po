@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-31 20:54+0100\n"
+"POT-Creation-Date: 2024-11-08 21:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,26 +77,30 @@ msgstr "šola"
 msgid "enabled"
 msgstr "omogočen"
 
-#: .\runner\models.py:39 .\runner\models.py:47
+#: .\runner\models.py:34
+msgid "visible"
+msgstr "viden"
+
+#: .\runner\models.py:40 .\runner\models.py:52
 msgid "pattern"
 msgstr "vzorec"
 
-#: .\runner\models.py:40
+#: .\runner\models.py:41
 msgid "patterns"
 msgstr "vzorci"
 
-#: .\runner\models.py:48
+#: .\runner\models.py:53
 msgid "start time"
 msgstr "čas začetka"
 
-#: .\runner\models.py:49
+#: .\runner\models.py:54
 msgid "active time"
 msgstr "čas aktivnosti"
 
-#: .\runner\models.py:52
+#: .\runner\models.py:57
 msgid "state"
 msgstr "stanje"
 
-#: .\runner\models.py:55
+#: .\runner\models.py:60
 msgid "State"
 msgstr "Stanje"

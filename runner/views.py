@@ -22,7 +22,7 @@ class PatternViewSet(viewsets.ModelViewSet):
     serializer_class = PatternSerializer
     pagination_class = None
 
-    filterset_fields = ("enabled",)
+    filterset_fields = ("enabled", "visible")
     search_fields = ("identifier", "name", "author", "school")
     ordering_fields = ("identifier", "name", "author", "school", "duration")
 
