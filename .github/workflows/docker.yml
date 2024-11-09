@@ -1,0 +1,43 @@
+name: Docker Image CI
+
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  release:
+    name: Release Docker
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Extract the Docker metadata
+        uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ghcr.io/jelka/jelkob
+          tags: |
+            type=raw,value={{date 'YYYYMMDDhhmmss'}}
+            type=raw,value=latest
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: "ghcr.io"
+
+      - name: Build and release the Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
