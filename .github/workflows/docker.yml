@@ -22,7 +22,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta
         with:
-          images: ghcr.io/jelka/jelkob
+          images: ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value={{date 'YYYYMMDDhhmmss'}}
             type=raw,value=latest
