@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.http import Http404
+from django_eventstream.viewsets import EventsViewSet
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -102,3 +103,13 @@ class StateViewSet(viewsets.GenericViewSet):
         state.save()
 
         return Response({"status": "OK"})
+
+
+class EventStreamViewSet(EventsViewSet):
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            *args,
+            **kwargs,
+            channels=["runner"],
+            messages_types=["message"],
+        )

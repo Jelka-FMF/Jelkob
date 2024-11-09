@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from simple_history.admin import SimpleHistoryAdmin
 from solo.admin import SingletonModelAdmin
 
-from .models import Pattern, State
+from .models import Config, Pattern, State
 
 
 @admin.register(Pattern)
@@ -38,4 +38,9 @@ class PatternAdmin(SimpleHistoryAdmin):
 
 @admin.register(State)
 class StateAdmin(SingletonModelAdmin):
+    pass
+
+
+@admin.register(Config)
+class ConfigAdmin(SingletonModelAdmin):
     pass

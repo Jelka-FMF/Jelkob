@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 # Application
 
 INSTALLED_APPS = [
+    # Daphne apps
+    "daphne",
     # Django apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party apps
     "django_filters",
+    "django_eventstream",
     "rest_framework",
     "rest_framework.authtoken",
     "simple_history",
@@ -80,6 +83,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "jelkob.wsgi.application"
+ASGI_APPLICATION = "jelkob.asgi.application"
 
 
 # Database
@@ -150,8 +154,15 @@ REST_FRAMEWORK = {
         "rest_framework.filters.OrderingFilter",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+        "django_eventstream.renderers.SSEEventRenderer",
+        "django_eventstream.renderers.BrowsableAPIEventStreamRenderer",
     ],
 }
 

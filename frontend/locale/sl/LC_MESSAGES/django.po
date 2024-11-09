@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 21:37+0100\n"
+"POT-Creation-Date: 2024-11-09 18:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,15 +13,28 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: .\frontend\templates\frontend\base.html:60
+#: .\frontend\templates\frontend\about.html:5
+#: .\frontend\templates\frontend\base.html:81
+msgid "About"
+msgstr "Informacije"
+
+#: .\frontend\templates\frontend\base.html:74
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
 
-#: .\frontend\templates\frontend\base.html:74
+#: .\frontend\templates\frontend\base.html:80
+msgid "Patterns"
+msgstr "Vzorci"
+
+#: .\frontend\templates\frontend\base.html:82
+msgid "Management"
+msgstr "Upravljanje"
+
+#: .\frontend\templates\frontend\base.html:88
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:78
+#: .\frontend\templates\frontend\base.html:92
 #: .\frontend\templates\frontend\login.html:31
 msgid "Log In"
 msgstr "Prijava"
@@ -53,3 +66,36 @@ msgstr "Odjava"
 #: .\frontend\templates\frontend\logout.html:8
 msgid "You have been logged out successfully."
 msgstr "Uspešno ste se odjavili."
+
+#: .\frontend\templates\frontend\patterns.html:8
+msgid ""
+"Displaying the patterns requires JavaScript to be enabled. Please enable it."
+msgstr "Za prikaz vzorcev je potreben JavaScript. Prosimo, omogočite ga."
+
+#: .\frontend\templates\frontend\patterns.html:14
+msgid "Time"
+msgstr "Čas"
+
+#: .\frontend\templates\frontend\patterns.html:15
+msgid "Name"
+msgstr "Ime"
+
+#: .\frontend\templates\frontend\patterns.html:16
+msgid "Author"
+msgstr "Avtor"
+
+#: .\frontend\templates\frontend\patterns.html:18
+msgid "Actions"
+msgstr "Dejanja"
+
+#: .\frontend\templates\frontend\patterns.html:35
+msgid "Run"
+msgstr "Zaženi"
+
+#: .\frontend\templates\frontend\patterns.html:36
+msgid "Enable"
+msgstr "Omogoči"
+
+#: .\frontend\templates\frontend\patterns.html:37
+msgid "Disable"
+msgstr "Onemogoči"

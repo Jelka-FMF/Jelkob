@@ -1,0 +1,58 @@
+{% extends "frontend/base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+  <noscript>
+    <p>{% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}</p>
+  </noscript>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="header-countdown">{% trans "Time" %}</th>
+        <th class="header-name">{% trans "Name" %}</th>
+        <th class="header-author">{% trans "Author" %}</th>
+        {% if user.is_authenticated %}
+          <th class="header-actions">{% trans "Actions" %}</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody id="patterns"></tbody>
+  </table>
+
+  <template id="pattern-template">
+    <tr>
+      <td class="pattern-countdown"></td>
+      <td class="pattern-name">
+        <a class="pattern-name-link text-decoration-none text-reset" target="_blank"></a>
+        <span class="pattern-name-text text-decoration-none text-reset"></span>
+      </td>
+      <td class="pattern-author"></td>
+      {% if user.is_authenticated %}
+        <td class="pattern-actions">
+          <button class="btn btn-sm btn-outline-primary pattern-run-btn">{% trans "Run" %}</button>
+          <button class="btn btn-sm btn-outline-primary pattern-enable-btn">{% trans "Enable" %}</button>
+          <button class="btn btn-sm btn-outline-primary pattern-disable-btn">{% trans "Disable" %}</button>
+        </td>
+      {% endif %}
+    </tr>
+  </template>
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'frontend/styles/patterns.css' %}" />
+{% endblock %}
+
+{% block extrabody %}
+  <script src="{% static 'django_eventstream/eventsource.min.js' %}"></script>
+  <script src="{% static 'django_eventstream/reconnecting-eventsource.js' %}"></script>
+
+  <script
+    src="{% static 'frontend/scripts/patterns.js' %}"
+    defer
+    data-is-authenticated="{{ user.is_authenticated }}"
+    data-csrf-token="{{ csrf_token }}"
+  ></script>
+{% endblock %}

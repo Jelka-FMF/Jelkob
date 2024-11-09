@@ -1,0 +1,23 @@
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.header-countdown {
+  width: 70px;
+}
+
+.header-name {
+  width: 500px;
+}
+
+.header-author {
+  width: 500px;
+}
+
+.pattern-actions {
+  padding: 0.3rem 0.5rem !important;
+}
+
+.pattern-actions > * {
+  margin: 0.2rem 0 !important;
+}

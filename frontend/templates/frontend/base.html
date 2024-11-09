@@ -9,6 +9,20 @@
 
 {% macro title %}{% block title %}Jelka FMF{% endblock %}{% endmacro %}
 
+{% macro navlink view name %}
+  {% with current=request.resolver_match.url_name %}
+    <li class="nav-item">
+      <a
+        class="nav-link {% if current == view %}active{% endif %}"
+        {% if current == view %}aria-current="page"{% endif %}
+        href="{% url view %}"
+      >
+        {{ name }}
+      </a>
+    </li>
+  {% endwith %}
+{% endmacro %}
+
 <html lang="{{ LANGUAGE_CODE }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
   <head>
     <meta charset="utf-8" />
@@ -63,9 +77,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar-content">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Vzorci</a></li>
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Upravljanje</a></li>
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Informacije</a></li>
+            {% usemacro navlink "patterns" _("Patterns") %}
+            {% usemacro navlink "about" _("About") %}
+            {% usemacro navlink "admin:index" _("Management") %}
           </ul>
           <span class="navbar-text">
             {% if user.is_authenticated %}

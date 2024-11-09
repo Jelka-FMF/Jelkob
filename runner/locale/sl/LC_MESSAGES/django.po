@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-08 21:44+0100\n"
+"POT-Creation-Date: 2024-11-09 18:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr "omogočen"
 msgid "visible"
 msgstr "viden"
 
-#: .\runner\models.py:40 .\runner\models.py:52
+#: .\runner\models.py:40 .\runner\models.py:54
 msgid "pattern"
 msgstr "vzorec"
 
@@ -89,18 +89,30 @@ msgstr "vzorec"
 msgid "patterns"
 msgstr "vzorci"
 
-#: .\runner\models.py:53
+#: .\runner\models.py:55
 msgid "start time"
 msgstr "čas začetka"
 
-#: .\runner\models.py:54
+#: .\runner\models.py:56
 msgid "active time"
 msgstr "čas aktivnosti"
 
-#: .\runner\models.py:57
+#: .\runner\models.py:59
 msgid "state"
 msgstr "stanje"
 
-#: .\runner\models.py:60
+#: .\runner\models.py:62
 msgid "State"
 msgstr "Stanje"
+
+#: .\runner\models.py:66
+msgid "default duration"
+msgstr "privzeto trajanje"
+
+#: .\runner\models.py:69
+msgid "config"
+msgstr "nastavitve"
+
+#: .\runner\models.py:72
+msgid "Config"
+msgstr "Nastavitve"

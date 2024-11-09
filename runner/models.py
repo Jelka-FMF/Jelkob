@@ -40,6 +40,8 @@ class Pattern(Model):
         verbose_name = _("pattern")
         verbose_name_plural = _("patterns")
 
+        ordering = ["identifier"]
+
         indexes = [
             Index(fields=["identifier"]),
         ]
@@ -58,3 +60,13 @@ class State(SingletonModel):
 
     def __str__(self):
         return gettext("State")
+
+
+class Config(SingletonModel):
+    duration = PositiveIntegerField(default=60, verbose_name=_("default duration"))
+
+    class Meta:
+        verbose_name = _("config")
+
+    def __str__(self):
+        return gettext("Config")
