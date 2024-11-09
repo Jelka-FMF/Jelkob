@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-09 18:51+0100\n"
+"POT-Creation-Date: 2024-11-09 21:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,35 @@ msgstr ""
 #: .\frontend\templates\frontend\base.html:81
 msgid "About"
 msgstr "Informacije"
+
+#: .\frontend\templates\frontend\about.html:9
+msgid ""
+"At the <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Faculty of "
+"Mathematics and Physics, University of Ljubljana</a>, as part of the <a "
+"href=\"https://programerski-klub-fmf.github.io/\" target=\"_blank\">FMF "
+"Programming Club</a>, we set up a programmable Christmas tree. The project "
+"was made possible with the sponsorship of <a href=\"https://abelium.si/\" "
+"target=\"_blank\">Abelium</a> and <a href=\"https://acex.si/\" "
+"target=\"_blank\">Acex</a>."
+msgstr ""
+"Na <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Fakulteti za "
+"matematiko in fiziko Univerze v Ljubljani</a> smo v okviru <a href=\"https://"
+"programerski-klub-fmf.github.io/\" target=\"_blank\">Programerskega kluba "
+"FMF</a> postavili jelko z lučkami, ki jih lahko programiramo. Projekt poteka "
+"pod sponzorstvom podjetij <a href=\"https://abelium.si/\" "
+"target=\"_blank\">Abelium</a> in <a href=\"https://acex.si/\" "
+"target=\"_blank\">Acex</a>."
+
+#: .\frontend\templates\frontend\about.html:17
+msgid ""
+"The tree is located at the entrance of the building at <a href=\"https://www."
+"google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana\" "
+"target=\"_blank\">Jadranska 21</a> and is lit from morning until the "
+"building closes."
+msgstr ""
+"Jelka stoji pri vhodu v stavbo na <a href=\"https://www.google.si/maps/place/"
+"Jadranska+ulica+21,+1000+Ljubljana\" target=\"_blank\">Jadranski 21</a> in "
+"je prižgana od jutra do zaprtja stavbe."
 
 #: .\frontend\templates\frontend\base.html:74
 msgid "Toggle navigation"
@@ -88,14 +117,35 @@ msgstr "Avtor"
 msgid "Actions"
 msgstr "Dejanja"
 
-#: .\frontend\templates\frontend\patterns.html:35
+#: .\frontend\templates\frontend\patterns.html:26
+msgid "The Christmas tree is currently sleeping. Visit us when it is active."
+msgstr "Jelka trenutno spi. Obiščite nas, ko je aktivna."
+
+#: .\frontend\templates\frontend\patterns.html:32
+msgid ""
+"The Christmas tree is running. Visit us and view it at the Faculty of "
+"Mathematics and Physics, University of Ljubljana."
+msgstr ""
+"Jelka je prižgana. Obiščite nas in si jo oglejte na Fakulteti za matematiko "
+"in fiziko Univerze v Ljubljani."
+
+#: .\frontend\templates\frontend\patterns.html:41
+#, python-format
+msgid ""
+"Read more about the tree or contribute your own patterns on <a "
+"href=\"%(about_url)s\">the about page</a>."
+msgstr ""
+"Preberite več o jelki ali prispevajte svoje vzorce na <a "
+"href=\"%(about_url)s\">strani z informacijami</a>."
+
+#: .\frontend\templates\frontend\patterns.html:56
 msgid "Run"
 msgstr "Zaženi"
 
-#: .\frontend\templates\frontend\patterns.html:36
+#: .\frontend\templates\frontend\patterns.html:57
 msgid "Enable"
 msgstr "Omogoči"
 
-#: .\frontend\templates\frontend\patterns.html:37
+#: .\frontend\templates\frontend\patterns.html:58
 msgid "Disable"
 msgstr "Onemogoči"

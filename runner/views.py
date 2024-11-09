@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import requests
+from django.conf import settings
 from django.http import Http404
 from django_eventstream.viewsets import EventsViewSet
 from rest_framework import permissions, viewsets
@@ -55,7 +57,13 @@ class PatternViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
     def run(self, request, identifier=None):
-        return Response({"status": "Not implemented yet"})
+        requests.post(
+            settings.RUNNER_URL,
+            headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
+            json={"pattern": self.get_object().identifier},
+        )
+
+        return Response({"status": "Pattern run"})
 
 
 class StateViewSet(viewsets.GenericViewSet):

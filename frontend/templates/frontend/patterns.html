@@ -22,6 +22,27 @@
     <tbody id="patterns"></tbody>
   </table>
 
+  <p id="runner-inactive" class="d-none">
+    {% blocktrans trimmed %}
+      The Christmas tree is currently sleeping. Visit us when it is active.
+    {% endblocktrans %}
+  </p>
+
+  <p id="runner-active" class="d-none">
+    {% blocktrans trimmed %}
+      The Christmas tree is running.
+      Visit us and view it at the Faculty of Mathematics and Physics, University of Ljubljana.
+    {% endblocktrans %}
+  </p>
+
+  {% url "about" as about_url %}
+
+  <p>
+    {% blocktrans trimmed %}
+      Read more about the tree or contribute your own patterns on <a href="{{ about_url }}">the about page</a>.
+    {% endblocktrans %}
+  </p>
+
   <template id="pattern-template">
     <tr>
       <td class="pattern-countdown"></td>

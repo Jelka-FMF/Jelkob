@@ -22,7 +22,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or "0" * 50
 # SECURITY WARNING: Disable debug mode in production
 DEBUG = os.environ.get("DJANGO_DEBUG") == "1"
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: Configure properly in production
+ALLOWED_HOSTS = [host for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if host]
 
 
 # Application
@@ -169,5 +170,14 @@ REST_FRAMEWORK = {
 
 # Custom
 
-EDITOR_URL = "http://localhost:8084/"
-EDITOR_ACTION = "sandbox"
+ROOT_URL = os.environ.get("ROOT_URL")
+
+EDITOR_URL = os.environ.get("EDITOR_URL")
+EDITOR_ACTION = os.environ.get("EDITOR_ACTION", "sandbox")
+
+RUNNER_URL = os.environ.get("RUNNER_URL")
+RUNNER_TOKEN = os.environ.get("RUNNER_TOKEN")
+
+DISCORD_USERNAME = os.environ.get("DISCORD_USERNAME", "Jelkob")
+DISCORD_AVATAR = os.environ.get("DISCORD_AVATAR")
+DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK")

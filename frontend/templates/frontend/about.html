@@ -5,5 +5,20 @@
 {% block title %}{% trans "About" %} - Jelka FMF{% endblock %}
 
 {% block content %}
-  TODO: Add information about the project here.
+  <p>
+    {% blocktrans trimmed %}
+      At the <a href="https://www.fmf.uni-lj.si/" target="_blank">Faculty of Mathematics and Physics, University of
+      Ljubljana</a>, as part of the <a href="https://programerski-klub-fmf.github.io/" target="_blank">FMF Programming
+      Club</a>, we set up a programmable Christmas tree. The project was made possible with the sponsorship of
+      <a href="https://abelium.si/" target="_blank">Abelium</a> and <a href="https://acex.si/" target="_blank">Acex</a>.
+    {% endblocktrans %}
+  </p>
+  <p>
+    {% blocktrans trimmed %}
+      The tree is located at the entrance of the building at
+      <a href="https://www.google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana" target="_blank">Jadranska 21</a>
+      and is lit from morning until the building closes.
+    {% endblocktrans %}
+  </p>
+  <p>
 {% endblock %}

@@ -220,6 +220,19 @@ function updatePatternState () {
 
   // Start a new countdown interval
   countdownInterval = setInterval(handleCountdown, 1000)
+
+  // Display whether the runner is active
+  const runnerActive = document.getElementById('runner-active')
+  const runnerInactive = document.getElementById('runner-inactive')
+
+  if (state.pattern) {
+    runnerActive.classList.remove('d-none')
+    runnerInactive.classList.add('d-none')
+  } else {
+    runnerActive.classList.add('d-none')
+    runnerInactive.classList.remove('d-none')
+  }
+
 }
 
 // == Event Handlers
