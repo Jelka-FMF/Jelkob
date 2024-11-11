@@ -14,6 +14,10 @@ tr:last-child td {
   width: 500px;
 }
 
+.header-actions {
+  width: 250px;
+}
+
 .pattern-actions {
   padding: 0.3rem 0.5rem !important;
 }

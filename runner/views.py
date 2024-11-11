@@ -81,9 +81,9 @@ class StateViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
 
         state = State.get_solo()
-        state.pattern = serializer.validated_data["pattern"]
-        state.started = serializer.validated_data["started"]
-        state.active = datetime.now()
+        state.current_pattern = serializer.validated_data["pattern"]
+        state.current_pattern_started = serializer.validated_data["started"]
+        state.runner_last_active = datetime.now()
         state.save()
 
         return Response({"status": "OK"})
@@ -94,9 +94,9 @@ class StateViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
 
         state = State.get_solo()
-        state.pattern = None
-        state.started = None
-        state.active = datetime.now()
+        state.current_pattern = None
+        state.current_pattern_started = None
+        state.runner_last_active = datetime.now()
         state.save()
 
         return Response({"status": "OK"})
@@ -107,7 +107,7 @@ class StateViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
 
         state = State.get_solo()
-        state.active = datetime.now()
+        state.runner_last_active = datetime.now()
         state.save()
 
         return Response({"status": "OK"})

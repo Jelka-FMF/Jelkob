@@ -26,10 +26,11 @@ let patterns = []
 
 /**
  * @typedef {Object} State
- * @property {string|null} pattern - The current pattern identifier.
- * @property {string|null} started - An ISO-8601 timestamp representing when the pattern started.
- * @property {string|null} active - An ISO-8601 timestamp representing when the runner was last active.
- * @property {number|null} remaining - The number of seconds remaining for the current pattern.
+ * @property {string|null} currentPatternIdentifier - The current pattern identifier.
+ * @property {string|null} currentPatternStarted - An ISO-8601 timestamp representing when the current pattern started.
+ * @property {number} currentPatternRemaining - The number of seconds remaining for the current pattern.
+ * @property {string|null} runnerLastActive - An ISO-8601 timestamp representing when the runner was last active.
+ * @property {boolean} runnerIsActive - Whether the runner is currently active.
  */
 
 /** @type {State} */
@@ -161,8 +162,8 @@ function updatePatternTable () {
 function calculateStartTimes () {
   const startTimes = new Map()
 
-  const enabledPatterns = patterns.filter(pattern => pattern.enabled || pattern.identifier === state.pattern)
-  const activeIndex = enabledPatterns.findIndex(pattern => pattern.identifier === state.pattern)
+  const enabledPatterns = patterns.filter(pattern => pattern.enabled || pattern.identifier === state.currentPatternIdentifier)
+  const activeIndex = enabledPatterns.findIndex(pattern => pattern.identifier === state.currentPatternIdentifier)
   if (activeIndex === -1) return startTimes
 
   let currentTime = 0
@@ -171,7 +172,7 @@ function calculateStartTimes () {
     const pattern = enabledPatterns[(activeIndex + i) % enabledPatterns.length]
     startTimes.set(pattern.identifier, currentTime)
 
-    if (i === 0) currentTime += state.remaining || 0
+    if (i === 0) currentTime += state.currentPatternRemaining || 0
     else currentTime += pattern.duration
   }
 
@@ -193,7 +194,7 @@ function updatePatternState () {
     const name = element.querySelector('.pattern-name')
     const author = element.querySelector('.pattern-author')
 
-    if (state.pattern && element.dataset.identifier === state.pattern) {
+    if (state.runnerIsActive && element.dataset.identifier === state.currentPatternIdentifier) {
       // Highlight the active pattern
       countdown.classList.add('fw-bold')
       name.classList.add('fw-bold')
@@ -207,7 +208,7 @@ function updatePatternState () {
 
     const startTime = startTimes.get(element.dataset.identifier)
 
-    if (state.pattern && typeof startTime === 'number') {
+    if (state.runnerIsActive && typeof startTime === 'number') {
       // Configure the countdown for the pattern
       countdown.dataset.seconds = startTime.toString()
       countdown.textContent = formatTime(startTime)
@@ -225,14 +226,13 @@ function updatePatternState () {
   const runnerActive = document.getElementById('runner-active')
   const runnerInactive = document.getElementById('runner-inactive')
 
-  if (state.pattern) {
+  if (state.runnerIsActive) {
     runnerActive.classList.remove('d-none')
     runnerInactive.classList.add('d-none')
   } else {
     runnerActive.classList.add('d-none')
     runnerInactive.classList.remove('d-none')
   }
-
 }
 
 // == Event Handlers

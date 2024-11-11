@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from rest_framework import serializers
 
 from .models import Config, Pattern, State
@@ -30,29 +28,28 @@ class PatternSerializer(serializers.ModelSerializer):
         ret = super().to_representation(obj)
 
         if obj.duration is None:
-            ret["duration"] = Config.get_solo().duration
+            ret["duration"] = Config.get_solo().default_duration
 
         return ret
 
 
 class StateSerializer(serializers.ModelSerializer):
-    pattern = serializers.SlugRelatedField(slug_field="identifier", read_only=True)
-    remaining = serializers.SerializerMethodField()
+    currentPatternIdentifier = serializers.SlugRelatedField(source="current_pattern", slug_field="identifier", read_only=True)  # fmt: skip
+    currentPatternStarted = serializers.DateTimeField(source="current_pattern_started")
+    currentPatternRemaining = serializers.FloatField(source="current_pattern_remaining")
+    runnerLastActive = serializers.DateTimeField(source="runner_last_active")
+    runnerIsActive = serializers.BooleanField(source="runner_is_active")
 
     class Meta:
         model = State
-        fields = ("pattern", "started", "active", "remaining")
 
-    @staticmethod
-    def get_remaining(obj):
-        if not obj.pattern or not obj.started:
-            return 0
-
-        duration = obj.pattern.duration or Config.get_solo().duration
-        started = obj.started.timestamp()
-        now = datetime.now().timestamp()
-
-        return max(0, duration - (now - started))
+        fields = (
+            "currentPatternIdentifier",
+            "currentPatternStarted",
+            "currentPatternRemaining",
+            "runnerLastActive",
+            "runnerIsActive",
+        )
 
 
 class StateStartedSerializer(serializers.Serializer):

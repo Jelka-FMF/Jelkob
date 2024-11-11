@@ -115,4 +115,11 @@ class ProjectSubmitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Submission
 
-        fields = ("name", "description", "duration", "author", "school", "project")
+        fields = (
+            "name",
+            "description",
+            "duration",
+            "author",
+            "school",
+            "project",
+        )

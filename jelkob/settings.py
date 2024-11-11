@@ -168,16 +168,40 @@ REST_FRAMEWORK = {
 }
 
 
-# Custom
+# Jelkob - Common
 
 ROOT_URL = os.environ.get("ROOT_URL")
+"""The full root URL of the application."""
+
+# Jelkob - Editor
 
 EDITOR_URL = os.environ.get("EDITOR_URL")
+"""The full path to the editor website."""
+
 EDITOR_ACTION = os.environ.get("EDITOR_ACTION", "sandbox")
+"""The action to perform in the editor."""
+
+# Jelkob - Runner
 
 RUNNER_URL = os.environ.get("RUNNER_URL")
+"""The full path to the runner endpoint for running the patterns."""
+
 RUNNER_TOKEN = os.environ.get("RUNNER_TOKEN")
+"""The token to use for authenticating with the runner endpoint."""
+
+INACTIVITY_PING_TIMEOUT = int(os.environ.get("INACTIVITY_PING_TIMEOUT", 90))
+"""How long to wait for a ping before considering the runner inactive."""
+
+INACTIVITY_PATTERN_TIMEOUT = int(os.environ.get("INACTIVITY_PATTERN_TIMEOUT", 30))
+"""How long to wait after the pattern should have finished before considering the runner inactive."""
+
+# Jelkob - Discord
 
 DISCORD_USERNAME = os.environ.get("DISCORD_USERNAME", "Jelkob")
+"""The username to use for the Discord webhook."""
+
 DISCORD_AVATAR = os.environ.get("DISCORD_AVATAR")
+"""The avatar to use for the Discord webhook."""
+
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK")
+"""The webhook URL to use for sending messages to Discord."""

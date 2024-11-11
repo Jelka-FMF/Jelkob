@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-09 18:27+0100\n"
+"POT-Creation-Date: 2024-11-11 18:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr "Podatki o izvajanju"
 msgid "Author Information"
 msgstr "Podatki o avtorju"
 
-#: .\runner\admin.py:20
+#: .\runner\admin.py:20 .\runner\admin.py:48
 msgid "Pattern Status"
 msgstr "Stanje vzorca"
 
@@ -37,82 +37,98 @@ msgstr "Onemogoči izbrane vzorce"
 msgid "Delete selected patterns"
 msgstr "Izbriši izbrane vzorce"
 
+#: .\runner\admin.py:52
+msgid "Runner Status"
+msgstr "Stanje zaganjalnika"
+
+#: .\runner\admin.py:57
+msgid "current pattern remaining"
+msgstr "preostali čas"
+
+#: .\runner\admin.py:61
+msgid "runner is active"
+msgstr "trenutno aktiven"
+
 #: .\runner\apps.py:8
 msgid "Runner"
 msgstr "Zaganjalnik"
 
-#: .\runner\models.py:19
+#: .\runner\models.py:22
 msgid "identifier"
 msgstr "identifikator"
 
-#: .\runner\models.py:20
+#: .\runner\models.py:23
 msgid "name"
 msgstr "ime"
 
-#: .\runner\models.py:21
+#: .\runner\models.py:24
 msgid "description"
 msgstr "opis"
 
-#: .\runner\models.py:22
+#: .\runner\models.py:25
 msgid "source"
 msgstr "vir"
 
-#: .\runner\models.py:25
+#: .\runner\models.py:28
 msgid "docker"
 msgstr "docker"
 
-#: .\runner\models.py:26
+#: .\runner\models.py:29
 msgid "duration"
 msgstr "trajanje"
 
-#: .\runner\models.py:29
+#: .\runner\models.py:32
 msgid "author"
 msgstr "avtor"
 
-#: .\runner\models.py:30
+#: .\runner\models.py:33
 msgid "school"
 msgstr "šola"
 
-#: .\runner\models.py:33
+#: .\runner\models.py:36
 msgid "enabled"
 msgstr "omogočen"
 
-#: .\runner\models.py:34
+#: .\runner\models.py:37
 msgid "visible"
 msgstr "viden"
 
-#: .\runner\models.py:40 .\runner\models.py:54
+#: .\runner\models.py:43
 msgid "pattern"
 msgstr "vzorec"
 
-#: .\runner\models.py:41
+#: .\runner\models.py:44
 msgid "patterns"
 msgstr "vzorci"
 
-#: .\runner\models.py:55
-msgid "start time"
-msgstr "čas začetka"
+#: .\runner\models.py:57
+msgid "current pattern"
+msgstr "trenutni vzorec"
 
-#: .\runner\models.py:56
-msgid "active time"
-msgstr "čas aktivnosti"
+#: .\runner\models.py:58
+msgid "current pattern started"
+msgstr "začetni čas"
 
-#: .\runner\models.py:59
+#: .\runner\models.py:60
+msgid "runner last active"
+msgstr "nazadnje aktiven"
+
+#: .\runner\models.py:63
 msgid "state"
 msgstr "stanje"
 
-#: .\runner\models.py:62
+#: .\runner\models.py:66
 msgid "State"
 msgstr "Stanje"
 
-#: .\runner\models.py:66
+#: .\runner\models.py:109
 msgid "default duration"
 msgstr "privzeto trajanje"
 
-#: .\runner\models.py:69
+#: .\runner\models.py:112
 msgid "config"
 msgstr "nastavitve"
 
-#: .\runner\models.py:72
+#: .\runner\models.py:115
 msgid "Config"
 msgstr "Nastavitve"

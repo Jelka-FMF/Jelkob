@@ -38,7 +38,29 @@ class PatternAdmin(SimpleHistoryAdmin):
 
 @admin.register(State)
 class StateAdmin(SingletonModelAdmin):
-    pass
+    readonly_fields = (
+        "current_pattern_remaining",
+        "runner_is_active",
+    )
+
+    fieldsets = (
+        (
+            _("Pattern Status"),
+            {"fields": ("current_pattern", "current_pattern_started", "current_pattern_remaining")},
+        ),
+        (
+            _("Runner Status"),
+            {"fields": ("runner_last_active", "runner_is_active")},
+        ),
+    )
+
+    @admin.display(description=_("current pattern remaining"))
+    def current_pattern_remaining(self, obj):
+        return obj.current_pattern_remaining
+
+    @admin.display(description=_("runner is active"), boolean=True)
+    def runner_is_active(self, obj):
+        return obj.runner_is_active
 
 
 @admin.register(Config)
