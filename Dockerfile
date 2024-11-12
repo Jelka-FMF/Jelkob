@@ -18,7 +18,7 @@ ENV POETRY_VIRTUALENVS_IN_PROJECT=1
 RUN python -c 'from urllib.request import urlopen; print(urlopen("https://install.python-poetry.org").read().decode())' | python -
 
 COPY pyproject.toml poetry.lock ./
-RUN poetry install --without dev
+RUN poetry install --without dev --extras mysql
 
 # Prepare and run app
 FROM python AS runtime
