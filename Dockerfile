@@ -28,4 +28,4 @@ EXPOSE 8000
 COPY --from=poetry $VENV_HOME $VENV_HOME
 COPY . .
 
-CMD ["/usr/src/app/entrypoint.sh"]
+CMD ["/bin/bash", "/usr/src/app/entrypoint.sh"]
