@@ -1,0 +1,78 @@
+name: jelkob
+
+services:
+  mariadb:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "5"
+
+  registry:
+    image: registry:2
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: /var/lib/registry/password
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      - ./volumes/registry:/var/lib/registry
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "5"
+
+  app:
+    image: ghcr.io/jelka-fmf/jelkob:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      DJANGO_ALLOWED_CORS: ${DJANGO_ALLOWED_CORS}
+      DATABASE_ENGINE: django.db.backends.mysql
+      DATABASE_HOST: mariadb
+      DATABASE_NAME: ${MARIADB_DATABASE}
+      DATABASE_USER: ${MARIADB_USER}
+      DATABASE_PASSWORD: ${MARIADB_PASSWORD}
+      ROOT_URL: ${ROOT_URL}
+      EDITOR_URL: ${EDITOR_URL}
+      EDITOR_ACTION: ${EDITOR_ACTION}
+      RUNNER_URL: ${RUNNER_URL}
+      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      INACTIVITY_PING_TIMEOUT: ${INACTIVITY_PING_TIMEOUT}
+      INACTIVITY_PATTERN_TIMEOUT: ${INACTIVITY_PATTERN_TIMEOUT}
+      DISCORD_USERNAME: ${DISCORD_USERNAME}
+      DISCORD_AVATAR: ${DISCORD_AVATAR}
+      DISCORD_WEBHOOK: ${DISCORD_WEBHOOK}
+    volumes:
+      - ./volumes/static:/usr/src/app/static
+      - ./volumes/uploads:/usr/src/app/uploads
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "5"

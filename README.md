@@ -21,6 +21,10 @@ Use any ASGI server to run `jelkob.asgi:application`.
 
 Install container from [the container registry](https://github.com/Jelka-FMF/Jelkob/pkgs/container/jelkob).
 
+You can use a pre-made [`docker-compose.yml`](docker-compose.yml) file to run the container
+and all required services. You need to provide a `.env` file with the required environment
+variables and set up a reverse proxy to serve the static files.
+
 The Daphne ASGI server is exposed on port 8000.
 
 The static files are stored in `/usr/src/app/static/`. You need to mount this directory
