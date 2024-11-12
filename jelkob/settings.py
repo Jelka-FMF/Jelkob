@@ -25,6 +25,9 @@ DEBUG = os.environ.get("DJANGO_DEBUG") == "1"
 # SECURITY WARNING: Configure properly in production
 ALLOWED_HOSTS = [host for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if host]
 
+# SECURITY WARNING: Configure properly in production
+CORS_ALLOWED_ORIGINS = [host for host in os.environ.get("DJANGO_ALLOWED_CORS", "").split(",") if host]
+
 
 # Application
 
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     "simple_history",
     "solo",
     "macros",
+    "corsheaders",
     # Local apps
     "runner.apps.RunnerConfig",
     "editor.apps.EditorConfig",
@@ -53,6 +57,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # CORS middlewares
+    "corsheaders.middleware.CorsMiddleware",
     # Django middlewares
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -92,8 +98,12 @@ ASGI_APPLICATION = "jelkob.asgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "app.db",
+        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("DATABASE_NAME", BASE_DIR / "app.db"),
+        "HOST": os.environ.get("DATABASE_HOST", ""),
+        "PORT": os.environ.get("DATABASE_PORT", ""),
+        "USER": os.environ.get("DATABASE_USER", ""),
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD", ""),
     }
 }
 
@@ -173,6 +183,7 @@ REST_FRAMEWORK = {
 ROOT_URL = os.environ.get("ROOT_URL")
 """The full root URL of the application."""
 
+
 # Jelkob - Editor
 
 EDITOR_URL = os.environ.get("EDITOR_URL")
@@ -180,6 +191,7 @@ EDITOR_URL = os.environ.get("EDITOR_URL")
 
 EDITOR_ACTION = os.environ.get("EDITOR_ACTION", "sandbox")
 """The action to perform in the editor."""
+
 
 # Jelkob - Runner
 
@@ -194,6 +206,7 @@ INACTIVITY_PING_TIMEOUT = int(os.environ.get("INACTIVITY_PING_TIMEOUT", 90))
 
 INACTIVITY_PATTERN_TIMEOUT = int(os.environ.get("INACTIVITY_PATTERN_TIMEOUT", 30))
 """How long to wait after the pattern should have finished before considering the runner inactive."""
+
 
 # Jelkob - Discord
 
