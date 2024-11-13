@@ -22,11 +22,14 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or "0" * 50
 # SECURITY WARNING: Disable debug mode in production
 DEBUG = os.environ.get("DJANGO_DEBUG") == "1"
 
-# SECURITY WARNING: Configure properly in production
+# SECURITY WARNING: Configure allowed hosts properly in production
 ALLOWED_HOSTS = [host for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if host]
 
-# SECURITY WARNING: Configure properly in production
-CORS_ALLOWED_ORIGINS = [host for host in os.environ.get("DJANGO_ALLOWED_CORS", "").split(",") if host]
+# SECURITY WARNING: Configure CORS origins properly in production
+CORS_ALLOWED_ORIGINS = [host for host in os.environ.get("DJANGO_CORS_ORIGINS", "").split(",") if host]
+
+# SECURITY WARNING: Configure CSRF origins properly in production
+CSRF_TRUSTED_ORIGINS = [host for host in os.environ.get("DJANGO_CSRF_ORIGINS", "").split(",") if host]
 
 
 # Application

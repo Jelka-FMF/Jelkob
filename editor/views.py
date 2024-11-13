@@ -2,7 +2,9 @@ import json
 
 from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect
+from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -44,6 +46,7 @@ class ProjectByShortIdContentView(generics.GenericAPIView):
         return Response(content)
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class CreateProjectView(generics.CreateAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectCreateSerializer
@@ -59,6 +62,7 @@ class CreateProjectView(generics.CreateAPIView):
         return Response(data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class SubmitProjectView(generics.CreateAPIView):
     queryset = Submission.objects.all()
     serializer_class = ProjectSubmitSerializer
