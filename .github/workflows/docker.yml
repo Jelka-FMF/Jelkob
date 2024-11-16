@@ -2,6 +2,7 @@ name: Docker CI
 
 on:
   - push
+  - pull_request
   - workflow_dispatch
 
 jobs:
@@ -22,13 +23,15 @@ jobs:
             type=raw,value={{date 'YYYYMMDDhhmmss'}}
             type=raw,value=latest
 
-      - name: Build and release the Docker image
+      - name: Build the Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   release:
     name: Release Docker
@@ -43,6 +46,13 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4
 
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: "ghcr.io"
+
       - name: Extract the Docker metadata
         uses: docker/metadata-action@v5
         id: meta
@@ -52,13 +62,6 @@ jobs:
             type=raw,value={{date 'YYYYMMDDhhmmss'}}
             type=raw,value=latest
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: "ghcr.io"
-
       - name: Build and release the Docker image
         uses: docker/build-push-action@v6
         with:
@@ -66,3 +69,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

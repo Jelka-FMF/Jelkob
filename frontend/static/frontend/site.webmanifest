@@ -2,7 +2,7 @@
   "name": "Jelka FMF",
   "description": "Novoletna jelka na Fakulteti za matematiko in fiziko Univerze v Ljubljani",
   "display": "standalone",
-  "theme_color": "#0257d5",
+  "theme_color": "#0a0c0d",
   "background_color": "#ffffff",
   "start_url": "/",
   "scope": "/",
