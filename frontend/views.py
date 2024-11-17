@@ -18,31 +18,32 @@ class ManifestView(View):
     def get(request):
         manifest = {
             "name": "Jelka FMF",
-            "description": _("Christmas tree at the Faculty of Mathematics and Physics, University of Ljubljana"),
+            "description": _(
+                "Christmas tree at the Faculty of Mathematics and Physics, University of Ljubljana"
+            ),
             "display": "standalone",
             "theme_color": "#0a0c0d",
-            "background_color": "#ffffff",
             "start_url": "/",
             "scope": "/",
             "icons": [
                 {
                     "src": static("frontend/icons/favicon.svg"),
                     "type": "image/svg+xml",
-                    "sizes": "any"
+                    "sizes": "any",
                 },
                 {
                     "src": static("frontend/icons/favicon-maskable.svg"),
                     "type": "image/svg+xml",
                     "sizes": "any",
-                    "purpose": "maskable"
+                    "purpose": "maskable",
                 },
                 {
                     "src": static("frontend/icons/favicon-monochrome.svg"),
                     "type": "image/svg+xml",
                     "sizes": "any",
-                    "purpose": "monochrome"
-                }
-            ]
+                    "purpose": "monochrome",
+                },
+            ],
         }
 
         return JsonResponse(manifest, content_type="application/manifest+json")

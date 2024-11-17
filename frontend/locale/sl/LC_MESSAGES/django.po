@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 19:29+0100\n"
+"POT-Creation-Date: 2024-11-17 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 "Jadranska+ulica+21,+1000+Ljubljana\" target=\"_blank\">Jadranski 21</a> in "
 "je prižgana od jutra do zaprtja stavbe."
 
-#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:21
+#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:22
 msgid ""
 "Christmas tree at the Faculty of Mathematics and Physics, University of "
 "Ljubljana"
