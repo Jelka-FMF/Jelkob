@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-09 21:44+0100\n"
+"POT-Creation-Date: 2024-11-17 19:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "n%100==4 ? 2 : 3);\n"
 
 #: .\frontend\templates\frontend\about.html:5
-#: .\frontend\templates\frontend\base.html:81
+#: .\frontend\templates\frontend\base.html:85
 msgid "About"
 msgstr "Informacije"
 
@@ -47,23 +47,30 @@ msgstr ""
 "Jadranska+ulica+21,+1000+Ljubljana\" target=\"_blank\">Jadranski 21</a> in "
 "je prižgana od jutra do zaprtja stavbe."
 
-#: .\frontend\templates\frontend\base.html:74
+#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:21
+msgid ""
+"Christmas tree at the Faculty of Mathematics and Physics, University of "
+"Ljubljana"
+msgstr ""
+"Novoletna jelka na Fakulteti za matematiko in fiziko Univerze v Ljubljani"
+
+#: .\frontend\templates\frontend\base.html:78
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
 
-#: .\frontend\templates\frontend\base.html:80
+#: .\frontend\templates\frontend\base.html:84
 msgid "Patterns"
 msgstr "Vzorci"
 
-#: .\frontend\templates\frontend\base.html:82
+#: .\frontend\templates\frontend\base.html:86
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:88
+#: .\frontend\templates\frontend\base.html:92
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:92
+#: .\frontend\templates\frontend\base.html:96
 #: .\frontend\templates\frontend\login.html:31
 msgid "Log In"
 msgstr "Prijava"

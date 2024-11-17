@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 
 {% macro title %}{% block title %}Jelka FMF{% endblock %}{% endmacro %}
+{% macro description %}{% block description %}{% trans "Christmas tree at the Faculty of Mathematics and Physics, University of Ljubljana" %}{% endblock %}{% endmacro %}
 
 {% macro navlink view name %}
   {% with current=request.resolver_match.url_name %}
@@ -35,16 +36,19 @@
     <meta name="application-name" content="Jelka FMF" />
     <meta name="apple-mobile-web-app-title" content="Jelka FMF" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="{% usemacro description %}" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="{% usemacro title %}" />
+    <meta name="twitter:description" content="{% usemacro description %}" />
     <meta name="twitter:image" content="{% static 'frontend/icons/social-icon-square.png' %}" />
 
     <meta property="og:title" content="{% usemacro title %}" />
     <meta property="og:site_name" content="Jelka FMF" />
+    <meta property="og:description" content="{% usemacro description %}" />
     <meta property="og:image" content="{% static 'frontend/icons/social-icon-wide.png' %}" />
 
-    <link rel="manifest" href="{% static 'frontend/site.webmanifest' %}" />
+    <link rel="manifest" href="{% url 'manifest' %}" />
 
     <link rel="icon" type="image/svg+xml" sizes="any" href="{% static 'frontend/icons/favicon.svg' %}" />
     <link rel="apple-touch-icon" href="{% static 'frontend/icons/apple-touch-icon.png' %}" />
