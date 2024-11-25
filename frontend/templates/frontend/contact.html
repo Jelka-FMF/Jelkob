@@ -1,0 +1,22 @@
+{% extends "frontend/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Contact" %} – Jelka FMF{% endblock %}
+
+{% block content %}
+  <p>
+    {% blocktrans trimmed %}
+      If you are a student and have questions about the project or would like to contact people involved in the project,
+      you can join the <a href="https://discord.gg/ccg4nKVR44" target="_blank">FMF Programming Club Discord server</a>
+      and ask your questions in the <code>#jelka</code> channel.
+    {% endblocktrans %}
+  </p>
+  <p>
+    {% blocktrans trimmed %}
+      If you do not have a Discord account, or are a teacher at a school that is participating or would like to
+      participate in the project, you can contact the project's coordinator,
+      <a href="https://www.fmf.uni-lj.si/en/directory/742/bercic-katja/" target="_blank">Assist. Dr. Katja Berčič</a>.
+    {% endblocktrans %}
+  </p>
+{% endblock %}

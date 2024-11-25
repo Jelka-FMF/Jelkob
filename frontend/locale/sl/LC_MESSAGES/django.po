@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 19:34+0100\n"
+"POT-Creation-Date: 2024-11-24 22:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,11 @@ msgstr ""
 msgid "About"
 msgstr "Informacije"
 
-#: .\frontend\templates\frontend\about.html:9
+#: .\frontend\templates\frontend\about.html:8
+msgid "About Jelka FMF"
+msgstr "O Jelki FMF"
+
+#: .\frontend\templates\frontend\about.html:10
 msgid ""
 "At the <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Faculty of "
 "Mathematics and Physics, University of Ljubljana</a>, as part of the <a "
@@ -36,7 +40,7 @@ msgstr ""
 "target=\"_blank\">Abelium</a> in <a href=\"https://acex.si/\" "
 "target=\"_blank\">Acex</a>."
 
-#: .\frontend\templates\frontend\about.html:17
+#: .\frontend\templates\frontend\about.html:18
 msgid ""
 "The tree is located at the entrance of the building at <a href=\"https://www."
 "google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana\" "
@@ -47,7 +51,44 @@ msgstr ""
 "Jadranska+ulica+21,+1000+Ljubljana\" target=\"_blank\">Jadranski 21</a> in "
 "je prižgana od jutra do zaprtja stavbe."
 
-#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:22
+#: .\frontend\templates\frontend\about.html:25
+msgid ""
+"You can check the project's source code on <a href=\"https://github.com/"
+"Jelka-FMF\" target=\"_blank\">GitHub</a>."
+msgstr ""
+"Izvorno kodo projekta si lahko ogledate na <a href=\"https://github.com/"
+"Jelka-FMF\" target=\"_blank\">GitHubu</a>."
+
+#: .\frontend\templates\frontend\about.html:29
+msgid "Contributing Patterns"
+msgstr "Prispevanje vzorcev"
+
+#: .\frontend\templates\frontend\about.html:31
+msgid ""
+"If you would like to contribute your own pattern for running on Jelka FMF "
+"and already have programming knowledge, please check out the <a "
+"href=\"https://github.com/Jelka-FMF/Storzi\" target=\"_blank\">Storži</a> "
+"repository that contains already-existing patterns and instructions for "
+"submitting your own patterns."
+msgstr ""
+"Če želite prispevati svoj vzorec za Jelko FMF in že imate znanje "
+"programiranja, si oglejte repozitorij <a href=\"https://github.com/Jelka-FMF/"
+"Storzi\" target=\"_blank\">Storži</a>, ki vsebuje že obstoječe vzorce in "
+"navodila za oddajo lastnih vzorcev."
+
+#: .\frontend\templates\frontend\about.html:38
+msgid ""
+"If you would like to submit a pattern but do not have programming knowledge "
+"yet, you can check out <a href=\"https://jelkly.fmf.uni-lj.si/docs\" "
+"target=\"_blank\">Jelkly</a>, a Scratch-like visual programming tool for "
+"creating and submitting your own Jelka FMF patterns."
+msgstr ""
+"Če želite oddati vzorec, ampak še nimate znanja programiranja, si oglejte <a "
+"href=\"https://jelkly.fmf.uni-lj.si/docs\" target=\"_blank\">Jelkly</a>, "
+"Scratchu podobno orodje za vizualno programiranje, s katerim lahko enostavno "
+"ustvarite in oddate svoje vzorce za Jelko FMF."
+
+#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:26
 msgid ""
 "Christmas tree at the Faculty of Mathematics and Physics, University of "
 "Ljubljana"
@@ -63,17 +104,47 @@ msgid "Patterns"
 msgstr "Vzorci"
 
 #: .\frontend\templates\frontend\base.html:86
+#: .\frontend\templates\frontend\contact.html:5
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\frontend\templates\frontend\base.html:87
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:92
+#: .\frontend\templates\frontend\base.html:93
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:96
+#: .\frontend\templates\frontend\base.html:97
 #: .\frontend\templates\frontend\login.html:31
 msgid "Log In"
 msgstr "Prijava"
+
+#: .\frontend\templates\frontend\contact.html:9
+msgid ""
+"If you are a student and have questions about the project or would like to "
+"contact people involved in the project, you can join the <a href=\"https://"
+"discord.gg/ccg4nKVR44\" target=\"_blank\">FMF Programming Club Discord "
+"server</a> and ask your questions in the <code>#jelka</code> channel."
+msgstr ""
+"Če ste dijak ali študent in imate vprašanja o projektu ali bi se radi "
+"povezali z ljudmi, ki so vključeni v projekt, se lahko pridružite <a "
+"href=\"https://discord.gg/ccg4nKVR44\" target=\"_blank\">Discord strežniku "
+"Programerskega kluba FMF</a> in svoja vprašanja zastavite v kanalu "
+"<code>#jelka</code>."
+
+#: .\frontend\templates\frontend\contact.html:16
+msgid ""
+"If you do not have a Discord account, or are a teacher at a school that is "
+"participating or would like to participate in the project, you can contact "
+"the project's coordinator, <a href=\"https://www.fmf.uni-lj.si/en/"
+"directory/742/bercic-katja/\" target=\"_blank\">Assist. Dr. Katja Berčič</a>."
+msgstr ""
+"Če nimate Discord računa ali ste učitelj na šoli, ki sodeluje ali bi rada "
+"sodelovala v projektu, se lahko obrnete na koordinatorico projekta, <a "
+"href=\"https://www.fmf.uni-lj.si/sl/imenik/742/bercic-katja/\" "
+"target=\"_blank\">asist. dr. Katjo Berčič</a>."
 
 #: .\frontend\templates\frontend\login.html:5
 msgid "Login"

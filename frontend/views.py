@@ -13,6 +13,10 @@ class AboutView(TemplateView):
     template_name = "frontend/about.html"
 
 
+class ContactView(TemplateView):
+    template_name = "frontend/contact.html"
+
+
 class ManifestView(View):
     @staticmethod
     def get(request):
