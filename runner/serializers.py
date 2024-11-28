@@ -8,6 +8,8 @@ class EmptySerializer(serializers.Serializer):
 
 
 class PatternSerializer(serializers.ModelSerializer):
+    changed = serializers.DateTimeField(source="history.first.history_date", read_only=True)
+
     class Meta:
         model = Pattern
 
@@ -20,6 +22,7 @@ class PatternSerializer(serializers.ModelSerializer):
             "duration",
             "author",
             "school",
+            "changed",
             "enabled",
             "visible",
         )
