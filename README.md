@@ -49,9 +49,10 @@ python manage.py createsuperuser
 
 Clone this repository and install dependencies using [Poetry](https://python-poetry.org/).
 
-You can configure the project as described above, but the default settings should be
-enough for most cases, except providing the URLs of connected services and creating
-an initial Django user.
+You can configure the project as described above. You will likely want to set the
+`DJANGO_DEBUG` environment variable to `1` for development. The default values for most
+other settings should work fine, but you might need to configure the URLs of services
+when developing and testing parts that require them.
 
 After configuring the project, you can run the development server using:
 
