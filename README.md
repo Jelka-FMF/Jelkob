@@ -14,7 +14,7 @@ for viewing the patterns and information about the project.
 
 ### Local
 
-Clone this repository and install dependencies using Poetry.
+Clone this repository and install dependencies using [Poetry](https://python-poetry.org/).
 Use any ASGI server to run `jelkob.asgi:application`.
 
 ### Docker
@@ -44,3 +44,49 @@ You can create an initial Django user using:
 ```shell
 python manage.py createsuperuser
 ```
+
+## Development
+
+Clone this repository and install dependencies using [Poetry](https://python-poetry.org/).
+
+You can configure the project as described above, but the default settings should be
+enough for most cases, except providing the URLs of connected services and creating
+an initial Django user.
+
+After configuring the project, you can run the development server using:
+
+```shell
+python manage.py runserver
+```
+
+Generate migrations and apply them using:
+
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Generate the translation files using:
+
+```shell
+python manage.py makemessages --locale sl --ignore venv
+```
+
+After translating the PO files, compile them using:
+
+```shell
+python manage.py compilemessages
+```
+
+To make localization work, you will need to have the `gettext` command available.
+You can read more about it in the [Django documentation](https://docs.djangoproject.com/en/5.1/topics/i18n/translation/#how-to-create-language-files).
+
+Before committing your changes, make sure the code passes the linter and formatter:
+
+```shell
+ruff check
+ruff format
+```
+
+Contribute your changes to the `develop` branch. When the changes are ready to
+be deployed to production, we will merge them into the `main` branch.
