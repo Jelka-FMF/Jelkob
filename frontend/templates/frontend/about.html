@@ -1,44 +1,57 @@
 {% extends "frontend/base.html" %}
-
 {% load i18n %}
-
 {% block title %}{% trans "About" %} – Jelka FMF{% endblock %}
+{% load static %}
+
 
 {% block content %}
-  <h2>{% trans "About Jelka FMF" %}</h2>
-  <p>
-    {% blocktrans trimmed %}
-      At the <a href="https://www.fmf.uni-lj.si/" target="_blank">Faculty of Mathematics and Physics, University of
-      Ljubljana</a>, as part of the <a href="https://programerski-klub-fmf.github.io/" target="_blank">FMF Programming
-      Club</a>, we set up a programmable Christmas tree. The project was made possible with the sponsorship of
-      <a href="https://abelium.si/" target="_blank">Abelium</a> and <a href="https://acex.si/" target="_blank">Acex</a>.
-    {% endblocktrans %}
-  </p>
-  <p>
-    {% blocktrans trimmed %}
-      The tree is located at the entrance of the building at
-      <a href="https://www.google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana" target="_blank">Jadranska 21</a>
-      and is lit from morning until the building closes.
-    {% endblocktrans %}
-  </p>
-  <p>
-    {% blocktrans trimmed %}
-      You can check the project's source code on <a href="https://github.com/Jelka-FMF" target="_blank">GitHub</a>.
-    {% endblocktrans %}
-  </p>
-  <h2>{% trans "Contributing Patterns" %}</h2>
-  <p>
-    {% blocktrans trimmed %}
-      If you would like to contribute your own pattern for running on Jelka FMF and already have programming knowledge,
-      please check out the <a href="https://github.com/Jelka-FMF/Storzi" target="_blank">Storži</a> repository that
-      contains already-existing patterns and instructions for submitting your own patterns.
-    {% endblocktrans %}
-  </p>
-  <p>
-    {% blocktrans trimmed %}
-      If you would like to submit a pattern but do not have programming knowledge yet, you can check out
-      <a href="https://jelkly.fmf.uni-lj.si/docs" target="_blank">Jelkly</a>, a Scratch-like visual programming tool
-      for creating and submitting your own Jelka FMF patterns.
-    {% endblocktrans %}
-  </p>
+<div class="main-container">
+    <div class="content-section">
+        <h2>{% trans "About Jelka FMF" %}</h2>
+        <p>
+            {% blocktrans trimmed %}
+                At the <a href="https://www.fmf.uni-lj.si/" target="_blank">Faculty of Mathematics and Physics, University of
+                Ljubljana</a>, as part of the <a href="https://programerski-klub-fmf.github.io/" target="_blank">FMF Programming
+                Club</a>, we set up a programmable Christmas tree. The project was made possible with the sponsorship of
+                <a href="https://abelium.si/" target="_blank">Abelium</a> and <a href="https://acex.si/" target="_blank">Acex</a>.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+                The tree is located at the entrance of the building at
+                <a href="https://www.google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana" target="_blank">Jadranska 21</a>
+                and is lit from morning until the building closes.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+                You can check the project's source code on <a href="https://github.com/Jelka-FMF" target="_blank">GitHub</a>.
+            {% endblocktrans %}
+        </p>
+        <h2>{% trans "Contributing Patterns" %}</h2>
+        <p>
+            {% blocktrans trimmed %}
+                If you would like to contribute your own pattern for running on Jelka FMF and already have programming knowledge,
+                please check out the <a href="https://github.com/Jelka-FMF/Storzi" target="_blank">Storži</a> repository that
+                contains already-existing patterns and instructions for submitting your own patterns.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+                If you would like to submit a pattern but do not have programming knowledge yet, you can check out
+                <a href="https://jelkly.fmf.uni-lj.si/docs" target="_blank">Jelkly</a>, a Scratch-like visual programming tool
+                for creating and submitting your own Jelka FMF patterns.
+            {% endblocktrans %}
+        </p>
+    </div>
+    <div class="simulation-section">
+        {% block simulation %}
+        <h2>{% trans "Interactive Simulation" %}</h2>
+        <div id="simulation-container">
+            <!-- The JavaScript-powered simulation will render here -->
+        </div>
+        <script src="{% static 'frontend/scripts/interactive-simulation.js' %}" defer></script>
+        {% endblock %}
+    </div>
+</div>
 {% endblock %}

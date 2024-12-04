@@ -1,10 +1,12 @@
 {% extends "frontend/base.html" %}
-
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Contact" %} – Jelka FMF{% endblock %}
 
 {% block content %}
+<div class="main-container">
+  <div class="content-section">
   <p>
     {% blocktrans trimmed %}
       If you are a student and have questions about the project or would like to contact people involved in the project,
@@ -19,4 +21,15 @@
       <a href="https://www.fmf.uni-lj.si/en/directory/742/bercic-katja/" target="_blank">Assist. Dr. Katja Berčič</a>.
     {% endblocktrans %}
   </p>
+  </div>
+  <div class="simulation-section">
+    {% block simulation %}
+    <h2>{% trans "Interactive Simulation" %}</h2>
+    <div id="simulation-container">
+        <!-- The JavaScript-powered simulation will render here -->
+    </div>
+    <script src="{% static 'frontend/scripts/interactive-simulation.js' %}" defer></script>
+    {% endblock %}
+</div>
+</div>
 {% endblock %}
