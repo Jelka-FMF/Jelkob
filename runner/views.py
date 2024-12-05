@@ -60,7 +60,7 @@ class PatternViewSet(viewsets.ModelViewSet):
         requests.post(
             settings.RUNNER_URL,
             headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
-            json={"pattern": self.get_object().identifier},
+            params={"identifier": self.get_object().identifier},
         )
 
         return Response({"status": "Pattern run"})
