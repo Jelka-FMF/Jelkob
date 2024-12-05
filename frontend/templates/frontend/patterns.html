@@ -43,6 +43,10 @@
     {% endblocktrans %}
   </p>
 
+  <div class="simulation-container">
+    <canvas id="canvas" height="270"></canvas>
+  </div> 
+
   <template id="pattern-template">
     <tr>
       <td class="pattern-countdown"></td>
@@ -64,6 +68,7 @@
 
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'frontend/styles/patterns.css' %}" />
+  <link rel="stylesheet" href="{% static 'frontend/styles/simulations.css' %}" />
 {% endblock %}
 
 {% block extrabody %}
@@ -76,4 +81,7 @@
     data-is-authenticated="{{ user.is_authenticated }}"
     data-csrf-token="{{ csrf_token }}"
   ></script>
-{% endblock %}
+
+  <script src="{% static 'frontend/data/positions.js' %}"></script>
+  <script src="{% static 'frontend/scripts/simulation.js' %}"></script>
+  {% endblock %}

@@ -58,8 +58,9 @@ class PatternViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
     def run(self, request, identifier=None):
         requests.post(
-            settings.RUNNER_URL+f"?identifier={self.get_object().identifier}",
+            settings.RUNNER_URL,
             headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
+            params={"identifier": self.get_object().identifier},
         )
 
         return Response({"status": "Pattern run"})
