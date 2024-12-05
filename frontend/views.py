@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import JsonResponse
 from django.templatetags.static import static
 from django.views import View
@@ -7,6 +8,11 @@ from django.utils.translation import gettext_lazy as _
 
 class PatternsView(TemplateView):
     template_name = "frontend/patterns.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["settings"] = settings
+        return context
 
 
 class AboutView(TemplateView):

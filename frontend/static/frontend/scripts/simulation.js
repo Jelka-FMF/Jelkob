@@ -3,38 +3,36 @@ let lastMouseX = 0
 let lastMouseY = 0
 
 let rotationScale = 0.01
-let sizeScale = 1
+let sizeScale = 1.1
 let lightSize = 2
 
 let alpha = 0
 let beta = 0
 
+/** @type {EventSource} */
+const driverEventSource = new ReconnectingEventSource(document.currentScript.dataset.driverUrl)
+
 const colorStates = {}
 
-const canvas = document.getElementById("canvas")
-const ctx = canvas.getContext("2d")
+const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
 
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
     renderView()
 }, true)
 
 // Add event listeners for mouse events
-canvas.addEventListener("mousedown", onMouseDown)
-canvas.addEventListener("mousemove", onMouseMove)
-canvas.addEventListener("mouseup", onMouseUp)
-canvas.addEventListener("mouseleave", onMouseUp)
-canvas.addEventListener("wheel", onWheel)
+canvas.addEventListener('mousedown', onMouseDown)
+canvas.addEventListener('mousemove', onMouseMove)
+canvas.addEventListener('mouseup', onMouseUp)
+canvas.addEventListener('mouseleave', onMouseUp)
+canvas.addEventListener('wheel', onWheel)
 
 function renderView () {
-    // canvas.setAttribute("width", (canvas.getBoundingClientRect().width * 5).toString())
-    // canvas.setAttribute("height", (canvas.getBoundingClientRect().height * 5).toString())
-
-    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 } // kje na canvasu je izhodišče jelke
+    const origin = { x: canvas.width / 2, y: canvas.width / 2 , z: 3 * canvas.height / 4 }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
     drawLights(ctx, origin, sizeScale)
-
     drawCoordinateSystem(ctx, origin, sizeScale)
 }
 
@@ -85,7 +83,6 @@ function getRotatedCoordinates (x, y, z, alpha, beta) {
 }
 
 function drawCoordinateSystem (ctx, origin , scale) {
-
     let xaxis = getRotatedCoordinates(100, 0, 0,  alpha, - beta)
     let yaxis = getRotatedCoordinates(0, 100, 0,  alpha, - beta)
     let zaxis = getRotatedCoordinates(0, 0, 100,  alpha, - beta)
@@ -94,19 +91,19 @@ function drawCoordinateSystem (ctx, origin , scale) {
     ctx.beginPath();
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo(xaxis.y * scale + origin.y, xaxis.z * scale + origin.z);
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = 'red';
     ctx.stroke();
 
     // Draw y axis
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z);
-    ctx.strokeStyle = "green";
+    ctx.strokeStyle = 'green';
     ctx.stroke();
 
     // Draw z axis
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo( - zaxis.y * scale + origin.y, - zaxis.z * scale + origin.z);
-    ctx.strokeStyle = "blue";
+    ctx.strokeStyle = 'blue';
     ctx.stroke();
 
     ctx.closePath();    
@@ -116,7 +113,7 @@ function drawLights (ctx, origin,  scale) {
     // const relativeHeight = Math.max(...Object.values(positions).map(pos => pos.y)) - Math.min(...Object.values(positions).map(pos => pos.y))
     // const lowestPoint = Math.max(...Object.values(positions).map(pos => pos.y))
 
-    for (const [index, color] of Object.entries(positions)) {
+        for (const [index, color] of Object.entries(positions)) {
         const position = positions[parseInt(index)]
 
         if (!position) {
@@ -131,7 +128,7 @@ function drawLights (ctx, origin,  scale) {
 
         if (color.green == 0 && color.red == 0 && color.blue == 0) {
             ctx.beginPath()
-            ctx.strokeStyle = "#d0d0d0"
+            ctx.strokeStyle = '#d0d0d0'
             ctx.arc(y, z, lightSize, 0, 2 * Math.PI)
             ctx.stroke()
         }
@@ -145,6 +142,15 @@ function drawLights (ctx, origin,  scale) {
     }
 }
 
-setInterval(() => {
+driverEventSource.addEventListener('message', function (event) {
+    // TODO: Parse the event data
+    // TODO: Set colorStates to the parsed data
+
+    // Render the view
     renderView()
-}, 10);
+})
+
+// Render the initial view
+// We need to call it twice
+setTimeout(renderView, 100)
+renderView()

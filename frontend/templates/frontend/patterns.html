@@ -4,48 +4,54 @@
 {% load static %}
 
 {% block content %}
-  <noscript>
-    <p>{% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}</p>
-  </noscript>
+  <div class="main-container">
+    <div class="content-section">
+      <noscript>
+        <p>{% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}</p>
+      </noscript>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="header-countdown">{% trans "Time" %}</th>
-        <th class="header-name">{% trans "Name" %}</th>
-        <th class="header-author">{% trans "Author" %}</th>
-        {% if user.is_authenticated %}
-          <th class="header-actions">{% trans "Actions" %}</th>
-        {% endif %}
-      </tr>
-    </thead>
-    <tbody id="patterns"></tbody>
-  </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="header-countdown">{% trans "Time" %}</th>
+            <th class="header-name">{% trans "Name" %}</th>
+            <th class="header-author">{% trans "Author" %}</th>
+            {% if user.is_authenticated %}
+              <th class="header-actions">{% trans "Actions" %}</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody id="patterns"></tbody>
+      </table>
 
-  <p id="runner-inactive" class="d-none">
-    {% blocktrans trimmed %}
-      The Christmas tree is currently sleeping. Visit us when it is active.
-    {% endblocktrans %}
-  </p>
+      <p id="runner-inactive" class="d-none">
+        {% blocktrans trimmed %}
+          The Christmas tree is currently sleeping. Visit us when it is active.
+        {% endblocktrans %}
+      </p>
 
-  <p id="runner-active" class="d-none">
-    {% blocktrans trimmed %}
-      The Christmas tree is running.
-      Visit us and view it at the Faculty of Mathematics and Physics, University of Ljubljana.
-    {% endblocktrans %}
-  </p>
+      <p id="runner-active" class="d-none">
+        {% blocktrans trimmed %}
+          The Christmas tree is running.
+          Visit us and view it at the Faculty of Mathematics and Physics, University of Ljubljana.
+        {% endblocktrans %}
+      </p>
 
-  {% url "about" as about_url %}
+      {% url "about" as about_url %}
 
-  <p>
-    {% blocktrans trimmed %}
-      Read more about the tree or contribute your own patterns on <a href="{{ about_url }}">the about page</a>.
-    {% endblocktrans %}
-  </p>
-
-  <div class="simulation-container">
-    <canvas id="canvas" height="270"></canvas>
-  </div> 
+      <p>
+        {% blocktrans trimmed %}
+          Read more about the tree or contribute your own patterns on <a href="{{ about_url }}">the about page</a>.
+        {% endblocktrans %}
+      </p>
+    </div>
+    
+    <div class="simulation-section">
+      <div class="simulation-container">
+        <canvas class="simulation-canvas" id="canvas" height="350"></canvas>
+      </div>
+    </div>
+  </div>
 
   <template id="pattern-template">
     <tr>
@@ -68,12 +74,13 @@
 
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'frontend/styles/patterns.css' %}" />
-  <link rel="stylesheet" href="{% static 'frontend/styles/simulations.css' %}" />
 {% endblock %}
 
 {% block extrabody %}
   <script src="{% static 'django_eventstream/eventsource.min.js' %}"></script>
   <script src="{% static 'django_eventstream/reconnecting-eventsource.js' %}"></script>
+
+  <script src="{% static 'frontend/data/positions.js' %}"></script>
 
   <script
     src="{% static 'frontend/scripts/patterns.js' %}"
@@ -82,6 +89,9 @@
     data-csrf-token="{{ csrf_token }}"
   ></script>
 
-  <script src="{% static 'frontend/data/positions.js' %}"></script>
-  <script src="{% static 'frontend/scripts/simulation.js' %}"></script>
-  {% endblock %}
+  <script
+    src="{% static 'frontend/scripts/simulation.js' %}"
+    defer
+    data-driver-url="{{ settings.DRIVER_URL }}"
+  ></script>
+{% endblock %}
