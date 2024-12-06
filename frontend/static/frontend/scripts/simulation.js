@@ -93,14 +93,18 @@ function drawCoordinateSystem (ctx, origin , scale) {
     ctx.lineTo(xaxis.y * scale + origin.y, xaxis.z * scale + origin.z);
     ctx.strokeStyle = 'red';
     ctx.stroke();
+    ctx.closePath(); 
 
     // Draw y axis
+    ctx.beginPath();
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo(yaxis.y * scale + origin.y, yaxis.z * scale + origin.z);
     ctx.strokeStyle = 'green';
     ctx.stroke();
+    ctx.closePath(); 
 
     // Draw z axis
+    ctx.beginPath();
     ctx.moveTo(origin.y, origin.z);
     ctx.lineTo( - zaxis.y * scale + origin.y, - zaxis.z * scale + origin.z);
     ctx.strokeStyle = 'blue';
