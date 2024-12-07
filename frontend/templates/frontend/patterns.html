@@ -7,30 +7,34 @@
   <div class="main-container">
     <div class="content-section">
       <noscript>
-        <p>{% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}</p>
+        <p class="border border-secondary-subtle rounded p-3 mb-3">
+          {% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}
+        </p>
       </noscript>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="header-countdown">{% trans "Time" %}</th>
-            <th class="header-name">{% trans "Name" %}</th>
-            <th class="header-author">{% trans "Author" %}</th>
-            {% if user.is_authenticated %}
-              <th class="header-actions">{% trans "Actions" %}</th>
-            {% endif %}
-          </tr>
-        </thead>
-        <tbody id="patterns"></tbody>
-      </table>
+      <div class="border border-secondary-subtle rounded p-2 mb-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="header-countdown">{% trans "Time" %}</th>
+              <th class="header-name">{% trans "Name" %}</th>
+              <th class="header-author">{% trans "Author" %}</th>
+              {% if user.is_authenticated %}
+                <th class="header-actions">{% trans "Actions" %}</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody id="patterns"></tbody>
+        </table>
+      </div>
 
-      <p id="runner-inactive" class="d-none">
+      <p id="runner-inactive" class="d-none border border-secondary-subtle rounded p-3 mb-3">
         {% blocktrans trimmed %}
           The Christmas tree is currently sleeping. Visit us when it is active.
         {% endblocktrans %}
       </p>
 
-      <p id="runner-active" class="d-none">
+      <p id="runner-active" class="d-none border border-secondary-subtle rounded p-3 mb-3">
         {% blocktrans trimmed %}
           The Christmas tree is running.
           Visit us and view it at the Faculty of Mathematics and Physics, University of Ljubljana.
@@ -39,16 +43,16 @@
 
       {% url "about" as about_url %}
 
-      <p>
+      <p class="border border-secondary-subtle rounded p-3 mb-0">
         {% blocktrans trimmed %}
           Read more about the tree or contribute your own patterns on <a href="{{ about_url }}">the about page</a>.
         {% endblocktrans %}
       </p>
     </div>
-    
+
     <div class="simulation-section">
-      <div class="simulation-container">
-        <canvas class="simulation-canvas" id="canvas" height="350"></canvas>
+      <div class="simulation-container border border-secondary-subtle rounded">
+        <canvas class="simulation-canvas" id="canvas"></canvas>
       </div>
     </div>
   </div>
