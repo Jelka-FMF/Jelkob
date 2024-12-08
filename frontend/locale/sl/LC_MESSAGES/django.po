@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-07 21:26+0100\n"
+"POT-Creation-Date: 2024-12-08 20:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "n%100==4 ? 2 : 3);\n"
 
 #: .\frontend\templates\frontend\about.html:5
-#: .\frontend\templates\frontend\base.html:85
+#: .\frontend\templates\frontend\base.html:86
 msgid "About"
 msgstr "Informacije"
 
@@ -99,28 +99,28 @@ msgid ""
 msgstr ""
 "Novoletna jelka na Fakulteti za matematiko in fiziko Univerze v Ljubljani"
 
-#: .\frontend\templates\frontend\base.html:78
+#: .\frontend\templates\frontend\base.html:79
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
 
-#: .\frontend\templates\frontend\base.html:84
+#: .\frontend\templates\frontend\base.html:85
 msgid "Patterns"
 msgstr "Vzorci"
 
-#: .\frontend\templates\frontend\base.html:86
+#: .\frontend\templates\frontend\base.html:87
 #: .\frontend\templates\frontend\contact.html:5
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\frontend\templates\frontend\base.html:87
+#: .\frontend\templates\frontend\base.html:88
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:93
+#: .\frontend\templates\frontend\base.html:94
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:97
+#: .\frontend\templates\frontend\base.html:98
 #: .\frontend\templates\frontend\login.html:33
 msgid "Log In"
 msgstr "Prijava"

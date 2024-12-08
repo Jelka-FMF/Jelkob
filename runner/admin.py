@@ -20,7 +20,7 @@ class PatternAdmin(SimpleHistoryAdmin):
         (_("Pattern Status"), {"fields": ("enabled", "visible")}),
     )
 
-    actions = ("enable", "disable")
+    actions = ("enable", "disable", "show", "hide")
 
     @admin.action(description=_("Enable selected patterns"))
     def enable(self, request, queryset):
@@ -29,6 +29,14 @@ class PatternAdmin(SimpleHistoryAdmin):
     @admin.action(description=_("Disable selected patterns"))
     def disable(self, request, queryset):
         queryset.update(enabled=False)
+
+    @admin.action(description=_("Show selected patterns"))
+    def show(self, request, queryset):
+        queryset.update(visible=True)
+
+    @admin.action(description=_("Hide selected patterns"))
+    def hide(self, request, queryset):
+        queryset.update(visible=False)
 
     def get_actions(self, request):
         actions = super().get_actions(request)

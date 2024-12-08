@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-11 18:53+0100\n"
+"POT-Creation-Date: 2024-12-08 20:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr "Podatki o izvajanju"
 msgid "Author Information"
 msgstr "Podatki o avtorju"
 
-#: .\runner\admin.py:20 .\runner\admin.py:48
+#: .\runner\admin.py:20 .\runner\admin.py:56
 msgid "Pattern Status"
 msgstr "Stanje vzorca"
 
@@ -33,19 +33,27 @@ msgstr "Omogoči izbrane vzorce"
 msgid "Disable selected patterns"
 msgstr "Onemogoči izbrane vzorce"
 
-#: .\runner\admin.py:35
+#: .\runner\admin.py:33
+msgid "Show selected patterns"
+msgstr "Pokaži izbrane vzorce"
+
+#: .\runner\admin.py:37
+msgid "Hide selected patterns"
+msgstr "Skrij izbrane vzorce"
+
+#: .\runner\admin.py:43
 msgid "Delete selected patterns"
 msgstr "Izbriši izbrane vzorce"
 
-#: .\runner\admin.py:52
+#: .\runner\admin.py:60
 msgid "Runner Status"
 msgstr "Stanje zaganjalnika"
 
-#: .\runner\admin.py:57
+#: .\runner\admin.py:65
 msgid "current pattern remaining"
 msgstr "preostali čas"
 
-#: .\runner\admin.py:61
+#: .\runner\admin.py:69
 msgid "runner is active"
 msgstr "trenutno aktiven"
 

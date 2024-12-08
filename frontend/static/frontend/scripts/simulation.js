@@ -169,13 +169,22 @@ function drawLights (ctx, origin, scale) {
 }
 
 function driverMessageHandler (event) {
-	line = event.data.trim();
-	if (line[0] != "#")
-		return;
-	line = line.slice(1)
-	for (let i = 0; i < line.length/6; i++)
-		colorStates[i] = {red: Number("0x" + line.slice(i*6, i*6+2)), green: Number("0x" + line.slice(i*6+2, i*6+4)), blue: Number("0x" + line.slice(i*6+4, i*6+6))}
-	renderView()
+  // Parse the message and skip non-data lines
+  let line = event.data.trim()
+  if (line[0] !== '#') return
+  line = line.slice(1)
+
+  // Parse the color states
+  for (let i = 0; i < line.length / 6; i++) {
+    colorStates[i] = {
+      red: Number('0x' + line.slice(i * 6, i * 6 + 2)),
+      green: Number('0x' + line.slice(i * 6 + 2, i * 6 + 4)),
+      blue: Number('0x' + line.slice(i * 6 + 4, i * 6 + 6)),
+    }
+  }
+
+  // Re-render the view
+  renderView()
 }
 
 if (driverUrl !== 'None') {
