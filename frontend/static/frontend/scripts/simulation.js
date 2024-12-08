@@ -15,7 +15,7 @@ let lightSize = 6
 let simulationAlpha = 0
 let simulationBeta = 0
 
-const colorStates = {}
+const colorStates = []
 
 // Create a canvas and get its context
 const canvas = document.getElementById('canvas')
@@ -169,11 +169,13 @@ function drawLights (ctx, origin, scale) {
 }
 
 function driverMessageHandler (event) {
-  // TODO: Parse the event data
-  // TODO: Set color states to the parsed data
-
-  // Re-render the view
-  renderView()
+	line = event.data.trim();
+	if (line[0] != "#")
+		return;
+	line = line.slice(1)
+	for (let i = 0; i < line.length/6; i++)
+		colorStates[i] = {red: Number("0x" + line.slice(i*6, i*6+2)), green: Number("0x" + line.slice(i*6+2, i*6+4)), blue: Number("0x" + line.slice(i*6+4, i*6+6))}
+	renderView()
 }
 
 if (driverUrl !== 'None') {
