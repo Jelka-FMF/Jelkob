@@ -222,6 +222,9 @@ DRIVER_URL = os.environ.get("DRIVER_URL")
 DISCORD_USERNAME = os.environ.get("DISCORD_USERNAME", "Jelkob")
 """The username to use for the Discord webhook."""
 
+DISCORD_COLOR = int(os.environ.get("DISCORD_COLOR", 5814783))
+"""The color to use for the Discord embeds."""
+
 DISCORD_AVATAR = os.environ.get("DISCORD_AVATAR")
 """The avatar to use for the Discord webhook."""
 

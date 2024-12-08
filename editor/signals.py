@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
+from django.utils import translation
 from django.utils.translation import gettext as _
 
 from .models import Submission
@@ -18,14 +19,23 @@ def submission_post_save(sender, instance, created, **kwargs):
 
     fields = []
 
-    if instance.name:
-        fields.append({"name": _("Name"), "value": instance.name})
+    with translation.override(settings.LANGUAGE_CODE):
+        if instance.name:
+            fields.append({"name": _("Name"), "value": instance.name})
 
-    if instance.author:
-        fields.append({"name": _("Author"), "value": instance.author})
+        if instance.author:
+            fields.append({"name": _("Author"), "value": instance.author})
 
-    if instance.school:
-        fields.append({"name": _("School"), "value": instance.school})
+        if instance.school:
+            fields.append({"name": _("School"), "value": instance.school})
+
+        title = _("New pattern has been submitted!")
+
+        view_label = _("View Submission")
+        manage_label = _("Manage Submission")
+
+    view_url = urljoin(settings.ROOT_URL, reverse("project-share-longid", args=[instance.project.longid]))
+    manage_url = urljoin(settings.ROOT_URL, reverse("admin:editor_submission_change", args=[instance.pk]))
 
     try:
         requests.post(
@@ -33,14 +43,14 @@ def submission_post_save(sender, instance, created, **kwargs):
             json={
                 "embeds": [
                     {
-                        "title": _("New pattern has been submitted!"),
-                        "url": urljoin(
-                            settings.ROOT_URL,
-                            reverse("admin:editor_submission_change", args=[instance.pk]),
-                        ),
+                        "title": title,
                         "fields": fields,
-                        "color": 5814783,
-                    }
+                        "color": settings.DISCORD_COLOR,
+                    },
+                    {
+                        "description": f"**[{view_label}]({view_url}) | [{manage_label}]({manage_url})**",
+                        "color": settings.DISCORD_COLOR,
+                    },
                 ],
                 "username": settings.DISCORD_USERNAME,
                 "avatar_url": settings.DISCORD_AVATAR,

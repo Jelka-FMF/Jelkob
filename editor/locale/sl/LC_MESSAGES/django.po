@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-09 20:40+0100\n"
+"POT-Creation-Date: 2024-12-07 21:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,18 +125,26 @@ msgstr "oddaja"
 msgid "submissions"
 msgstr "oddaje"
 
-#: .\editor\signals.py:22
+#: .\editor\signals.py:24
 msgid "Name"
 msgstr "Ime"
 
-#: .\editor\signals.py:25
+#: .\editor\signals.py:27
 msgid "Author"
 msgstr "Avtor"
 
-#: .\editor\signals.py:28
+#: .\editor\signals.py:30
 msgid "School"
 msgstr "Šola"
 
-#: .\editor\signals.py:36
+#: .\editor\signals.py:32
 msgid "New pattern has been submitted!"
 msgstr "Oddan je nov vzorec!"
+
+#: .\editor\signals.py:34
+msgid "View Submission"
+msgstr "Poglej vzorec"
+
+#: .\editor\signals.py:35
+msgid "Manage Submission"
+msgstr "Upravljaj vzorec"
