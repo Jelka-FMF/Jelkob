@@ -1,6 +1,7 @@
 from datetime import datetime
 
-import requests
+import httpx
+from asgiref.sync import async_to_sync, sync_to_async
 from django.conf import settings
 from django.http import Http404
 from django_eventstream.viewsets import EventsViewSet
@@ -55,13 +56,15 @@ class PatternViewSet(viewsets.ModelViewSet):
 
         return Response({"status": "Pattern disabled"})
 
+    @async_to_sync
     @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
-    def run(self, request, identifier=None):
-        requests.post(
-            settings.RUNNER_URL,
-            headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
-            params={"identifier": self.get_object().identifier},
-        )
+    async def run(self, request, identifier=None):
+        async with httpx.AsyncClient() as client:
+            await client.post(
+                settings.RUNNER_URL,
+                headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
+                params={"identifier": (await sync_to_async(self.get_object)()).identifier},
+            )
 
         return Response({"status": "Pattern run"})
 
