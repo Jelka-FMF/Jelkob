@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-08 20:26+0100\n"
+"POT-Creation-Date: 2024-12-11 11:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,8 +46,8 @@ msgstr ""
 
 #: .\frontend\templates\frontend\about.html:20
 msgid ""
-"The tree is located at the entrance of the building at <a href=\"https://www."
-"google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana\" "
+"The tree is located at the entrance of the building at <a href=\"https://"
+"www.google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana\" "
 "target=\"_blank\">Jadranska 21</a> and is lit from morning until the "
 "building closes."
 msgstr ""
@@ -116,14 +116,18 @@ msgstr "Kontakt"
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:94
+#: .\frontend\templates\frontend\base.html:95
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:98
+#: .\frontend\templates\frontend\base.html:99
 #: .\frontend\templates\frontend\login.html:33
 msgid "Log In"
 msgstr "Prijava"
+
+#: .\frontend\templates\frontend\base.html:105
+msgid "Language"
+msgstr "Jezik"
 
 #: .\frontend\templates\frontend\contact.html:7
 msgid "Contact information for the Jelka FMF project"
@@ -146,8 +150,8 @@ msgstr ""
 msgid ""
 "If you do not have a Discord account, or are a teacher at a school that is "
 "participating or would like to participate in the project, you can contact "
-"the project's coordinator, <a href=\"https://www.fmf.uni-lj.si/en/"
-"directory/742/bercic-katja/\" target=\"_blank\">Assist. Dr. Katja Berčič</a>."
+"the project's coordinator, <a href=\"https://www.fmf.uni-lj.si/en/directory/"
+"742/bercic-katja/\" target=\"_blank\">Assist. Dr. Katja Berčič</a>."
 msgstr ""
 "Če nimate Discord računa ali ste učitelj na šoli, ki sodeluje ali bi rada "
 "sodelovala v projektu, se lahko obrnete na koordinatorico projekta, <a "

@@ -87,18 +87,48 @@
             {% usemacro navlink "contact" _("Contact") %}
             {% usemacro navlink "admin:index" _("Management") %}
           </ul>
-          <span class="navbar-text">
-            {% if user.is_authenticated %}
-              <form action="{% url 'logout' %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-link nav-link">{% trans "Log Out" %}</button>
-            </form>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-link nav-link">{% trans "Log Out" %}</button>
+                </form>
             {% else %}
               <form action="{% url 'login' %}" method="get">
-              <button type="submit" class="btn btn-link nav-link">{% trans "Log In" %}</button>
-            </form>
+                <button type="submit" class="btn btn-link nav-link">{% trans "Log In" %}</button>
+              </form>
             {% endif %}
-          </span>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans "Language" %}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  <li>
+                    <form action="{% url 'set-language' %}" method="post">
+                      {% csrf_token %}
+                      <input
+                        type="hidden"
+                        name="language"
+                        value="{{ language.code }}"
+                      />
+                      <button
+                        type="submit"
+                        class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                      >
+                        {{ language.name_local }} ({{ language.code }})
+                      </button>
+                    </form>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>    
+          </ul>
         </div>
       </div>
     </nav>

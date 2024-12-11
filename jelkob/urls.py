@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import include, path
+import django.views.i18n
 
 urlpatterns = [
     path("accounts/login/", LoginView.as_view(template_name="frontend/login.html"), name="login"),
     path("accounts/logout/", LogoutView.as_view(template_name="frontend/logout.html"), name="logout"),
+    path("i18n/setlang/", django.views.i18n.set_language, name="set-language"),
     path("admin/", admin.site.urls),
     path("runner/", include("runner.urls")),
     path("editor/", include("editor.urls")),
