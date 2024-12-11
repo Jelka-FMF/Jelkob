@@ -12,6 +12,9 @@ let rotationScale = 0.01
 let sizeScale = 5
 let lightSize = 6
 
+let initialDistance = 0
+let initialScale = sizeScale
+
 let simulationAlpha = 0
 let simulationBeta = 0
 
@@ -56,9 +59,16 @@ function onMouseUp (event) {
 }
 
 function onTouchStart (event) {
-  isMouseDown = true
-  lastMouseX = event.touches[0].clientX
-  lastMouseY = event.touches[0].clientY
+  if (event.touches.length === 2) {
+    // Handle pinch to zoom
+    initialDistance = getDistance(event.touches[0], event.touches[1])
+    initialScale = sizeScale
+  } else {
+    // Handle touch rotation
+    isMouseDown = true
+    lastMouseX = event.touches[0].clientX
+    lastMouseY = event.touches[0].clientY
+  }
 }
 
 function onTouchEnd (event) {
@@ -71,6 +81,9 @@ function onWheel (event) {
 
   // Re-render the view
   renderView()
+
+  // Prevent zooming or scrolling
+  event.preventDefault()
 }
 
 function onMouseMove (event) {
@@ -79,6 +92,7 @@ function onMouseMove (event) {
   const deltaX = event.clientX - lastMouseX
   const deltaY = event.clientY - lastMouseY
 
+  // Update the last position
   lastMouseX = event.clientX
   lastMouseY = event.clientY
 
@@ -88,23 +102,41 @@ function onMouseMove (event) {
 
   // Re-render the view
   renderView()
+
+  // Prevent zooming or scrolling
+  event.preventDefault()
 }
 
 function onTouchMove (event) {
-  if (!isMouseDown) return
+  if (event.touches.length === 2) {
+    // Handle pinch to zoom
+    const currentDistance = getDistance(event.touches[0], event.touches[1])
+    sizeScale = initialScale * (currentDistance / initialDistance)
+  } else if (isMouseDown) {
+    // Handle touch rotation
+    const deltaX = event.touches[0].clientX - lastMouseX
+    const deltaY = event.touches[0].clientY - lastMouseY
 
-  const deltaX = event.touches[0].clientX - lastMouseX
-  const deltaY = event.touches[0].clientY - lastMouseY
+    // Update the last position
+    lastMouseX = event.touches[0].clientX
+    lastMouseY = event.touches[0].clientY
 
-  lastMouseX = event.touches[0].clientX
-  lastMouseY = event.touches[0].clientY
-
-  // Update the view based on touch movements
-  simulationAlpha = simulationAlpha + deltaX * rotationScale
-  simulationBeta = simulationBeta - deltaY * rotationScale
+    // Update the view based on touch movements
+    simulationAlpha = simulationAlpha + deltaX * rotationScale
+    simulationBeta = simulationBeta - deltaY * rotationScale
+  }
 
   // Re-render the view
   renderView()
+
+  // Prevent zooming or scrolling
+  event.preventDefault()
+}
+
+function getDistance (touch1, touch2) {
+  const dx = touch1.clientX - touch2.clientX
+  const dy = touch1.clientY - touch2.clientY
+  return Math.sqrt(dx * dx + dy * dy)
 }
 
 function getRotatedCoordinates (x, y, z, alpha, beta) {
