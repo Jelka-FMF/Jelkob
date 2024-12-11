@@ -14,7 +14,7 @@ package-mode = false
 python = "^3.10"
 
 daphne = "^4.1.2"
-django = "^5.1.2"
+django = "^5.1.4"
 djangorestframework = "^3.15.2"
 django-solo = "^2.4.0"
 django-filter = "^24.3"
@@ -25,11 +25,11 @@ django-eventstream = {extras = ["drf"], version = "^5.3.1"}
 httpx = "^0.28.1"
 
 psycopg = {version = "^3.2.3", optional = true, extras = ["binary"]}
-mysqlclient = {version = "^2.2.5", optional = true}
+mysqlclient = {version = "^2.2.6", optional = true}
 oracledb = {version = "^2.5.0", optional = true}
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.7.1"
+ruff = "^0.8.2"
 
 [tool.poetry.extras]
 postgres = ["psycopg"]
