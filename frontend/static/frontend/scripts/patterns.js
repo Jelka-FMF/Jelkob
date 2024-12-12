@@ -103,6 +103,10 @@ function createPatternRow (pattern) {
   const nameLink = name.querySelector('.pattern-name-link')
   const nameText = name.querySelector('.pattern-name-text')
 
+  if (pattern.description) {
+    name.title = pattern.description
+  }
+
   if (pattern.source) {
     nameLink.href = pattern.source
     nameLink.textContent = pattern.name
