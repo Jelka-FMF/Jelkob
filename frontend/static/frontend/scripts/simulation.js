@@ -38,6 +38,9 @@ canvas.addEventListener('touchstart', onTouchStart)
 canvas.addEventListener('touchmove', onTouchMove)
 canvas.addEventListener('touchend', onTouchEnd)
 
+// Add event listeners for theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderView)
+
 function renderView () {
   // Get the origin of the drawing
   const origin = { x: canvas.width / 2, y: canvas.width / 2, z: 3 * canvas.height / 4 }
@@ -188,7 +191,7 @@ function drawLights (ctx, origin, scale) {
 
     if (color.green === 0 && color.red === 0 && color.blue === 0) {
       ctx.beginPath()
-      ctx.strokeStyle = '#d0d0d0'
+      ctx.strokeStyle = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#303030' : '#d0d0d0'
       ctx.arc(y, z, lightSize, 0, 2 * Math.PI)
       ctx.stroke()
     } else {
