@@ -47,6 +47,18 @@ tr:last-child td {
   margin: 0.2rem 0 !important;
 }
 
+.active-pattern {
+  font-weight: 700;
+  --bs-table-color-state: var(--bs-table-color);
+  --bs-table-bg-state: hsl(from var(--bs-table-bg) h s calc(l - 4));
+}
+
+@media (prefers-color-scheme: dark) {
+  .active-pattern {
+    --bs-table-bg-state: hsl(from var(--bs-table-bg) h s calc(l - 2));
+  }
+}
+
 .simulation-container {
   position: relative;
   display: flex;

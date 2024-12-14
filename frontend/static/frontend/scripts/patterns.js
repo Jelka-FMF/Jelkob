@@ -200,14 +200,10 @@ function updatePatternState () {
 
     if (state.runnerIsActive && element.dataset.identifier === state.currentPatternIdentifier) {
       // Highlight the active pattern
-      countdown.classList.add('fw-bold')
-      name.classList.add('fw-bold')
-      author.classList.add('fw-bold')
+      element.classList.add('active-pattern')
     } else {
       // Remove the highlight from the pattern
-      countdown.classList.remove('fw-bold')
-      name.classList.remove('fw-bold')
-      author.classList.remove('fw-bold')
+      element.classList.remove('active-pattern')
     }
 
     const startTime = startTimes.get(element.dataset.identifier)
