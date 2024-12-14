@@ -105,8 +105,8 @@ ASGI_APPLICATION = "jelkob.asgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("DATABASE_NAME", BASE_DIR / "app.db"),
+        "ENGINE": os.environ.get("DATABASE_ENGINE") or "django.db.backends.sqlite3",
+        "NAME": os.environ.get("DATABASE_NAME") or BASE_DIR / "app.db",
         "HOST": os.environ.get("DATABASE_HOST", ""),
         "PORT": os.environ.get("DATABASE_PORT", ""),
         "USER": os.environ.get("DATABASE_USER", ""),
@@ -201,7 +201,7 @@ ROOT_URL = os.environ.get("ROOT_URL")
 EDITOR_URL = os.environ.get("EDITOR_URL")
 """The full path to the editor website."""
 
-EDITOR_ACTION = os.environ.get("EDITOR_ACTION", "sandbox")
+EDITOR_ACTION = os.environ.get("EDITOR_ACTION") or "sandbox"
 """The action to perform in the editor."""
 
 
@@ -213,10 +213,10 @@ RUNNER_URL = os.environ.get("RUNNER_URL")
 RUNNER_TOKEN = os.environ.get("RUNNER_TOKEN")
 """The token to use for authenticating with the runner endpoint."""
 
-INACTIVITY_PING_TIMEOUT = int(os.environ.get("INACTIVITY_PING_TIMEOUT", 90))
+INACTIVITY_PING_TIMEOUT = int(os.environ.get("INACTIVITY_PING_TIMEOUT") or 90)
 """How long to wait for a ping before considering the runner inactive."""
 
-INACTIVITY_PATTERN_TIMEOUT = int(os.environ.get("INACTIVITY_PATTERN_TIMEOUT", 30))
+INACTIVITY_PATTERN_TIMEOUT = int(os.environ.get("INACTIVITY_PATTERN_TIMEOUT") or 30)
 """How long to wait after the pattern should have finished before considering the runner inactive."""
 
 
@@ -228,10 +228,10 @@ DRIVER_URL = os.environ.get("DRIVER_URL")
 
 # Jelkob - Discord
 
-DISCORD_USERNAME = os.environ.get("DISCORD_USERNAME", "Jelkob")
+DISCORD_USERNAME = os.environ.get("DISCORD_USERNAME") or "Jelkob"
 """The username to use for the Discord webhook."""
 
-DISCORD_COLOR = int(os.environ.get("DISCORD_COLOR", 5814783))
+DISCORD_COLOR = int(os.environ.get("DISCORD_COLOR") or 5814783)
 """The color to use for the Discord embeds."""
 
 DISCORD_AVATAR = os.environ.get("DISCORD_AVATAR")
