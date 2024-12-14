@@ -101,7 +101,7 @@ function onMouseMove (event) {
 
   // Update the view based on mouse movements
   simulationAlpha = simulationAlpha + deltaX * rotationScale
-  simulationBeta = simulationBeta - deltaY * rotationScale
+  simulationBeta = simulationBeta + deltaY * rotationScale
 
   // Re-render the view
   renderView()
@@ -126,7 +126,7 @@ function onTouchMove (event) {
 
     // Update the view based on touch movements
     simulationAlpha = simulationAlpha + deltaX * rotationScale
-    simulationBeta = simulationBeta - deltaY * rotationScale
+    simulationBeta = simulationBeta + deltaY * rotationScale
   }
 
   // Re-render the view
@@ -142,20 +142,21 @@ function getDistance (touch1, touch2) {
   return Math.sqrt(dx * dx + dy * dy)
 }
 
-function getRotatedCoordinates (x, y, z, alpha, beta) {
-  // Rotation matrix
-  let newx = Math.cos(alpha) * Math.cos(beta) * x - Math.sin(alpha) * y - Math.cos(alpha) * Math.sin(beta) * z
-  let newy = Math.sin(alpha) * Math.cos(beta) * x + Math.cos(alpha) * y - Math.sin(alpha) * Math.sin(beta) * z
-  let newz = Math.sin(beta) * x + Math.cos(beta) * z
 
-  // Return the new coordinates
+// function drawing canvas rotatet for alpha, beta, gama
+function getRotatedCoordinates (x, y, z, alpha, beta, gama) { //TODO
+  // Rotation matrix
+  let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+  let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+  let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z 
+
   return { x: newx, y: newy, z: newz }
 }
 
 function drawCoordinateSystem (ctx, origin, scale) {
-  let xaxis = getRotatedCoordinates(100, 0, 0, simulationAlpha, -simulationBeta)
-  let yaxis = getRotatedCoordinates(0, 100, 0, simulationAlpha, -simulationBeta)
-  let zaxis = getRotatedCoordinates(0, 0, 100, simulationAlpha, -simulationBeta)
+  let xaxis = getRotatedCoordinates(100, 0, 0, simulationAlpha, 0, -simulationBeta)
+  let yaxis = getRotatedCoordinates(0, 100, 0, simulationAlpha, 0, -simulationBeta)
+  let zaxis = getRotatedCoordinates(0, 0, 100, simulationAlpha, 0, -simulationBeta)
 
   // Draw x axis
   ctx.beginPath()
