@@ -9,6 +9,7 @@ services:
       MARIADB_USER: ${MARIADB_USER}
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_AUTO_UPGRADE: "true"
     volumes:
       - ./volumes/mariadb:/var/lib/mysql
     healthcheck:
@@ -47,6 +48,7 @@ services:
     ports:
       - "${DJANGO_PORT:-8000}:8000"
     environment:
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
       DJANGO_CORS_ORIGINS: ${DJANGO_CORS_ORIGINS}

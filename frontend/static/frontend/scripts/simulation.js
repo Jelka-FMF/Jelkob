@@ -142,13 +142,11 @@ function getDistance (touch1, touch2) {
   return Math.sqrt(dx * dx + dy * dy)
 }
 
-
-// function drawing canvas rotatet for alpha, beta, gama
-function getRotatedCoordinates (x, y, z, alpha, beta, gama) { //TODO
-  // Rotation matrix
-  let newx = Math.sin(alpha) * Math.cos(beta) * x +   (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + ( - Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
-  let newy = Math.cos(alpha) * Math.cos(beta) * x + (- Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
-  let newz =                   Math.sin(beta) * x +  Math.cos(beta) * Math.sin(gama) * y                                                          + Math.cos(beta) * Math.cos(gama) * z 
+// Get drawing canvas rotated for alpha, beta, gama
+function getRotatedCoordinates (x, y, z, alpha, beta, gama) {
+  let newx = Math.sin(alpha) * Math.cos(beta) * x +  (Math.cos(alpha) * Math.cos(gama) - Math.sin(alpha) * Math.sin(beta) * Math.sin(gama)) * y + (-Math.cos(alpha) * Math.sin(gama) - Math.sin(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+  let newy = Math.cos(alpha) * Math.cos(beta) * x + (-Math.sin(alpha) * Math.cos(gama) - Math.cos(alpha) * Math.sin(beta) * Math.sin(gama)) * y +  (Math.sin(alpha) * Math.sin(gama) - Math.cos(alpha) * Math.sin(beta) * Math.cos(gama)) * z
+  let newz =                   Math.sin(beta) * x +   Math.cos(beta)  * Math.sin(gama) * y                                                                                                             + Math.cos(beta) * Math.cos(gama) * z
 
   return { x: newx, y: newy, z: newz }
 }
@@ -187,8 +185,8 @@ function drawLights (ctx, origin, scale) {
   for (const [index, position] of Object.entries(positions)) {
     const color = colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
 
-    let y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0,  simulationBeta).y
-    let z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0,  simulationBeta).z)
+    let y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).y
+    let z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).z)
 
     if (color.green === 0 && color.red === 0 && color.blue === 0) {
       ctx.beginPath()
