@@ -187,8 +187,8 @@ function drawLights (ctx, origin, scale) {
   for (const [index, position] of Object.entries(positions)) {
     const color = colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
 
-    let y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, simulationBeta).y
-    let z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, simulationBeta).z)
+    let y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0,  simulationBeta).y
+    let z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0,  simulationBeta).z)
 
     if (color.green === 0 && color.red === 0 && color.blue === 0) {
       ctx.beginPath()
