@@ -53,12 +53,6 @@ tr:last-child td {
   --bs-table-bg-state: hsl(from var(--bs-table-bg) h s calc(l - 4));
 }
 
-@media (prefers-color-scheme: dark) {
-  .active-pattern {
-    --bs-table-bg-state: hsl(from var(--bs-table-bg) h s calc(l - 2));
-  }
-}
-
 .simulation-container {
   position: relative;
   display: flex;
