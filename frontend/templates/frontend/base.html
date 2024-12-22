@@ -101,9 +101,9 @@
             {% endif %}
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 {% trans "Language" %}
-              </a>
+              </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
@@ -127,7 +127,7 @@
                   </li>
                 {% endfor %}
               </ul>
-            </li>    
+            </li>
           </ul>
         </div>
       </div>
