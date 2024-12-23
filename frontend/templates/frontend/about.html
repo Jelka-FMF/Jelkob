@@ -65,7 +65,9 @@
         {% endblocktrans %}
       </p>
     </div>
-    
+    {% block image %}
+    <img src="{% static 'frontend/icons/fmfjelka.jpg' %}" alt="{% trans 'Jelka FMF' %}" style="max-width: 40%;" />
+    {% endblock %}
   </div>
 {% endblock %}
 
