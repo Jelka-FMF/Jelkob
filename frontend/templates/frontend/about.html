@@ -8,29 +8,7 @@
 {% block description %}{% trans "Basic information about the Jelka FMF project" %}{% endblock %}
 
 {% block content %}
-  <style>
-    .content-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .content-container img {
-      max-width: 100%;
-      height: auto;
-    }
-    @media (min-width: 768px) {
-      .content-container {
-        flex-direction: row;
-        align-items: start;
-      }
-      .text-column {
-        flex: 1;
-      }
-      .image-column {
-        flex: 1;
-      }
-    }
-  </style>
+<link rel="stylesheet" href="{% static 'frontend/styles/image-block.css' %}" />
   <div class="content-container">
     <div class="text-column">
       <h2>{% trans "About Jelka FMF" %}</h2>

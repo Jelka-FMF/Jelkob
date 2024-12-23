@@ -1,24 +1,55 @@
 {% extends "frontend/base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Contact" %} – Jelka FMF{% endblock %}
 
 {% block description %}{% trans "Contact information for the Jelka FMF project" %}{% endblock %}
 
 {% block content %}
-  <p>
-    {% blocktrans trimmed %}
-      If you are a student and have questions about the project or would like to contact people involved in the project,
-      you can join the <a href="https://discord.gg/ccg4nKVR44" target="_blank">FMF Programming Club Discord server</a>
-      and ask your questions in the <code>#jelka</code> channel.
-    {% endblocktrans %}
-  </p>
-  <p>
-    {% blocktrans trimmed %}
-      If you do not have a Discord account, or are a teacher at a school that is participating or would like to
-      participate in the project, you can contact the project's coordinator,
-      <a href="https://www.fmf.uni-lj.si/en/directory/742/bercic-katja/" target="_blank">Assist. Dr. Katja Berčič</a>.
-    {% endblocktrans %}
-  </p>
+<link rel="stylesheet" href="{% static 'frontend/styles/image-block.css' %}" />
+  <div class="content-container">
+    <div class="text-column">
+      <br>
+      <br>
+      <p>
+        {% blocktrans trimmed %}
+          If you are a student and have questions about the project or would like to contact people involved in the project,
+          you can join the <a href="https://discord.gg/ccg4nKVR44" target="_blank">FMF Programming Club Discord server</a>
+          and ask your questions in the <code>#jelka</code> channel.
+        {% endblocktrans %}
+      </p>
+      <br>
+      <p>
+        {% blocktrans trimmed %}
+          If you do not have a Discord account, or are a teacher at a school that is participating or would like to
+          participate in the project, you can contact the project's coordinator,
+          <a href="https://www.fmf.uni-lj.si/en/directory/742/bercic-katja/" target="_blank">Assist. Dr. Katja Berčič</a>.
+        {% endblocktrans %}
+      </p>
+      <br>
+      <!-- FIXME: Write translations for these blocks
+        {% blocktrans trimmed %}
+          People who worked on the project:
+        {% endblocktrans %}
+          <ul>
+            <li>Filip Štamcar</li>
+            <li>Jakob Kralj</li>
+            <li>Vida Mlinar</li>
+            <li>Barbara Makovec</li>
+            <li>Bor Brudar</li>
+            <li>Jošt Smrtnik</li>
+            <li>Anton Luka Šijanec</li>
+          </ul>
+          {% blocktrans trimmed %}
+          and others from the FMF Programming Club who helped with making Jelka FMF possible.
+        {% endblocktrans %}
+      </p>-->
+      <p>
+    </div>
+    <div class="wide-image-column">
+      <img src="{% static 'frontend/icons/prog.jpg' %}" alt="{% trans 'Some members of programming club at FMF' %}">
+    </div>
+  </div>
 {% endblock %}

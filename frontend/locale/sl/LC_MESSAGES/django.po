@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-23 12:25+0100\n"
+"POT-Creation-Date: 2024-12-23 14:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr "Informacije"
 msgid "Basic information about the Jelka FMF project"
 msgstr "Osnovne informacije o projektu Jelka FMF"
 
-#: .\frontend\templates\frontend\about.html:13
+#: .\frontend\templates\frontend\about.html:14
 msgid "About Jelka FMF"
 msgstr "O Jelki FMF"
 
-#: .\frontend\templates\frontend\about.html:15
+#: .\frontend\templates\frontend\about.html:16
 msgid ""
 "At the <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Faculty of "
 "Mathematics and Physics, University of Ljubljana</a>, as part of the <a "
@@ -44,7 +44,7 @@ msgstr ""
 "target=\"_blank\">Abelium</a> in <a href=\"https://acex.si/\" "
 "target=\"_blank\">Acex</a>."
 
-#: .\frontend\templates\frontend\about.html:23
+#: .\frontend\templates\frontend\about.html:24
 msgid ""
 "The tree is located at the entrance of the building at <a href=\"https://www."
 "google.si/maps/place/Jadranska+ulica+21,+1000+Ljubljana\" "
@@ -55,7 +55,7 @@ msgstr ""
 "Jadranska+ulica+21,+1000+Ljubljana\" target=\"_blank\">Jadranski 21</a> in "
 "je prižgana od jutra do zaprtja stavbe."
 
-#: .\frontend\templates\frontend\about.html:30
+#: .\frontend\templates\frontend\about.html:31
 msgid ""
 "You can check the project's source code on <a href=\"https://github.com/"
 "Jelka-FMF\" target=\"_blank\">GitHub</a>."
@@ -63,11 +63,11 @@ msgstr ""
 "Izvorno kodo projekta si lahko ogledate na <a href=\"https://github.com/"
 "Jelka-FMF\" target=\"_blank\">GitHubu</a>."
 
-#: .\frontend\templates\frontend\about.html:33
+#: .\frontend\templates\frontend\about.html:34
 msgid "Some technical details about Jelka"
 msgstr "Nekaj tehničnih podrobnosti o Jelki"
 
-#: .\frontend\templates\frontend\about.html:34
+#: .\frontend\templates\frontend\about.html:35
 msgid ""
 "Jelka is written mostly in Python, while the website and Jelkly are written "
 "in JavaScript. Patterns can be written in any programming language that can "
@@ -78,7 +78,7 @@ msgstr ""
 "napisani v kateremkoli programskem jeziku, ki ga je mogoče zapakirati v "
 "Docker container in podpira pisanje na standardni izhod."
 
-#: .\frontend\templates\frontend\about.html:37
+#: .\frontend\templates\frontend\about.html:38
 msgid ""
 "<a href=\"https://github.com/Jelka-FMF/Jelkob\" target=\"_blank\">Jelkob</a> "
 "is our main server, on which we run the website, the Docker register and "
@@ -103,7 +103,7 @@ msgstr ""
 "kontrolira lučke, sproti pa strežniku pošilja stanje, da se vzorec prikazuje "
 "na simulaciji na spletni strani."
 
-#: .\frontend\templates\frontend\about.html:40
+#: .\frontend\templates\frontend\about.html:41
 msgid ""
 "The website is written in Django and uses the Django REST framework for the "
 "API. Using the website we can controll exactly which patterns are running on "
@@ -113,11 +113,11 @@ msgstr ""
 "S spletno stranjo lahko upravljamo jelko in določimo natanko kateri vzorec "
 "je trenutno na jelki ter jih o(ne)mogočamo."
 
-#: .\frontend\templates\frontend\about.html:46
+#: .\frontend\templates\frontend\about.html:47
 msgid "How Jelkly works"
 msgstr "Kako deluje Jelkly"
 
-#: .\frontend\templates\frontend\about.html:47
+#: .\frontend\templates\frontend\about.html:48
 msgid ""
 "Another big part of the project is Jelkly, a visual programming tool that "
 "allows users to create their own patterns without any programming knowledge. "
@@ -137,11 +137,11 @@ msgstr ""
 "repozitorij <a href=\"https://github.com/Jelka-FMF/Storzi\" "
 "target=\"_blank\">Storži</a>."
 
-#: .\frontend\templates\frontend\about.html:52
+#: .\frontend\templates\frontend\about.html:53
 msgid "Contributing Patterns"
 msgstr "Prispevanje vzorcev"
 
-#: .\frontend\templates\frontend\about.html:54
+#: .\frontend\templates\frontend\about.html:55
 msgid ""
 "If you would like to contribute your own pattern for running on Jelka FMF "
 "and already have programming knowledge, please check out the <a "
@@ -154,7 +154,7 @@ msgstr ""
 "Storzi\" target=\"_blank\">Storži</a>, ki vsebuje že obstoječe vzorce in "
 "navodila za oddajo lastnih vzorcev."
 
-#: .\frontend\templates\frontend\about.html:61
+#: .\frontend\templates\frontend\about.html:62
 msgid ""
 "If you would like to submit a pattern but do not have programming knowledge "
 "yet, you can check out <a href=\"https://jelkly.fmf.uni-lj.si/docs\" "
@@ -166,11 +166,9 @@ msgstr ""
 "Scratchu podobno orodje za vizualno programiranje, s katerim lahko enostavno "
 "ustvarite in oddate svoje vzorce za Jelko FMF."
 
-#: .\frontend\templates\frontend\about.html:69
-#, fuzzy
-#| msgid "About Jelka FMF"
-msgid "Jelka FMF"
-msgstr "O Jelki FMF"
+#: .\frontend\templates\frontend\about.html:70
+msgid "Jelka FMF Christmas Tree"
+msgstr ""
 
 #: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:32
 msgid ""
@@ -188,7 +186,7 @@ msgid "Patterns"
 msgstr "Vzorci"
 
 #: .\frontend\templates\frontend\base.html:87
-#: .\frontend\templates\frontend\contact.html:5
+#: .\frontend\templates\frontend\contact.html:6
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -209,11 +207,11 @@ msgstr "Prijava"
 msgid "Language"
 msgstr "Jezik"
 
-#: .\frontend\templates\frontend\contact.html:7
+#: .\frontend\templates\frontend\contact.html:8
 msgid "Contact information for the Jelka FMF project"
 msgstr "Kontaktne informacije za projekt Jelka FMF"
 
-#: .\frontend\templates\frontend\contact.html:11
+#: .\frontend\templates\frontend\contact.html:17
 msgid ""
 "If you are a student and have questions about the project or would like to "
 "contact people involved in the project, you can join the <a href=\"https://"
@@ -226,7 +224,7 @@ msgstr ""
 "Programerskega kluba FMF</a> in svoja vprašanja zastavite v kanalu "
 "<code>#jelka</code>."
 
-#: .\frontend\templates\frontend\contact.html:18
+#: .\frontend\templates\frontend\contact.html:25
 msgid ""
 "If you do not have a Discord account, or are a teacher at a school that is "
 "participating or would like to participate in the project, you can contact "
@@ -237,6 +235,20 @@ msgstr ""
 "sodelovala v projektu, se lahko obrnete na koordinatorico projekta, <a "
 "href=\"https://www.fmf.uni-lj.si/sl/imenik/742/bercic-katja/\" "
 "target=\"_blank\">asist. dr. Katjo Berčič</a>."
+
+#: .\frontend\templates\frontend\contact.html:33
+msgid "People who worked on the project:"
+msgstr ""
+
+#: .\frontend\templates\frontend\contact.html:45
+msgid ""
+"and others from the FMF Programming Club who helped with making Jelka FMF "
+"possible."
+msgstr ""
+
+#: .\frontend\templates\frontend\contact.html:52
+msgid "Some members of programming club at FMF"
+msgstr ""
 
 #: .\frontend\templates\frontend\login.html:5
 msgid "Login"
