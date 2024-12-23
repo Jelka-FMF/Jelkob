@@ -8,8 +8,31 @@
 {% block description %}{% trans "Basic information about the Jelka FMF project" %}{% endblock %}
 
 {% block content %}
-  <div style="display: flex; gap: 2rem; align-items: start">
-    <div>
+  <style>
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .content-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    @media (min-width: 768px) {
+      .content-container {
+        flex-direction: row;
+        align-items: start;
+      }
+      .text-column {
+        flex: 1;
+      }
+      .image-column {
+        flex: 1;
+      }
+    }
+  </style>
+  <div class="content-container">
+    <div class="text-column">
       <h2>{% trans "About Jelka FMF" %}</h2>
       <p>
         {% blocktrans trimmed %}
@@ -65,9 +88,10 @@
         {% endblocktrans %}
       </p>
     </div>
-    {% block image %}
-    <img src="{% static 'frontend/icons/fmfjelka.jpg' %}" alt="{% trans 'Jelka FMF' %}" style="max-width: 40%;" />
-    {% endblock %}
+    <div class="image-column">
+      <img src="{% static 'frontend/icons/fmfjelka.jpg' %}" alt="{% trans 'Jelka FMF Christmas Tree' %}">
+    </div>
   </div>
 {% endblock %}
+
 
