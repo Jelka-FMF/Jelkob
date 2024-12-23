@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-23 11:44+0100\n"
+"POT-Creation-Date: 2024-12-23 12:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,21 +113,11 @@ msgstr ""
 "S spletno stranjo lahko upravljamo jelko in določimo natanko kateri vzorec "
 "je trenutno na jelki ter jih o(ne)mogočamo."
 
-#: .\frontend\templates\frontend\about.html:43
+#: .\frontend\templates\frontend\about.html:46
 msgid "How Jelkly works"
 msgstr "Kako deluje Jelkly"
 
-#: .\frontend\templates\frontend\about.html:44
-#, fuzzy
-#| msgid ""
-#| "Another big part of the project is Jelkly, a visual programming tool that "
-#| "allows users to create their own patterns without any programming "
-#| "knowledge. It is written in JavaScript and Microsoft's Makecode (PXT), "
-#| "which uses Blockly library. The 2D and 3D simulation of the tree enables "
-#| "users to see how their pattern would look like on the tree.   The "
-#| "patterns created in Jelkly are then sent to the server, converted to "
-#| "JavaScript, added to repo  <a href=\"https://github.com/Jelka-FMF/"
-#| "Storzi\" target=\"_blank\">Storži</a>. and run on the tree."
+#: .\frontend\templates\frontend\about.html:47
 msgid ""
 "Another big part of the project is Jelkly, a visual programming tool that "
 "allows users to create their own patterns without any programming knowledge. "
@@ -147,11 +137,11 @@ msgstr ""
 "repozitorij <a href=\"https://github.com/Jelka-FMF/Storzi\" "
 "target=\"_blank\">Storži</a>."
 
-#: .\frontend\templates\frontend\about.html:49
+#: .\frontend\templates\frontend\about.html:52
 msgid "Contributing Patterns"
 msgstr "Prispevanje vzorcev"
 
-#: .\frontend\templates\frontend\about.html:51
+#: .\frontend\templates\frontend\about.html:54
 msgid ""
 "If you would like to contribute your own pattern for running on Jelka FMF "
 "and already have programming knowledge, please check out the <a "
@@ -164,7 +154,7 @@ msgstr ""
 "Storzi\" target=\"_blank\">Storži</a>, ki vsebuje že obstoječe vzorce in "
 "navodila za oddajo lastnih vzorcev."
 
-#: .\frontend\templates\frontend\about.html:58
+#: .\frontend\templates\frontend\about.html:61
 msgid ""
 "If you would like to submit a pattern but do not have programming knowledge "
 "yet, you can check out <a href=\"https://jelkly.fmf.uni-lj.si/docs\" "
@@ -176,7 +166,7 @@ msgstr ""
 "Scratchu podobno orodje za vizualno programiranje, s katerim lahko enostavno "
 "ustvarite in oddate svoje vzorce za Jelko FMF."
 
-#: .\frontend\templates\frontend\about.html:66
+#: .\frontend\templates\frontend\about.html:69
 #, fuzzy
 #| msgid "About Jelka FMF"
 msgid "Jelka FMF"
