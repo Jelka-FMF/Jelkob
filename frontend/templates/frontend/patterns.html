@@ -2,8 +2,17 @@
 
 {% load i18n %}
 {% load static %}
+{% load banner %}
 
 {% block content %}
+  {% banner as banner %}
+  <img
+    src="{{ banner.src }}"
+    alt="{{ banner.alt }}"
+    class="banner rounded"
+    loading="lazy"
+  />
+
   <div class="main-container">
     <div class="content-section">
       <noscript>
