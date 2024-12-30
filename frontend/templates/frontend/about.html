@@ -2,15 +2,21 @@
 
 {% load i18n %}
 {% load static %}
+{% load macros %}
+
+{% macro image path alt active %}
+  <div class="carousel-item {% if active %}active{% endif %}">
+    <img src="{% static path %}" alt="{{ alt }}" class="d-block w-100" loading="lazy" />
+  </div>
+{% endmacro %}
 
 {% block title %}{% trans "About" %} – Jelka FMF{% endblock %}
 
 {% block description %}{% trans "Basic information about the Jelka FMF project" %}{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'frontend/styles/image-block.css' %}" />
-  <div class="content-container">
-    <div class="text-column">
+  <div class="row">
+    <div class="col-lg-8">
       <h2>{% trans "About Jelka FMF" %}</h2>
       <p>
         {% blocktrans trimmed %}
@@ -31,45 +37,97 @@
         {% blocktrans trimmed %}
           You can check the project's source code on <a href="https://github.com/Jelka-FMF" target="_blank">GitHub</a>.
         {% endblocktrans %}
-        <h3>{% trans "Some technical details about Jelka" %}</h3>
-        {% blocktrans trimmed %}
-          Jelka is written mostly in Python, while the website and Jelkly are written in JavaScript. Patterns can be written in any programming language that can be run in a Docker container and supports writing to the standard output.
-        {% endblocktrans %}
-        {% blocktrans trimmed %}
-          <a href="https://github.com/Jelka-FMF/Jelkob" target="_blank">Jelkob</a> is our main server, on which we run the website, the Docker register and where the pattern database is stored. Hardware-wise, the comunication with the LED lights on the tree is done via a Raspberry Pi (code itself can be found in the <a href="https://github.com/Jelka-FMF/Korenine">Korenine</a> repository). Using that we ping the server every 30 seconds to check what is the list of patterns and downloads from the Docker register. Then it rotates through the list of enabled patterns. Each patteren is run by running a Docker container and reading what it writes to standard output. Using a library it controls the lights based on this output and sends the current state to the server, so it shows up on the simulation on the website.
-        {% endblocktrans %}
-        {% blocktrans trimmed %}
-          The website is written in Django and uses the Django REST framework for the API. Using the website we can controll exactly which patterns are running on the tree, along with enabling/disabling them and manually running them.
-        {% endblocktrans %}
-        
-        <br>
-        <br>
-        <h3>{% trans "How Jelkly works" %}</h3>
-        {% blocktrans trimmed %}
-          Another big part of the project is Jelkly, a visual programming tool that allows users to create their own patterns without any programming knowledge. It is written in JavaScript and Microsoft's Makecode (PXT), which uses Blockly library. The 2D and 3D simulation of the tree enables users to see how their pattern would look like on the tree.   The patterns created in Jelkly are then sent to the server, converted to JavaScript, added to repo <a href="https://github.com/Jelka-FMF/Storzi" target="_blank">Storži</a> and run on the tree.
-        {% endblocktrans %}
-        
       </p>
+
+      <h2>{% trans "How it Works" %}</h2>
+      <p>
+        {% blocktrans trimmed %}
+          Our tree consists of multiple components that work together to create a programmable Christmas tree. The tree
+          itself is controlled by a Raspberry Pi, which continuously communicates with the main server to get the list
+          of patterns to run. This program is called <a href="https://github.com/Jelka-FMF/Korenine" target="_blank">Korenine</a>.
+          It cycles through the available patterns and runs them one by one in a Docker container. The patterns are
+          containerized in the Docker container and can be written in any programming language that can write to the
+          standard output. The program reads the output of the pattern and controls the lights on the tree accordingly
+          using a library. The current state of the tree is also sent back to the server, where it is displayed on the
+          simulation on the website.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          The main server, called <a href="https://github.com/Jelka-FMF/Jelkob" target="_blank">Jelkob</a>, hosts the
+          project website, the pattern database, and the Docker registry. The website is written in Django and uses
+          the Django REST framework for the API. Using the website, we can control which patterns are running on the
+          tree and manually run them. The website also shows a list of available patterns, the current state of the
+          tree, and the live simulation.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          The patterns themselves are written in various programming languages and are stored in the
+          <a href="https://github.com/Jelka-FMF/Storzi" target="_blank">Storži</a> repository. Each pattern is
+          packaged in a Docker container. The patterns can be written in any programming language that can write
+          to the standard output, but we provide user-friendly libraries for popular languages like Python and
+          JavaScript. Patterns can read 3D positions of the lights on the tree and control them accordingly by
+          sending the desired colors to the standard output.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          To get the 3D positions of the lights on the tree, we recorded multiple videos of the tree from multiple
+          angles while running a calibration pattern. We then extracted a 2D position for each light for each angle.
+          Based on these 2D positions, we then calculated the 3D positions of the lights on the tree. This was done
+          using our program called <a href="https://github.com/Jelka-FMF/Jelkulator" target="_blank">Jelkulator</a>.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          Another big part of the project is <a href="https://github.com/Jelka-FMF/Jelkly" target="_blank">Jelkly</a>,
+          a Scratch-like visual programming tool that allows users to create their own patterns without any programming
+          knowledge. Jelkly is written in TypeScript using the Microsoft's MakeCode (PXT) framework, which uses the
+          Blockly library. It provides the 2D and 3D simulation of the tree which enable users to see how their pattern
+          would look on the real tree. Patterns created in Jelkly can be directly submitted to the server, where we
+          review them, convert them to JavaScript, and add them to the Storži repository, where they can run on the tree.
+        {% endblocktrans %}
+      </p>
+
       <h2>{% trans "Contributing Patterns" %}</h2>
       <p>
         {% blocktrans trimmed %}
           If you would like to contribute your own pattern for running on Jelka FMF and already have programming knowledge,
           please check out the <a href="https://github.com/Jelka-FMF/Storzi" target="_blank">Storži</a> repository that
-          contains already-existing patterns and instructions for submitting your own patterns.
+          contains already-existing patterns and instructions for submitting your own patterns in various programming
+          languages.
         {% endblocktrans %}
       </p>
       <p>
         {% blocktrans trimmed %}
           If you would like to submit a pattern but do not have programming knowledge yet, you can check out
           <a href="https://jelkly.fmf.uni-lj.si/docs" target="_blank">Jelkly</a>, a Scratch-like visual programming tool
-          for creating and submitting your own Jelka FMF patterns.
+          for creating and submitting your own Jelka FMF patterns. It is easy to use even for beginners and people
+          without programming knowledge, as it allows you to easily build programs using visual blocks.
         {% endblocktrans %}
       </p>
     </div>
-    <div class="image-column">
-      <img src="{% static 'frontend/icons/fmfjelka.jpg' %}" alt="{% trans 'Jelka FMF Christmas Tree' %}">
+
+    <div class="col-lg-4 pb-2">
+      <div id="tree-gallery" class="carousel slide">
+        <div class="carousel-inner">
+          {% usemacro image "frontend/images/christmas-tree-01.jpg" _("Photo of the Jelka FMF Christmas tree") True %}
+          {% usemacro image "frontend/images/christmas-tree-02.jpg" _("Photo of the Jelka FMF Christmas tree") %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#tree-gallery" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">{% trans "Previous" %}</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#tree-gallery" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">{% trans "Next" %}</span>
+        </button>
+      </div>
     </div>
   </div>
 {% endblock %}
 
-
+{% block extrabody %}
+  <script src="{% static 'frontend/scripts/carousels.js' %}"></script>
+{% endblock %}
