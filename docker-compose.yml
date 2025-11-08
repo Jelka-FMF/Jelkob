@@ -2,7 +2,7 @@ name: jelkob
 
 services:
   mariadb:
-    image: mariadb:11
+    image: mariadb:12
     restart: unless-stopped
     environment:
       MARIADB_DATABASE: ${MARIADB_DATABASE}
@@ -12,39 +12,39 @@ services:
       MARIADB_AUTO_UPGRADE: "true"
     volumes:
       - ./volumes/mariadb:/var/lib/mysql
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     healthcheck:
       test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
       start_period: 10s
       interval: 10s
       timeout: 5s
       retries: 3
-    logging:
-      driver: json-file
-      options:
-        max-size: "100m"
-        max-file: "5"
 
   registry:
-    image: registry:2
+    image: registry:3
     restart: unless-stopped
     ports:
       - "${REGISTRY_PORT:-5000}:5000"
     environment:
-      REGISTRY_AUTH: htpasswd
-      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-      REGISTRY_AUTH_HTPASSWD_PATH: /var/lib/registry/password
-      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+      OTEL_TRACES_EXPORTER: none
     volumes:
+      - ./registry.config.yml:/etc/distribution/config.yml:ro
+      - ./registry.htpasswd:/etc/distribution/htpasswd:ro
       - ./volumes/registry:/var/lib/registry
-    logging:
-      driver: json-file
-      options:
-        max-size: "100m"
-        max-file: "5"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
 
   app:
     image: ghcr.io/jelka-fmf/jelkob:latest
     restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
     ports:
       - "${DJANGO_PORT:-8000}:8000"
     environment:
@@ -71,11 +71,7 @@ services:
     volumes:
       - ./volumes/static:/usr/src/app/static
       - ./volumes/uploads:/usr/src/app/uploads
-    depends_on:
-      mariadb:
-        condition: service_healthy
-    logging:
-      driver: json-file
-      options:
-        max-size: "100m"
-        max-file: "5"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
