@@ -7,15 +7,18 @@ from .serializers import PatternSerializer, StateSerializer
 
 
 @receiver(post_save, sender=Pattern)
+@receiver(post_save, sender=Config)
+def send_control_events(**kwargs):
+    patterns = PatternSerializer(Pattern.objects.all(), many=True).data
+    send_event("control", "patterns", patterns)
+
+
+@receiver(post_save, sender=Pattern)
 @receiver(post_save, sender=State)
 @receiver(post_save, sender=Config)
-def model_post_save(**kwargs):
+def send_status_events(**kwargs):
     patterns = PatternSerializer(Pattern.objects.all(), many=True).data
     state = StateSerializer(State.get_solo()).data
 
-    data = {
-        "patterns": patterns,
-        "state": state,
-    }
-
-    send_event("runner", "message", data)
+    data = {"patterns": patterns, "state": state}
+    send_event("status", "message", data)

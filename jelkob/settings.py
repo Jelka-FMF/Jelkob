@@ -187,12 +187,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
     ],
-    "DEFAULT_RENDERER_CLASSES": [
-        "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer",
-        "django_eventstream.renderers.SSEEventRenderer",
-        "django_eventstream.renderers.BrowsableAPIEventStreamRenderer",
-    ],
 }
 
 
@@ -212,12 +206,6 @@ EDITOR_ACTION = os.environ.get("EDITOR_ACTION") or "sandbox"
 
 
 # Jelkob - Runner
-
-RUNNER_URL = os.environ.get("RUNNER_URL")
-"""The full path to the runner endpoint for running the patterns."""
-
-RUNNER_TOKEN = os.environ.get("RUNNER_TOKEN")
-"""The token to use for authenticating with the runner endpoint."""
 
 INACTIVITY_PING_TIMEOUT = int(os.environ.get("INACTIVITY_PING_TIMEOUT") or 90)
 """How long to wait for a ping before considering the runner inactive."""

@@ -2,7 +2,7 @@ const isAuthenticated = document.currentScript.dataset.isAuthenticated === 'True
 const csrfToken = document.currentScript.dataset.csrfToken
 
 /** @type {EventSource} */
-const eventSource = new ReconnectingEventSource('/runner/events')
+const statusEventSource = new ReconnectingEventSource('/runner/events/status')
 
 /** @type {number} */
 let countdownInterval = undefined
@@ -237,7 +237,7 @@ function updatePatternState () {
 
 // == Event Handlers
 
-eventSource.addEventListener('message', function (event) {
+statusEventSource.addEventListener('message', function (event) {
   /** @type {{patterns: Pattern[], state: State}} */
   const data = JSON.parse(event.data)
 

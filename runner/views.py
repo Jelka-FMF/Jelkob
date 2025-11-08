@@ -1,9 +1,8 @@
+from abc import ABC
 from datetime import datetime
 
-import httpx
-from asgiref.sync import async_to_sync, sync_to_async
-from django.conf import settings
 from django.http import Http404
+from django_eventstream import send_event
 from django_eventstream.viewsets import EventsViewSet
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
@@ -56,15 +55,10 @@ class PatternViewSet(viewsets.ModelViewSet):
 
         return Response({"status": "Pattern disabled"})
 
-    @async_to_sync
     @action(detail=True, methods=["post"], serializer_class=EmptySerializer)
-    async def run(self, request, identifier=None):
-        async with httpx.AsyncClient() as client:
-            await client.post(
-                settings.RUNNER_URL,
-                headers={"Authorization": f"Bearer {settings.RUNNER_TOKEN}"},
-                params={"identifier": (await sync_to_async(self.get_object)()).identifier},
-            )
+    def run(self, request, identifier=None):
+        data = {"identifier": self.get_object().identifier}
+        send_event("control", "run", data)
 
         return Response({"status": "Pattern run"})
 
@@ -116,11 +110,35 @@ class StateViewSet(viewsets.GenericViewSet):
         return Response({"status": "OK"})
 
 
-class EventStreamViewSet(EventsViewSet):
+class AbstractEventsViewSet(EventsViewSet, ABC):
+    def get_renderers(self):
+        # Skip custom logic that would disable renderers if custom default renderers are set
+        return super(EventsViewSet, self).get_renderers()
+
+    def list(self, request):
+        # Disable selecting channels from query parameters
+        return self._stream_or_respond(self.channels, request)
+
+    def channel(self, request, channel=None):
+        # Disable selecting channels from endpoint
+        return None
+
+
+class ControlEventsViewSet(AbstractEventsViewSet):
     def __init__(self, *args, **kwargs):
         super().__init__(
             *args,
             **kwargs,
-            channels=["runner"],
+            channels=["control"],
+            messages_types=["patterns", "run"],
+        )
+
+
+class StatusEventsViewSet(AbstractEventsViewSet):
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            *args,
+            **kwargs,
+            channels=["status"],
             messages_types=["message"],
         )
