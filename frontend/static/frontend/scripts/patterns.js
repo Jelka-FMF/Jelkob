@@ -17,6 +17,7 @@ let countdownInterval = undefined
  * @property {number} duration
  * @property {string} [author]
  * @property {string} [school]
+ * @property {string} changed
  * @property {boolean} enabled
  * @property {boolean} visible
  */
@@ -237,7 +238,7 @@ function updatePatternState () {
 
 // == Event Handlers
 
-statusEventSource.addEventListener('message', function (event) {
+statusEventSource.addEventListener('status', function (event) {
   /** @type {{patterns: Pattern[], state: State}} */
   const data = JSON.parse(event.data)
 

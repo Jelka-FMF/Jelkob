@@ -83,6 +83,16 @@ class StateViewSet(viewsets.GenericViewSet):
         state.runner_last_active = datetime.now()
         state.save()
 
+        send_event(
+            "status",
+            "started",
+            {
+                "identifier": state.current_pattern.identifier,
+                "started": state.current_pattern_started,
+                "remaining": state.current_pattern_remaining,
+            },
+        )
+
         return Response({"status": "OK"})
 
     @action(detail=False, methods=["post"], serializer_class=StateStoppedSerializer)
@@ -95,6 +105,8 @@ class StateViewSet(viewsets.GenericViewSet):
         state.current_pattern_started = None
         state.runner_last_active = datetime.now()
         state.save()
+
+        send_event("status", "stopped", None)
 
         return Response({"status": "OK"})
 
@@ -140,5 +152,5 @@ class StatusEventsViewSet(AbstractEventsViewSet):
             *args,
             **kwargs,
             channels=["status"],
-            messages_types=["message"],
+            messages_types=["status", "started", "stopped"],
         )
