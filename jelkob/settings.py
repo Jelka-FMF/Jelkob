@@ -214,10 +214,13 @@ INACTIVITY_PATTERN_TIMEOUT = int(os.environ.get("INACTIVITY_PATTERN_TIMEOUT") or
 """How long to wait after the pattern should have finished before considering the runner inactive."""
 
 
-# Jelkob - Driver
+# Jelkob - Services
 
 DRIVER_URL = os.environ.get("DRIVER_URL")
-"""The full path to the driver endpoint of the pattern content event stream."""
+"""The full path to the endpoint of the pattern content event stream."""
+
+INTERACTION_URL = os.environ.get("INTERACTION_URL")
+"""The full path to the endpoint of the interaction service WebSocket."""
 
 
 # Jelkob - Discord

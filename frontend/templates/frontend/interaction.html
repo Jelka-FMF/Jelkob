@@ -1,0 +1,61 @@
+{% extends "frontend/base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Interaction" %} – Jelka FMF{% endblock %}
+
+{% block description %}{% trans "Interakcija s trenutnim vzorcem" %}{% endblock %}
+
+{% block content %}
+  <div class="main-container">
+    <div class="content-section">
+      <noscript>
+        <p class="border border-secondary-subtle rounded p-3 mb-3">
+          {% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}
+        </p>
+      </noscript>
+
+      TODO: Vsebina strani za interakcijo
+      - Obrazec za vnos trenutne kode
+      - Poskusimo se povezati na WebSocket URL iz nastavitve INTERACTION_URL
+      - Javimo, če to ne uspe (možne napake: koda ni veljavna, nekdo je že povezan)
+      - Če vse deluje, prikažemo interaktivni vmesnik (puščice gor/dol/levo/desno, črke ABCD, gumbi za vklop/izklop orientacije/pospeškometra/žiroskopa)
+      - Ob pritiskih na gumbe pošljemo ustrezne ukaze preko WebSocket povezave
+      - Ko so vklopljeni načini za senzorje, ob devicemotion dogodkih tudi pošiljamo ustrezne ukaze
+      - Če se povezava prekine, prikažemo sporočilo in gremo nazaj na obrazec za vnos kode
+
+    </div>
+
+    <div class="simulation-section">
+      <div class="simulation-container border border-secondary-subtle rounded">
+        <canvas class="simulation-canvas" id="canvas"></canvas>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'frontend/styles/patterns.css' %}" />
+  <link rel="stylesheet" href="{% static 'frontend/styles/interaction.css' %}" />
+
+  <meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block extrabody %}
+  <script src="{% static 'django_eventstream/eventsource.min.js' %}"></script>
+  <script src="{% static 'django_eventstream/reconnecting-eventsource.js' %}"></script>
+
+  <script src="{% static 'frontend/data/positions.js' %}"></script>
+
+  <script
+    src="{% static 'frontend/scripts/simulation.js' %}"
+    defer
+    data-driver-url="{{ settings.DRIVER_URL }}"
+  ></script>
+  <script
+    src="{% static 'frontend/scripts/interaction.js' %}"
+    defer
+    data-interaction-url="{{ settings.INTERACTION_URL }}"
+  ></script>
+{% endblock %}

@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.http import JsonResponse
 from django.templatetags.static import static
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import TemplateView
-from django.utils.translation import gettext_lazy as _
 
 
 class PatternsView(TemplateView):
@@ -21,6 +21,10 @@ class AboutView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = "frontend/contact.html"
+
+
+class InteractionView(TemplateView):
+    template_name = "frontend/interaction.html"
 
 
 class ManifestView(View):
