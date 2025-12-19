@@ -195,16 +195,17 @@ function drawLights (ctx, origin, scale) {
     const y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).y
     const z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).z - lowestLight.z)
 
-    if (color.green === 0 && color.red === 0 && color.blue === 0) {
-      ctx.beginPath()
+    const maxAlpha = Math.max(color.red, color.green, color.blue) / 120
+    const alphaChannel = Math.min(1, Math.max(0, maxAlpha))
+
+    ctx.beginPath()
+    ctx.fillStyle = `rgba(${color.red}, ${color.green}, ${color.blue}, ${alphaChannel})`
+    ctx.arc(y, z, lightSize, 0, 2 * Math.PI)
+    ctx.fill()
+
+    if (alphaChannel < 0.05) {
       ctx.strokeStyle = window.matchMedia('(prefers-color-scheme: dark)').matches ? '#303030' : '#d0d0d0'
-      ctx.arc(y, z, lightSize, 0, 2 * Math.PI)
       ctx.stroke()
-    } else {
-      ctx.beginPath()
-      ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
-      ctx.arc(y, z, lightSize, 0, 2 * Math.PI)
-      ctx.fill()
     }
   }
 }
