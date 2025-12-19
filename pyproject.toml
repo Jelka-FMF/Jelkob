@@ -14,23 +14,23 @@ package-mode = false
 python = "^3.10"
 
 daphne = "^4.2.1"
-django = "^5.2.8"
+django = "^5.2.9"
 djangorestframework = "^3.16.1"
 django-solo = "^2.4.0"
 django-filter = "^25.2"
-django-simple-history = "^3.10.1"
+django-simple-history = "^3.11.0"
 django-templates-macros = "^0.3"
 django-cors-headers = "^4.9.0"
-django-eventstream = {extras = ["drf"], version = "^5.3.1"}
+django-eventstream = {extras = ["drf"], version = "^5.3.3"}
 python-dotenv = "^1.2.1"
 httpx = "^0.28.1"
 
-psycopg = {version = "^3.2.12", optional = true, extras = ["binary"]}
+psycopg = {version = "^3.3.2", optional = true, extras = ["binary"]}
 mysqlclient = {version = "^2.2.7", optional = true}
-oracledb = {version = "^3.4.0", optional = true}
+oracledb = {version = "^3.4.1", optional = true}
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.14.4"
+ruff = "^0.14.10"
 
 [tool.poetry.extras]
 postgres = ["psycopg"]
