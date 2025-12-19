@@ -9,8 +9,10 @@ let lastMouseX = 0
 let lastMouseY = 0
 
 let rotationScale = 0.01
-let sizeScale = 5
+let sizeScale = 10
 let lightSize = 6
+
+let axisLength = 50
 
 let initialDistance = 0
 let initialScale = sizeScale
@@ -41,6 +43,9 @@ canvas.addEventListener('touchend', onTouchEnd)
 // Add event listeners for theme changes
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderView)
 
+// Normalize the positions to fit within a sphere of radius 100
+const normalizedPositions = normalizePositions(positions)
+
 function renderView () {
   // Get the origin of the drawing
   const origin = { x: canvas.width / 2, y: canvas.width / 2, z: 3 * canvas.height / 4 }
@@ -48,7 +53,7 @@ function renderView () {
   // Draw the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawLights(ctx, origin, sizeScale)
-  drawCoordinateSystem(ctx, origin, sizeScale)
+  drawCoordinateSystem(ctx, origin, sizeScale, axisLength)
 }
 
 function onMouseDown (event) {
@@ -151,10 +156,10 @@ function getRotatedCoordinates (x, y, z, alpha, beta, gama) {
   return { x: newx, y: newy, z: newz }
 }
 
-function drawCoordinateSystem (ctx, origin, scale) {
-  let xaxis = getRotatedCoordinates(100, 0, 0, simulationAlpha, 0, -simulationBeta)
-  let yaxis = getRotatedCoordinates(0, 100, 0, simulationAlpha, 0, -simulationBeta)
-  let zaxis = getRotatedCoordinates(0, 0, 100, simulationAlpha, 0, -simulationBeta)
+function drawCoordinateSystem (ctx, origin, scale, length) {
+  let xaxis = getRotatedCoordinates(length, 0, 0, simulationAlpha, 0, -simulationBeta)
+  let yaxis = getRotatedCoordinates(0, length, 0, simulationAlpha, 0, -simulationBeta)
+  let zaxis = getRotatedCoordinates(0, 0, length, simulationAlpha, 0, -simulationBeta)
 
   // Draw x axis
   ctx.beginPath()
@@ -182,13 +187,13 @@ function drawCoordinateSystem (ctx, origin, scale) {
 }
 
 function drawLights (ctx, origin, scale) {
-  const lowestLight = Object.values(positions).reduce((prev, current) => prev.z < current.z ? prev : current)
+  const lowestLight = Object.values(normalizedPositions).reduce((prev, current) => prev.z < current.z ? prev : current)
 
-  for (const [index, position] of Object.entries(positions)) {
+  for (const [index, position] of Object.entries(normalizedPositions)) {
     const color = colorStates[parseInt(index)] || { red: 0, green: 0, blue: 0 }
 
-    let y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).y
-    let z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).z - lowestLight.z)
+    const y = origin.y + scale * getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).y
+    const z = origin.z - scale * (getRotatedCoordinates(position.x, position.y, position.z, simulationAlpha, 0, simulationBeta).z - lowestLight.z)
 
     if (color.green === 0 && color.red === 0 && color.blue === 0) {
       ctx.beginPath()
@@ -202,6 +207,22 @@ function drawLights (ctx, origin, scale) {
       ctx.fill()
     }
   }
+}
+
+function normalizePositions (positions, scale = 100) {
+  // Max distance from the origin (0, 0, 0) to any light
+  const maxRadius = Math.max(...Object.values(positions).map(pos => Math.sqrt(pos.x ** 2 + pos.y ** 2 + pos.z ** 2)))
+
+  // Scale the positions based on the max radius and parameter
+  const normalizedPositions = {}
+  for (const index in positions) {
+    normalizedPositions[index] = {
+      x: positions[index].x / maxRadius * scale,
+      y: positions[index].y / maxRadius * scale,
+      z: positions[index].z / maxRadius * scale
+    }
+  }
+  return normalizedPositions
 }
 
 function driverMessageHandler (event) {
