@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 22:24+0100\n"
+"POT-Creation-Date: 2025-12-20 10:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,7 +160,7 @@ msgid ""
 "them to the Storži repository, where they can run on the tree."
 msgstr ""
 "Še en pomemben del projekta je <a href=\"https://github.com/Jelka-FMF/"
-"Jelkly\" target=\"_blank\">Jelkly</a>, Scratch-podobno orodje za vizualno "
+"Jelkly\" target=\"_blank\">Jelkly</a>, Scratchu-podobno orodje za vizualno "
 "programiranje, ki uporabnikom omogoča ustvarjanje lastnih vzorcev brez "
 "znanja programiranja. Jelkly je napisan v TypeScriptu z uporabo "
 "Microsoftovega orodja MakeCode (PXT), ki uporablja knjižnico Blockly (od tod "
@@ -205,14 +205,18 @@ msgstr ""
 
 #: .\frontend\templates\frontend\about.html:115
 #: .\frontend\templates\frontend\about.html:116
+#: .\frontend\templates\frontend\about.html:117
+#: .\frontend\templates\frontend\about.html:118
+#: .\frontend\templates\frontend\about.html:119
+#: .\frontend\templates\frontend\about.html:120
 msgid "Photo of the Jelka FMF Christmas tree"
 msgstr "Fotografija novoletne jelke Jelka FMF"
 
-#: .\frontend\templates\frontend\about.html:120
+#: .\frontend\templates\frontend\about.html:124
 msgid "Previous"
 msgstr "Nazaj"
 
-#: .\frontend\templates\frontend\about.html:124
+#: .\frontend\templates\frontend\about.html:128
 msgid "Next"
 msgstr "Naprej"
 
@@ -340,27 +344,27 @@ msgid ""
 "Displaying the patterns requires JavaScript to be enabled. Please enable it."
 msgstr "Za prikaz vzorcev je potreben JavaScript. Prosimo, omogočite ga."
 
-#: .\frontend\templates\frontend\patterns.html:28
+#: .\frontend\templates\frontend\patterns.html:29
 msgid "Time"
 msgstr "Čas"
 
-#: .\frontend\templates\frontend\patterns.html:29
+#: .\frontend\templates\frontend\patterns.html:30
 msgid "Name"
 msgstr "Ime"
 
-#: .\frontend\templates\frontend\patterns.html:30
+#: .\frontend\templates\frontend\patterns.html:31
 msgid "Author"
 msgstr "Avtor"
 
-#: .\frontend\templates\frontend\patterns.html:32
+#: .\frontend\templates\frontend\patterns.html:33
 msgid "Actions"
 msgstr "Dejanja"
 
-#: .\frontend\templates\frontend\patterns.html:41
+#: .\frontend\templates\frontend\patterns.html:43
 msgid "The Christmas tree is currently sleeping. Visit us when it is active."
 msgstr "Jelka trenutno spi. Obiščite nas, ko je aktivna."
 
-#: .\frontend\templates\frontend\patterns.html:47
+#: .\frontend\templates\frontend\patterns.html:49
 msgid ""
 "The Christmas tree is running. Visit us and view it at the Faculty of "
 "Mathematics and Physics, University of Ljubljana."
@@ -368,7 +372,7 @@ msgstr ""
 "Jelka je prižgana. Obiščite nas in si jo oglejte na Fakulteti za matematiko "
 "in fiziko Univerze v Ljubljani."
 
-#: .\frontend\templates\frontend\patterns.html:56
+#: .\frontend\templates\frontend\patterns.html:58
 #, python-format
 msgid ""
 "Read more about the tree or contribute your own patterns on <a "
@@ -377,15 +381,15 @@ msgstr ""
 "Preberite več o jelki ali prispevajte svoje vzorce na <a "
 "href=\"%(about_url)s\">strani z informacijami</a>."
 
-#: .\frontend\templates\frontend\patterns.html:79
+#: .\frontend\templates\frontend\patterns.html:81
 msgid "Run"
 msgstr "Zaženi"
 
-#: .\frontend\templates\frontend\patterns.html:80
+#: .\frontend\templates\frontend\patterns.html:82
 msgid "Enable"
 msgstr "Omogoči"
 
-#: .\frontend\templates\frontend\patterns.html:81
+#: .\frontend\templates\frontend\patterns.html:83
 msgid "Disable"
 msgstr "Onemogoči"
 

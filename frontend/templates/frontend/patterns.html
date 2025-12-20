@@ -22,19 +22,21 @@
       </noscript>
 
       <div class="border border-secondary-subtle rounded p-2 mb-3">
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="header-countdown">{% trans "Time" %}</th>
-              <th class="header-name">{% trans "Name" %}</th>
-              <th class="header-author">{% trans "Author" %}</th>
-              {% if user.is_authenticated %}
-                <th class="header-actions">{% trans "Actions" %}</th>
-              {% endif %}
-            </tr>
-          </thead>
-          <tbody id="patterns"></tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="header-countdown">{% trans "Time" %}</th>
+                <th class="header-name">{% trans "Name" %}</th>
+                <th class="header-author">{% trans "Author" %}</th>
+                {% if user.is_authenticated %}
+                  <th class="header-actions">{% trans "Actions" %}</th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody id="patterns"></tbody>
+          </table>
+        </div>
       </div>
 
       <p id="runner-inactive" class="d-none border border-secondary-subtle rounded p-3 mb-3">
