@@ -32,6 +32,7 @@ class InteractionView(TemplateView):
         context["INTERACTION_URL"] = settings.INTERACTION_URL
         return context
 
+
 class ManifestView(View):
     @staticmethod
     def get(request):
