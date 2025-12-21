@@ -536,6 +536,11 @@ function sendInteractionMessage (message) {
 const interactionConnectButton = document.getElementById('interaction-connect')
 const interactionDisconnectButton = document.getElementById('interaction-disconnect')
 
+if (interactionUrl === 'None') {
+  interactionConnectButton.disabled = true
+  interactionDisconnectButton.disabled = true
+}
+
 function showConnectButton () {
   // Hide the close connection button
   interactionDisconnectButton.classList.add('d-none')
