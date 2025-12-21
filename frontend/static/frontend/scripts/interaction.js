@@ -19,9 +19,11 @@ let joystickIsDragging = false
  * @param {number} angle
  */
 function sendJoystickState (distance, angle) {
+  const degrees = (angle * 180 / Math.PI + 360) % 360
+
   sendInteractionMessage([
     { sensor: 'joystick-distance', value: distance },
-    { sensor: 'joystick-angle', value: angle },
+    { sensor: 'joystick-angle', value: degrees },
   ])
 }
 
@@ -308,11 +310,15 @@ function disableButtons () {
 
 // == Sensors
 
+// Minimum interval between sensor data captures (in milliseconds)
+const sensorCaptureInterval = 15
+
 const sensorGroups = {
   orientation: {
     button: document.getElementById('toggle-orientation'),
     enabled: false,
     handler: null,
+    lastSendTime: 0,
     sliders: {
       alpha: document.getElementById('orientation-alpha'),
       beta: document.getElementById('orientation-beta'),
@@ -328,6 +334,7 @@ const sensorGroups = {
     button: document.getElementById('toggle-acceleration'),
     enabled: false,
     handler: null,
+    lastSendTime: 0,
     sliders: {
       x: document.getElementById('acceleration-x'),
       y: document.getElementById('acceleration-y'),
@@ -343,6 +350,7 @@ const sensorGroups = {
     button: document.getElementById('toggle-gyroscope'),
     enabled: false,
     handler: null,
+    lastSendTime: 0,
     sliders: {
       alpha: document.getElementById('gyroscope-alpha'),
       beta: document.getElementById('gyroscope-beta'),
@@ -381,11 +389,19 @@ function sendGyroscopeState (alpha, beta, gamma) {
 }
 
 function updateDisplay (group, data, sender) {
+  // Throttle sending updates
+  const now = performance.now()
+  if (now - group.lastSendTime < sensorCaptureInterval) return
+  group.lastSendTime = now
+
+  // Update sliders and labels
   Object.keys(data).forEach(key => {
     const value = data[key] ?? 0
     group.sliders[key].value = value
     group.values[key].textContent = value.toFixed(1)
   })
+
+  // Send the sensor state
   sender(...Object.values(data))
 }
 

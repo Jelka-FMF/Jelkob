@@ -11,6 +11,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   user-select: none;
+  touch-action: none;
 }
 
 .joystick-knob {
@@ -33,6 +34,7 @@
 
 .joystick.disabled {
   cursor: initial;
+  touch-action: initial;
 }
 
 .joystick.disabled > .joystick-knob {
