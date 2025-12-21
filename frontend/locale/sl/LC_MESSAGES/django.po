@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 10:29+0100\n"
+"POT-Creation-Date: 2025-12-21 20:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,7 +220,7 @@ msgstr "Nazaj"
 msgid "Next"
 msgstr "Naprej"
 
-#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:32
+#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:41
 msgid ""
 "Christmas tree at the Faculty of Mathematics and Physics, University of "
 "Ljubljana"
@@ -242,19 +242,24 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: .\frontend\templates\frontend\base.html:88
+#: .\frontend\templates\frontend\interaction.html:6
+msgid "Interaction"
+msgstr "Interakcija"
+
+#: .\frontend\templates\frontend\base.html:89
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:95
+#: .\frontend\templates\frontend\base.html:96
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:99
+#: .\frontend\templates\frontend\base.html:100
 #: .\frontend\templates\frontend\login.html:33
 msgid "Log In"
 msgstr "Prijava"
 
-#: .\frontend\templates\frontend\base.html:105
+#: .\frontend\templates\frontend\base.html:106
 msgid "Language"
 msgstr "Jezik"
 
@@ -302,6 +307,92 @@ msgstr "... in ostali člani Programerskega kluba FMF."
 #: .\frontend\templates\frontend\contact.html:54
 msgid "Some members of the FMF Programming Club"
 msgstr "Nekaj članov Programerskega kluba FMF"
+
+#: .\frontend\templates\frontend\interaction.html:8
+msgid "Interaction with the current pattern"
+msgstr "Interakcija s trenutnim vzorcem"
+
+#: .\frontend\templates\frontend\interaction.html:15
+msgid ""
+"Interacting with patterns requires JavaScript to be enabled. Please enable "
+"it."
+msgstr "Za interakcijo z vzorci je potreben JavaScript. Prosimo, omogočite ga."
+
+#: .\frontend\templates\frontend\interaction.html:21
+msgid ""
+"Some patterns are interactive and allow controlling their behavior. You can "
+"use this interface to interact with such patterns if they are currently "
+"active. Please use the interaction only if you are physically present at "
+"Jelka FMF."
+msgstr ""
+"Nekateri vzorci so interaktivni in omogočajo nadzor nad njihovim vedenjem. "
+"Če je tak vzorec trenutno aktiven, lahko za interakcijo z njim uporabljate "
+"ta vmesnik. Prosimo vas, da interakcijo uporabljate le, če se fizično "
+"nahajate pri Jelki FMF."
+
+#: .\frontend\templates\frontend\interaction.html:28
+msgid "Connect"
+msgstr "Vzpostavi povezavo"
+
+#: .\frontend\templates\frontend\interaction.html:29
+msgid "Disconnect"
+msgstr "Prekini povezavo"
+
+#: .\frontend\templates\frontend\interaction.html:62
+#: .\frontend\templates\frontend\interaction.html:87
+msgid "Use keyboard"
+msgstr "Uporabi tipkovnico"
+
+#: .\frontend\templates\frontend\interaction.html:99
+msgid "Orientation"
+msgstr "Orientacija"
+
+#: .\frontend\templates\frontend\interaction.html:101
+#: .\frontend\templates\frontend\interaction.html:128
+#: .\frontend\templates\frontend\interaction.html:155
+msgid "Toggle"
+msgstr "Preklopi"
+
+#: .\frontend\templates\frontend\interaction.html:106
+#: .\frontend\templates\frontend\interaction.html:160
+msgid "Alpha"
+msgstr "alfa"
+
+#: .\frontend\templates\frontend\interaction.html:106
+#: .\frontend\templates\frontend\interaction.html:143
+#: .\frontend\templates\frontend\interaction.html:170
+msgid "Z-Axis"
+msgstr "z"
+
+#: .\frontend\templates\frontend\interaction.html:111
+#: .\frontend\templates\frontend\interaction.html:165
+msgid "Beta"
+msgstr "beta"
+
+#: .\frontend\templates\frontend\interaction.html:111
+#: .\frontend\templates\frontend\interaction.html:133
+#: .\frontend\templates\frontend\interaction.html:160
+msgid "X-Axis"
+msgstr "x"
+
+#: .\frontend\templates\frontend\interaction.html:116
+#: .\frontend\templates\frontend\interaction.html:170
+msgid "Gamma"
+msgstr "gama"
+
+#: .\frontend\templates\frontend\interaction.html:116
+#: .\frontend\templates\frontend\interaction.html:138
+#: .\frontend\templates\frontend\interaction.html:165
+msgid "Y-Axis"
+msgstr "y"
+
+#: .\frontend\templates\frontend\interaction.html:126
+msgid "Acceleration"
+msgstr "Pospešek"
+
+#: .\frontend\templates\frontend\interaction.html:153
+msgid "Gyroscope"
+msgstr "Žiroskop"
 
 #: .\frontend\templates\frontend\login.html:5
 msgid "Login"

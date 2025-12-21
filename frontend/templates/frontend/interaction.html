@@ -5,26 +5,174 @@
 
 {% block title %}{% trans "Interaction" %} – Jelka FMF{% endblock %}
 
-{% block description %}{% trans "Interakcija s trenutnim vzorcem" %}{% endblock %}
+{% block description %}{% trans "Interaction with the current pattern" %}{% endblock %}
 
 {% block content %}
   <div class="main-container">
     <div class="content-section">
       <noscript>
         <p class="border border-secondary-subtle rounded p-3 mb-3">
-          {% trans "Displaying the patterns requires JavaScript to be enabled. Please enable it." %}
+          {% trans "Interacting with patterns requires JavaScript to be enabled. Please enable it." %}
         </p>
       </noscript>
 
-      TODO: Vsebina strani za interakcijo
-      - Obrazec za vnos trenutne kode
-      - Poskusimo se povezati na WebSocket URL iz nastavitve INTERACTION_URL
-      - Javimo, če to ne uspe (možne napake: koda ni veljavna, nekdo je že povezan)
-      - Če vse deluje, prikažemo interaktivni vmesnik (puščice gor/dol/levo/desno, črke ABCD, gumbi za vklop/izklop orientacije/pospeškometra/žiroskopa)
-      - Ob pritiskih na gumbe pošljemo ustrezne ukaze preko WebSocket povezave
-      - Ko so vklopljeni načini za senzorje, ob devicemotion dogodkih tudi pošiljamo ustrezne ukaze
-      - Če se povezava prekine, prikažemo sporočilo in gremo nazaj na obrazec za vnos kode
+      <div class="border border-secondary-subtle rounded p-3 mb-3">
+        <p>
+          {% blocktrans trimmed %}
+            Some patterns are interactive and allow controlling their behavior.
+            You can use this interface to interact with such patterns if they are currently active.
+            Please use the interaction only if you are physically present at Jelka FMF.
+          {% endblocktrans %}
+        </p>
+        <div>
+          <button id="interaction-connect" class="btn btn-outline-primary" type="button">{% trans "Connect" %}</button>
+          <button id="interaction-disconnect" class="btn btn-outline-secondary d-none" type="button" disabled>{% trans "Disconnect" %}</button>
+        </div>
+      </div>
 
+      <div class="row g-3 mb-3">
+        <!-- Joystick -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100">
+            <div id="joystick" class="joystick disabled">
+              <div id="joystick-knob" class="joystick-knob"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow Buttons -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100 d-flex flex-column">
+            <div class="d-flex flex-grow-1 justify-content-center">
+              <div class="d-flex flex-column justify-content-center gap-2">
+                <div class="d-flex justify-content-center gap-2">
+                  <button id="button-arrow-up" class="btn btn-primary keyboard-btn" type="button" disabled>▲&#xFE0E;</button>
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                  <button id="button-arrow-left" class="btn btn-primary keyboard-btn" type="button" disabled>◀&#xFE0E;</button>
+                  <button id="button-arrow-down" class="btn btn-primary keyboard-btn" type="button" disabled>▼&#xFE0E;</button>
+                  <button id="button-arrow-right" class="btn btn-primary keyboard-btn" type="button" disabled>▶&#xFE0E;</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+              <div class="form-check form-switch small">
+                <input id="hardware-arrow-keys" class="form-check-input" type="checkbox" role="switch" disabled />
+                <label class="form-check-label" for="hardware-arrow-keys">{% trans "Use keyboard" %}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Letter Buttons -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100 d-flex flex-column">
+            <div class="d-flex flex-grow-1 justify-content-center">
+              <div class="d-flex flex-column justify-content-center gap-2">
+                <div class="d-flex justify-content-center gap-2">
+                  <button id="button-letter-a" class="btn btn-primary keyboard-btn" type="button" disabled>A</button>
+                  <button id="button-letter-b" class="btn btn-primary keyboard-btn" type="button" disabled>B</button>
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                  <button id="button-letter-c" class="btn btn-primary keyboard-btn" type="button" disabled>C</button>
+                  <button id="button-letter-d" class="btn btn-primary keyboard-btn" type="button" disabled>D</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+              <div class="form-check form-switch small">
+                <input id="hardware-letter-keys" class="form-check-input" type="checkbox" role="switch" disabled />
+                <label class="form-check-label" for="hardware-letter-keys">{% trans "Use keyboard" %}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <!-- Orientation -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h4 class="mb-0 text-secondary">🧭 {% trans "Orientation" %}</h4>
+              <button id="toggle-orientation" class="btn btn-outline-primary" type="button" disabled>
+                {% trans "Toggle" %}
+              </button>
+            </div>
+
+            <label class="form-label small mb-1" for="orientation-alpha">
+              {% trans "Alpha" %} ({% trans "Z-Axis" %}): <span id="orientation-alpha-value">0.0</span>°
+            </label>
+            <input id="orientation-alpha" class="form-range" type="range" min="0" max="359" step="1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="orientation-beta">
+              {% trans "Beta" %} ({% trans "X-Axis" %}): <span id="orientation-beta-value">0.0</span>°
+            </label>
+            <input id="orientation-beta" class="form-range" type="range" min="-180" max="179" step="1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="orientation-gamma">
+              {% trans "Gamma" %} ({% trans "Y-Axis" %}): <span id="orientation-gamma-value">0.0</span>°
+            </label>
+            <input id="orientation-gamma" class="form-range" type="range" min="-90" max="89" step="1" value="0" disabled />
+          </div>
+        </div>
+
+        <!-- Acceleration -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h4 class="mb-0 text-secondary">🚀 {% trans "Acceleration" %}</h4>
+              <button id="toggle-acceleration" class="btn btn-outline-primary" type="button" disabled>
+                {% trans "Toggle" %}
+              </button>
+            </div>
+
+            <label class="form-label small mb-1" for="acceleration-x">
+              {% trans "X-Axis" %}: <span id="acceleration-x-value">0.0</span> m/s<sup>2</sup>
+            </label>
+            <input id="acceleration-x" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="acceleration-y">
+              {% trans "Y-Axis" %}: <span id="acceleration-y-value">0.0</span> m/s<sup>2</sup>
+            </label>
+            <input id="acceleration-y" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="acceleration-z">
+              {% trans "Z-Axis" %}: <span id="acceleration-z-value">0.0</span> m/s<sup>2</sup>
+            </label>
+            <input id="acceleration-z" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+          </div>
+        </div>
+
+        <!-- Gyroscope -->
+        <div class="col-12 col-lg-4">
+          <div class="border border-secondary-subtle rounded p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h4 class="mb-0 text-secondary">🔄 {% trans "Gyroscope" %}</h4>
+              <button id="toggle-gyroscope" class="btn btn-outline-primary" type="button" disabled>
+                {% trans "Toggle" %}
+              </button>
+            </div>
+
+            <label class="form-label small mb-1" for="gyroscope-alpha">
+              {% trans "Alpha" %} ({% trans "X-Axis" %}): <span id="gyroscope-alpha-value">0.0</span>°/s
+            </label>
+            <input id="gyroscope-alpha" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="gyroscope-beta">
+              {% trans "Beta" %} ({% trans "Y-Axis" %}): <span id="gyroscope-beta-value">0.0</span>°/s
+            </label>
+            <input id="gyroscope-beta" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+
+            <label class="form-label small mb-1" for="gyroscope-gamma">
+              {% trans "Gamma" %} ({% trans "Z-Axis" %}): <span id="gyroscope-gamma-value">0.0</span>°/s
+            </label>
+            <input id="gyroscope-gamma" class="form-range" type="range" min="-20" max="20" step="0.1" value="0" disabled />
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="simulation-section">
@@ -51,11 +199,11 @@
   <script
     src="{% static 'frontend/scripts/simulation.js' %}"
     defer
-    data-driver-url="{{ settings.DRIVER_URL }}"
+    data-driver-url="{{ DRIVER_URL }}"
   ></script>
   <script
     src="{% static 'frontend/scripts/interaction.js' %}"
     defer
-    data-interaction-url="{{ settings.INTERACTION_URL }}"
+    data-interaction-url="{{ INTERACTION_URL }}"
   ></script>
 {% endblock %}

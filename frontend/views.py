@@ -11,7 +11,7 @@ class PatternsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["settings"] = settings
+        context["DRIVER_URL"] = settings.DRIVER_URL
         return context
 
 
@@ -26,6 +26,11 @@ class ContactView(TemplateView):
 class InteractionView(TemplateView):
     template_name = "frontend/interaction.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["DRIVER_URL"] = settings.DRIVER_URL
+        context["INTERACTION_URL"] = settings.INTERACTION_URL
+        return context
 
 class ManifestView(View):
     @staticmethod
