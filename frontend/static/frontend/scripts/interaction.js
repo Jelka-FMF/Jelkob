@@ -15,15 +15,13 @@ let joystickIsDragging = false
 /**
  * Send the joystick state to the server.
  *
- * @param {number} distance
- * @param {number} angle
+ * @param {number} distance - Normalized distance
+ * @param {number} angle - Angle in degrees
  */
 function sendJoystickState (distance, angle) {
-  const degrees = (angle * 180 / Math.PI + 360) % 360
-
   sendInteractionMessage([
     { sensor: 'joystick-distance', value: distance },
-    { sensor: 'joystick-angle', value: degrees },
+    { sensor: 'joystick-angle', value: angle },
   ])
 }
 
@@ -53,8 +51,11 @@ function updateKnobPosition (x, y) {
   // Update knob position
   joystickKnob.style.transform = `translate(calc(-50% + ${finalX}px), calc(-50% + ${finalY}px))`
 
+  // Convert angle to degrees [0, 360), where 0 is on the right, in the positive direction
+  const degrees = (Math.atan2(-relY, relX) * 180 / Math.PI + 360) % 360
+
   // Send the joystick state
-  sendJoystickState(constrainedDistance / maxRadius, angle)
+  sendJoystickState(constrainedDistance / maxRadius, degrees)
 }
 
 /**
