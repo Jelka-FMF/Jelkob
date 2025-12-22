@@ -61,14 +61,14 @@ function onMouseDown (event) {
   lastMouseX = event.clientX
   lastMouseY = event.clientY
 
-  event.target.setPointerCapture(event.pointerId)
+  event.target.setPointerCapture?.(event.pointerId)
   event.preventDefault()
 }
 
 function onMouseUp (event) {
   isMouseDown = false
 
-  event.target.releasePointerCapture(event.pointerId)
+  event.target.releasePointerCapture?.(event.pointerId)
   event.preventDefault()
 }
 
