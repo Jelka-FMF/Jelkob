@@ -256,6 +256,14 @@ function handleButtonPointerUp (event, key) {
   updateButton(key)
 }
 
+/**
+ * Handle the keyboard button when it loses focus.
+ */
+function handleButtonBlur (key) {
+  keyboardState[key].enter = false
+  updateButton(key)
+}
+
 function releaseAllButtons () {
   Object.keys(keyboardButtons).forEach(key => {
     keyboardState[key].keyboard = false
@@ -281,6 +289,7 @@ function initializeButtons () {
     button.addEventListener('pointerdown', (event) => handledButtonPointerDown(event, key))
     button.addEventListener('pointerup', (event) => handleButtonPointerUp(event, key))
     button.addEventListener('pointercancel', (event) => handleButtonPointerUp(event, key))
+    button.addEventListener('blur', () => handleButtonBlur(key))
   })
 }
 
