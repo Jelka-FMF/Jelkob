@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-21 20:14+0100\n"
+"POT-Creation-Date: 2026-03-30 23:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "n%100==4 ? 2 : 3);\n"
 
 #: .\frontend\templates\frontend\about.html:13
-#: .\frontend\templates\frontend\base.html:86
+#: .\frontend\templates\frontend\base.html:89
 msgid "About"
 msgstr "Informacije"
 
@@ -220,46 +220,46 @@ msgstr "Nazaj"
 msgid "Next"
 msgstr "Naprej"
 
-#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:41
+#: .\frontend\templates\frontend\base.html:11 .\frontend\views.py:42
 msgid ""
 "Christmas tree at the Faculty of Mathematics and Physics, University of "
 "Ljubljana"
 msgstr ""
 "Novoletna jelka na Fakulteti za matematiko in fiziko Univerze v Ljubljani"
 
-#: .\frontend\templates\frontend\base.html:79
+#: .\frontend\templates\frontend\base.html:82
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
 
-#: .\frontend\templates\frontend\base.html:85
+#: .\frontend\templates\frontend\base.html:88
 msgid "Patterns"
 msgstr "Vzorci"
 
-#: .\frontend\templates\frontend\base.html:87
+#: .\frontend\templates\frontend\base.html:90
 #: .\frontend\templates\frontend\contact.html:6
 #: .\frontend\templates\frontend\contact.html:13
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\frontend\templates\frontend\base.html:88
+#: .\frontend\templates\frontend\base.html:91
 #: .\frontend\templates\frontend\interaction.html:6
 msgid "Interaction"
 msgstr "Interakcija"
 
-#: .\frontend\templates\frontend\base.html:89
+#: .\frontend\templates\frontend\base.html:92
 msgid "Management"
 msgstr "Upravljanje"
 
-#: .\frontend\templates\frontend\base.html:96
+#: .\frontend\templates\frontend\base.html:99
 msgid "Log Out"
 msgstr "Odjava"
 
-#: .\frontend\templates\frontend\base.html:100
+#: .\frontend\templates\frontend\base.html:103
 #: .\frontend\templates\frontend\login.html:33
 msgid "Log In"
 msgstr "Prijava"
 
-#: .\frontend\templates\frontend\base.html:106
+#: .\frontend\templates\frontend\base.html:109
 msgid "Language"
 msgstr "Jezik"
 
@@ -309,8 +309,8 @@ msgid "Some members of the FMF Programming Club"
 msgstr "Nekaj članov Programerskega kluba FMF"
 
 #: .\frontend\templates\frontend\interaction.html:8
-msgid "Interaction with the current pattern"
-msgstr "Interakcija s trenutnim vzorcem"
+msgid "Interaction with the current Jelka FMF pattern"
+msgstr "Interakcija s trenutnim Jelka FMF vzorcem"
 
 #: .\frontend\templates\frontend\interaction.html:15
 msgid ""
