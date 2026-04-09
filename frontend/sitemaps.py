@@ -3,6 +3,8 @@ from django.urls import reverse
 
 
 class FrontendPagesSitemap(Sitemap):
+    protocol = "https"
+
     def items(self):
         return ["patterns", "about", "contact", "interaction"]
 
