@@ -21,8 +21,8 @@
       <p>
         {% blocktrans trimmed %}
           At the <a href="https://www.fmf.uni-lj.si/" target="_blank">Faculty of Mathematics and Physics, University of
-          Ljubljana</a>, as part of the <a href="https://programerski-klub-fmf.github.io/" target="_blank">FMF Programming
-          Club</a>, we set up a programmable Christmas tree. The project was made possible with the sponsorship of
+          Ljubljana</a>, as part of the <a href="https://progklub.si/" target="_blank">FMF Programming Club</a>,
+          we set up a programmable Christmas tree. The project was made possible with the sponsorship of
           <a href="https://abelium.si/" target="_blank">Abelium</a> and <a href="https://acex.si/" target="_blank">Acex</a>.
         {% endblocktrans %}
       </p>
@@ -48,15 +48,16 @@
           It cycles through the available patterns and runs them one by one in a Docker container. The patterns are
           containerized in the Docker container and can be written in any programming language that can write to the
           standard output. The program reads the output of the pattern and controls the lights on the tree accordingly
-          using a library. The current state of the tree is also sent back to the server, where it is displayed on the
-          simulation on the website.
+          using a library. The current state of the tree is also sent back to the server through the
+          <a href="https://github.com/Jelka-FMF/Veter" target="_blank">Veter</a> service, which proxies the data so
+          it can be displayed in the simulation on the main website.
         {% endblocktrans %}
       </p>
       <p>
         {% blocktrans trimmed %}
           The main server, called <a href="https://github.com/Jelka-FMF/Jelkob" target="_blank">Jelkob</a>, hosts the
           project website, the pattern database, and the Docker registry. The website is written in Django and uses
-          the Django REST framework for the API. Using the website, we can control which patterns are running on the
+          the Django REST Framework for the API. Using the website, we can control which patterns are running on the
           tree and manually run them. The website also shows a list of available patterns, the current state of the
           tree, and the live simulation.
         {% endblocktrans %}
@@ -102,7 +103,7 @@
       <p>
         {% blocktrans trimmed %}
           If you would like to submit a pattern but do not have programming knowledge yet, you can check out
-          <a href="https://jelkly.fmf.uni-lj.si/docs" target="_blank">Jelkly</a>, a Scratch-like visual programming tool
+          <a href="https://jelkly.fmf.uni-lj.si/docs/" target="_blank">Jelkly</a>, a Scratch-like visual programming tool
           for creating and submitting your own Jelka FMF patterns. It is easy to use even for beginners and people
           without programming knowledge, as it allows you to easily build programs using visual blocks.
         {% endblocktrans %}

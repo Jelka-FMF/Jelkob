@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 23:28+0200\n"
+"POT-Creation-Date: 2026-05-10 12:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,19 +30,17 @@ msgstr "O Jelki FMF"
 msgid ""
 "At the <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Faculty of "
 "Mathematics and Physics, University of Ljubljana</a>, as part of the <a "
-"href=\"https://programerski-klub-fmf.github.io/\" target=\"_blank\">FMF "
-"Programming Club</a>, we set up a programmable Christmas tree. The project "
-"was made possible with the sponsorship of <a href=\"https://abelium.si/\" "
-"target=\"_blank\">Abelium</a> and <a href=\"https://acex.si/\" "
-"target=\"_blank\">Acex</a>."
+"href=\"https://progklub.si/\" target=\"_blank\">FMF Programming Club</a>, we "
+"set up a programmable Christmas tree. The project was made possible with the "
+"sponsorship of <a href=\"https://abelium.si/\" target=\"_blank\">Abelium</a> "
+"and <a href=\"https://acex.si/\" target=\"_blank\">Acex</a>."
 msgstr ""
 "Na <a href=\"https://www.fmf.uni-lj.si/\" target=\"_blank\">Fakulteti za "
 "matematiko in fiziko Univerze v Ljubljani</a> smo v okviru <a href=\"https://"
-"programerski-klub-fmf.github.io/\" target=\"_blank\">Programerskega kluba "
-"FMF</a> postavili jelko z lučkami, ki jih lahko programiramo. Projekt poteka "
-"pod sponzorstvom podjetij <a href=\"https://abelium.si/\" "
-"target=\"_blank\">Abelium</a> in <a href=\"https://acex.si/\" "
-"target=\"_blank\">Acex</a>."
+"progklub.si/\" target=\"_blank\">Programerskega kluba FMF</a> postavili "
+"jelko z lučkami, ki jih lahko programiramo. Projekt poteka pod sponzorstvom "
+"podjetij <a href=\"https://abelium.si/\" target=\"_blank\">Abelium</a> in <a "
+"href=\"https://acex.si/\" target=\"_blank\">Acex</a>."
 
 #: .\frontend\templates\frontend\about.html:30
 msgid ""
@@ -79,26 +77,29 @@ msgid ""
 "programming language that can write to the standard output. The program "
 "reads the output of the pattern and controls the lights on the tree "
 "accordingly using a library. The current state of the tree is also sent back "
-"to the server, where it is displayed on the simulation on the website."
+"to the server through the <a href=\"https://github.com/Jelka-FMF/Veter\" "
+"target=\"_blank\">Veter</a> service, which proxies the data so it can be "
+"displayed in the simulation on the main website."
 msgstr ""
 "Jelka je sestavljena iz več komponent, ki skupaj sestavljajo programabilno "
 "novoletno jelko. Jelko fizično upravlja Raspberry Pi, ki redno komunicira z "
 "glavnim strežnikom, da dobi seznam vzorcev, ki jih mora zagnati. Ta program "
 "se imenuje <a href=\"https://github.com/Jelka-FMF/Korenine\" "
 "target=\"_blank\">Korenine</a>. Korenine ciklično menjavajo vzorce ter jih "
-"zaporedno zaganjajo v Docker containerju. Vzorci so zapakirani v Docker "
-"container in jih je mogoče napisati v kateremkoli programskem jeziku, ki zna "
-"pisati na standardni izhod. Program bere izhod vzorca ter glede nanj "
-"upravlja lučke na jelki s pomočjo knjižnice. Trenutno stanje jelke poleg "
-"tega pošilja nazaj na strežnik, kjer se prikazuje na simulaciji na spletni "
-"strani."
+"zaporedno zaganjajo v Docker vsebniku. Vzorci so zapakirani v Docker vsebnik "
+"in jih je mogoče napisati v kateremkoli programskem jeziku, ki zna pisati na "
+"standardni izhod. Program bere izhod vzorca ter glede nanj upravlja lučke na "
+"jelki s pomočjo knjižnice. Trenutno stanje jelke poleg tega s pomočjo "
+"storitve <a href=\"https://github.com/Jelka-FMF/Veter\" "
+"target=\"_blank\">Veter</a> pošilja nazaj na strežnik, da so lahko prikazani "
+"v simulaciji na glavni spletni strani."
 
-#: .\frontend\templates\frontend\about.html:56
+#: .\frontend\templates\frontend\about.html:57
 msgid ""
 "The main server, called <a href=\"https://github.com/Jelka-FMF/Jelkob\" "
 "target=\"_blank\">Jelkob</a>, hosts the project website, the pattern "
 "database, and the Docker registry. The website is written in Django and uses "
-"the Django REST framework for the API. Using the website, we can control "
+"the Django REST Framework for the API. Using the website, we can control "
 "which patterns are running on the tree and manually run them. The website "
 "also shows a list of available patterns, the current state of the tree, and "
 "the live simulation."
@@ -111,7 +112,7 @@ msgstr ""
 "stran prikazuje tudi seznam razpoložljivih vzorcev, trenutno stanje jelke in "
 "simulacijo."
 
-#: .\frontend\templates\frontend\about.html:65
+#: .\frontend\templates\frontend\about.html:66
 msgid ""
 "The patterns themselves are written in various programming languages and are "
 "stored in the <a href=\"https://github.com/Jelka-FMF/Storzi\" "
@@ -124,14 +125,14 @@ msgid ""
 msgstr ""
 "Vzorci so napisani v različnih programskih jezikih in so shranjeni v "
 "repozitoriju <a href=\"https://github.com/Jelka-FMF/Storzi\" "
-"target=\"_blank\">Storži</a>. Vsak vzorec je zapakiran v Docker container. "
+"target=\"_blank\">Storži</a>. Vsak vzorec je zapakiran v Docker vsebnik. "
 "Vzorci so lahko napisani v kateremkoli programskem jeziku, ki zna pisati na "
 "standardni izhod, vendar za popularne jezike, kot sta Python in JavaScript, "
 "ponujamo uporabniku prijazne knjižnice. Vzorci lahko preberejo 3D pozicije "
 "lučk na jelki in jih upravljajo tako, da želene barve lučk pošiljajo na "
 "standardni izhod."
 
-#: .\frontend\templates\frontend\about.html:75
+#: .\frontend\templates\frontend\about.html:76
 msgid ""
 "To get the 3D positions of the lights on the tree, we recorded multiple "
 "videos of the tree from multiple angles while running a calibration pattern. "
@@ -147,7 +148,7 @@ msgstr ""
 "naredili s programom, ki smo ga poimenovali <a href=\"https://github.com/"
 "Jelka-FMF/Jelkulator\" target=\"_blank\">Jelkulator</a>."
 
-#: .\frontend\templates\frontend\about.html:83
+#: .\frontend\templates\frontend\about.html:84
 msgid ""
 "Another big part of the project is <a href=\"https://github.com/Jelka-FMF/"
 "Jelkly\" target=\"_blank\">Jelkly</a>, a Scratch-like visual programming "
@@ -170,11 +171,11 @@ msgstr ""
 "na strežnik, kjer jih pregledamo, pretvorimo v JavaScript in dodamo v "
 "repozitorij Storži, kjer se lahko izvajajo na jelki."
 
-#: .\frontend\templates\frontend\about.html:93
+#: .\frontend\templates\frontend\about.html:94
 msgid "Contributing Patterns"
 msgstr "Prispevanje vzorcev"
 
-#: .\frontend\templates\frontend\about.html:95
+#: .\frontend\templates\frontend\about.html:96
 msgid ""
 "If you would like to contribute your own pattern for running on Jelka FMF "
 "and already have programming knowledge, please check out the <a "
@@ -187,36 +188,36 @@ msgstr ""
 "Storzi\" target=\"_blank\">Storži</a>, ki vsebuje že obstoječe vzorce in "
 "navodila za oddajo lastnih vzorcev v različnih programskih jezikih."
 
-#: .\frontend\templates\frontend\about.html:103
+#: .\frontend\templates\frontend\about.html:104
 msgid ""
 "If you would like to submit a pattern but do not have programming knowledge "
-"yet, you can check out <a href=\"https://jelkly.fmf.uni-lj.si/docs\" "
+"yet, you can check out <a href=\"https://jelkly.fmf.uni-lj.si/docs/\" "
 "target=\"_blank\">Jelkly</a>, a Scratch-like visual programming tool for "
 "creating and submitting your own Jelka FMF patterns. It is easy to use even "
 "for beginners and people without programming knowledge, as it allows you to "
 "easily build programs using visual blocks."
 msgstr ""
 "Če želite oddati vzorec, ampak še nimate znanja programiranja, si oglejte <a "
-"href=\"https://jelkly.fmf.uni-lj.si/docs\" target=\"_blank\">Jelkly</a>, "
+"href=\"https://jelkly.fmf.uni-lj.si/docs/\" target=\"_blank\">Jelkly</a>, "
 "Scratchu podobno orodje za vizualno programiranje, s katerim lahko enostavno "
 "ustvarite in oddate svoje vzorce za Jelko FMF. Uporaba je preprosta tudi za "
 "začetnike in ljudi brez znanja programiranja, saj omogoča enostavno "
 "sestavljanje programov z uporabo vizualnih blokov."
 
-#: .\frontend\templates\frontend\about.html:115
 #: .\frontend\templates\frontend\about.html:116
 #: .\frontend\templates\frontend\about.html:117
 #: .\frontend\templates\frontend\about.html:118
 #: .\frontend\templates\frontend\about.html:119
 #: .\frontend\templates\frontend\about.html:120
+#: .\frontend\templates\frontend\about.html:121
 msgid "Photo of the Jelka FMF Christmas tree"
 msgstr "Fotografija novoletne jelke Jelka FMF"
 
-#: .\frontend\templates\frontend\about.html:124
+#: .\frontend\templates\frontend\about.html:125
 msgid "Previous"
 msgstr "Nazaj"
 
-#: .\frontend\templates\frontend\about.html:128
+#: .\frontend\templates\frontend\about.html:129
 msgid "Next"
 msgstr "Naprej"
 
