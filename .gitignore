@@ -7,6 +7,7 @@ $RECYCLE.BIN/
 .buildpath
 .c9
 .c9revisions
+.classpath
 .directory
 .fuse_hidden*
 .idea
@@ -20,77 +21,34 @@ $RECYCLE.BIN/
 [Dd]esktop.ini
 [Tt]humbs.db
 
+# Cache & Temporary
+__pycache__/
+cache/
+tmp/
+.cache
+.mypy_cache
+.ruff_cache
+*.py[cod]
+*.tmp
+
 # Logs
 logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 *.log
-
-# Runtime
-pids/
-*.pid
-*.pid.lock
-*.seed
 
 # Environments
 .python-version
-.env*
-.venv*
-!.env*.sample
-!.venv*.sample
-ENV/
+.venv/
 env/
-env.bak/
-VENV/
 venv/
-venv.bak/
 
-# Distribution & Packaging
-build/
-develop-eggs/
-dev-dist/
-dist/
-docs/_build/
-downloads/
-eggs/
-lib/
-lib64/
-parts/
-pkg/
-sdist/
-var/
-wheels/
-.Python
-.eggs/
-.installed.cfg
-MANIFEST
-*.egg
-*.egg-info/
+# Configuration
+.env*
+!.env*.sample
 
-# Compiled files
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-
-# Cache & Temporary files
-cache/
-tmp/
-.eslintcache
-.flakeheaven_cache
-.grunt
-.lock-wscript
-.mypy_cache
-.node_repl_history
-.npm
-.nyc_output
-.ruff_cache
-*.tmp
-
-# Dynamic data
+# Storage
 /static/
 /uploads/
 *.db
