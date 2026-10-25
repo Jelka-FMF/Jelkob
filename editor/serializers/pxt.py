@@ -4,10 +4,10 @@ import json
 from django.core.files.base import ContentFile
 from rest_framework import serializers
 
-from .models import Project, Submission
+from ..models import PXTProject
 
 
-class ProjectSerializer(serializers.ModelSerializer):
+class PXTProjectSerializer(serializers.ModelSerializer):
     id = serializers.CharField(source="longid")
     persistId = serializers.CharField(source="longid")
     time = serializers.SerializerMethodField()
@@ -15,7 +15,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     thumb = serializers.SerializerMethodField()
 
     class Meta:
-        model = Project
+        model = PXTProject
 
         fields = (
             "id",
@@ -44,7 +44,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         return False
 
 
-class ProjectCreateSerializer(serializers.Serializer):
+class PXTProjectCreateSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     name = serializers.CharField(max_length=50, allow_blank=True)
     description = serializers.CharField(max_length=200, allow_blank=True)
@@ -94,7 +94,7 @@ class ProjectCreateSerializer(serializers.Serializer):
         return value
 
     def create(self, validated):
-        project = Project(
+        project = PXTProject(
             name=validated.get("name"),
             description=validated.get("description"),
             target=validated.get("target"),
@@ -107,19 +107,3 @@ class ProjectCreateSerializer(serializers.Serializer):
 
         project.save()
         return project
-
-
-class ProjectSubmitSerializer(serializers.ModelSerializer):
-    project = serializers.SlugRelatedField(queryset=Project.objects.all(), slug_field="shortid")
-
-    class Meta:
-        model = Submission
-
-        fields = (
-            "name",
-            "description",
-            "duration",
-            "author",
-            "school",
-            "project",
-        )

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-12 21:38+0200\n"
+"POT-Creation-Date: 2026-10-25 21:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,43 +13,55 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
 
-#: .\editor\admin.py:19
+#: .\editor\admin.py:11
+msgid "Jelkly"
+msgstr "Jelkly"
+
+#: .\editor\admin.py:12
+msgid "Jelkonda"
+msgstr "Jelkonda"
+
+#: .\editor\admin.py:17 .\editor\admin.py:102
+msgid "type"
+msgstr "vrsta"
+
+#: .\editor\admin.py:50 .\editor\admin.py:73
 msgid "Identifier Information"
 msgstr "Podatki o identifikatorju"
 
-#: .\editor\admin.py:20
+#: .\editor\admin.py:51
 msgid "Environment Information"
 msgstr "Podatki o okolju"
 
-#: .\editor\admin.py:21
+#: .\editor\admin.py:52 .\editor\admin.py:74
 msgid "Content Information"
 msgstr "Podatki o vsebini"
 
-#: .\editor\admin.py:24 .\editor\admin.py:56
+#: .\editor\admin.py:55 .\editor\admin.py:77 .\editor\admin.py:117
 msgid "URL"
 msgstr "URL"
 
-#: .\editor\admin.py:30 .\editor\admin.py:62
+#: .\editor\admin.py:61 .\editor\admin.py:83 .\editor\admin.py:123
 msgid "Open"
 msgstr "Odpri"
 
-#: .\editor\admin.py:43
+#: .\editor\admin.py:96
 msgid "Runner Information"
 msgstr "Podatki o izvajanju"
 
-#: .\editor\admin.py:44
+#: .\editor\admin.py:97
 msgid "Author Information"
 msgstr "Podatki o avtorju"
 
-#: .\editor\admin.py:45
+#: .\editor\admin.py:98
 msgid "Submission Content"
 msgstr "Vsebina oddaje"
 
-#: .\editor\admin.py:46
+#: .\editor\admin.py:99
 msgid "Submission Status"
 msgstr "Stanje oddaje"
 
-#: .\editor\admin.py:49 .\editor\models.py:34
+#: .\editor\admin.py:110 .\editor\models.py:35
 msgid "created"
 msgstr "ustvarjen"
 
@@ -57,71 +69,91 @@ msgstr "ustvarjen"
 msgid "Editor"
 msgstr "Urejevalnik"
 
-#: .\editor\models.py:28
-msgid "short ID"
-msgstr "kratek ID"
+#: .\editor\models.py:30
+msgid "ID"
+msgstr "ID"
 
-#: .\editor\models.py:29
-msgid "long ID"
-msgstr "dolg ID"
-
-#: .\editor\models.py:32 .\editor\models.py:66
+#: .\editor\models.py:33 .\editor\models.py:97
 msgid "name"
 msgstr "ime"
 
-#: .\editor\models.py:33 .\editor\models.py:67
+#: .\editor\models.py:34 .\editor\models.py:98
 msgid "description"
 msgstr "opis"
 
-#: .\editor\models.py:37
-msgid "target"
-msgstr "vrsta"
-
-#: .\editor\models.py:38
-msgid "editor"
-msgstr "urejevalnik"
-
-#: .\editor\models.py:41
-msgid "meta"
-msgstr "meta"
-
-#: .\editor\models.py:42
-msgid "content"
-msgstr "vsebina"
-
-#: .\editor\models.py:45 .\editor\models.py:81
+#: .\editor\models.py:38 .\editor\models.py:112
 msgid "project"
 msgstr "projekt"
 
-#: .\editor\models.py:46
+#: .\editor\models.py:39
 msgid "projects"
 msgstr "projekti"
 
+#: .\editor\models.py:57
+msgid "short ID"
+msgstr "kratek ID"
+
+#: .\editor\models.py:58
+msgid "long ID"
+msgstr "dolg ID"
+
+#: .\editor\models.py:61
+msgid "target"
+msgstr "vrsta"
+
+#: .\editor\models.py:62
+msgid "editor"
+msgstr "urejevalnik"
+
+#: .\editor\models.py:65 .\editor\models.py:80
+msgid "meta"
+msgstr "meta"
+
+#: .\editor\models.py:66 .\editor\models.py:81
+msgid "content"
+msgstr "vsebina"
+
+#: .\editor\models.py:69
+msgid "Jelkly project"
+msgstr "Jelkly projekt"
+
 #: .\editor\models.py:70
+msgid "Jelkly projects"
+msgstr "Jelkly projekti"
+
+#: .\editor\models.py:84
+msgid "Jelkonda project"
+msgstr "Jelkonda projekt"
+
+#: .\editor\models.py:85
+msgid "Jelkonda projects"
+msgstr "Jelkonda projekti"
+
+#: .\editor\models.py:101
 msgid "duration"
 msgstr "trajanje"
 
-#: .\editor\models.py:73
+#: .\editor\models.py:104
 msgid "author"
 msgstr "avtor"
 
-#: .\editor\models.py:74
+#: .\editor\models.py:105
 msgid "school"
 msgstr "šola"
 
-#: .\editor\models.py:77
+#: .\editor\models.py:108
 msgid "reviewed"
 msgstr "pregledan"
 
-#: .\editor\models.py:78
+#: .\editor\models.py:109
 msgid "approved"
 msgstr "odobren"
 
-#: .\editor\models.py:84
+#: .\editor\models.py:115
 msgid "submission"
 msgstr "oddaja"
 
-#: .\editor\models.py:85
+#: .\editor\models.py:116
 msgid "submissions"
 msgstr "oddaje"
 

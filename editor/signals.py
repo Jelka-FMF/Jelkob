@@ -34,7 +34,7 @@ async def submission_post_save(sender, instance, created, **kwargs):
         view_label = _("View Submission")
         manage_label = _("Manage Submission")
 
-    view_url = urljoin(settings.ROOT_URL, reverse("project-share-longid", args=[instance.project.longid]))
+    view_url = urljoin(settings.ROOT_URL, reverse("project-share", args=[instance.project.ulid]))
     manage_url = urljoin(settings.ROOT_URL, reverse("admin:editor_submission_change", args=[instance.pk]))
 
     try:

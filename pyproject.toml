@@ -23,6 +23,7 @@ django-templates-macros = "^0.3"
 django-cors-headers = "^4.9.0"
 django-eventstream = { extras = ["drf"], version = "^5.3.4" }
 python-dotenv = "^1.2.4"
+python-ulid = "^4.0.1"
 httpx = "^0.28.1"
 
 psycopg = { version = "^3.3.6", optional = true, extras = ["binary"] }

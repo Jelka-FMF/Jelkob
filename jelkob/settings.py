@@ -192,13 +192,22 @@ ROOT_URL = os.environ.get("ROOT_URL")
 """The full root URL of the application."""
 
 
-# Jelkob - Editor
+# Jelkob - Jelkly Editor
 
-EDITOR_URL = os.environ.get("EDITOR_URL")
-"""The full path to the editor website."""
+JELKLY_EDITOR_URL = os.environ.get("JELKLY_EDITOR_URL")
+"""The full path to the Jelkly editor website."""
 
-EDITOR_ACTION = os.environ.get("EDITOR_ACTION") or "sandbox"
-"""The action to perform in the editor."""
+JELKLY_EDITOR_ACTION = os.environ.get("JELKLY_EDITOR_ACTION") or "sandbox"
+"""The action to perform in the Jelkly editor."""
+
+
+# Jelkob - Jelkonda Editor
+
+JELKONDA_EDITOR_URL = os.environ.get("JELKONDA_EDITOR_URL")
+"""The full path to the Jelkonda editor website."""
+
+JELKONDA_EDITOR_ACTION = os.environ.get("JELKONDA_EDITOR_ACTION") or "open"
+"""The action to perform in the Jelkonda editor."""
 
 
 # Jelkob - Runner

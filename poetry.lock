@@ -1517,6 +1517,21 @@ files = [
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-ulid"
+version = "4.0.1"
+description = "Universally unique lexicographically sortable identifier"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "python_ulid-4.0.1-py3-none-any.whl", hash = "sha256:6f1d69ceb97e99fe542df8476ebcd7a668284bf53ee14b3106bcc6a341a95ed9"},
+    {file = "python_ulid-4.0.1.tar.gz", hash = "sha256:bbeec02556190bb9dc3401faa7268696acbfbe7b6db9908c155dc3548629f20c"},
+]
+
+[package.extras]
+pydantic = ["pydantic (>=2.0)"]
+
+[[package]]
 name = "requests"
 version = "2.34.2"
 description = "Python HTTP for Humans."
@@ -1947,4 +1962,4 @@ postgres = ["psycopg"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "540e84fde1c68ec37326e876306242df0a9553d5ed1c484bd9d694f46c913eb2"
+content-hash = "8ff48987c46da86801d0765dab7831c678d6ac934a4e3040161f0faecae781e3"
