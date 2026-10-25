@@ -4,7 +4,7 @@ import json
 from django.core.files.base import ContentFile
 from rest_framework import serializers
 
-from ..models import PXTProject
+from ..models import PXTProject, Submission
 
 
 class PXTProjectSerializer(serializers.ModelSerializer):
@@ -93,17 +93,33 @@ class PXTProjectCreateSerializer(serializers.Serializer):
 
         return value
 
-    def create(self, validated):
+    def create(self, validated_data):
         project = PXTProject(
-            name=validated.get("name"),
-            description=validated.get("description"),
-            target=validated.get("target"),
-            editor=validated.get("editor"),
-            meta=validated.get("meta", {}),
+            name=validated_data.get("name"),
+            description=validated_data.get("description"),
+            target=validated_data.get("target"),
+            editor=validated_data.get("editor"),
+            meta=validated_data.get("meta", {}),
         )
 
-        content = ContentFile(validated.get("text").encode("utf-8"))
+        content = ContentFile(validated_data.get("text").encode("utf-8"))
         project.content.save("content.json", content)
 
         project.save()
         return project
+
+
+class PXTProjectSubmitSerializer(serializers.ModelSerializer):
+    project = serializers.SlugRelatedField(queryset=PXTProject.objects.all(), slug_field="shortid")
+
+    class Meta:
+        model = Submission
+
+        fields = (
+            "name",
+            "description",
+            "duration",
+            "author",
+            "school",
+            "project",
+        )

@@ -8,7 +8,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from ..models import PXTProject, Submission
-from ..serializers import PXTProjectCreateSerializer, PXTProjectSerializer, ProjectSubmitSerializer
+from ..serializers import PXTProjectCreateSerializer, PXTProjectSerializer, PXTProjectSubmitSerializer
 
 
 class PXTProjectMixin(generics.RetrieveAPIView):
@@ -47,7 +47,7 @@ class PXTProjectContentByShortIdView(PXTProjectContentMixin):
 
 
 @method_decorator(csrf_exempt, name="dispatch")
-class PXTCreateProjectView(generics.CreateAPIView):
+class PXTUploadProjectView(generics.CreateAPIView):
     queryset = PXTProject.objects.all()
     serializer_class = PXTProjectCreateSerializer
 
@@ -65,7 +65,7 @@ class PXTCreateProjectView(generics.CreateAPIView):
 @method_decorator(csrf_exempt, name="dispatch")
 class PXTSubmitProjectView(generics.CreateAPIView):
     queryset = Submission.objects.all()
-    serializer_class = ProjectSubmitSerializer
+    serializer_class = PXTProjectSubmitSerializer
 
 
 class PXTShareProjectMixin(generics.GenericAPIView):

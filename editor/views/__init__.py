@@ -1,6 +1,5 @@
 from .common import ShareProject
 from .pxt import (
-    PXTCreateProjectView,
     PXTProjectByLongIdView,
     PXTProjectByShortIdView,
     PXTProjectContentByLongIdView,
@@ -8,10 +7,11 @@ from .pxt import (
     PXTShareProjectByLongIdView,
     PXTShareProjectByShortIdView,
     PXTSubmitProjectView,
+    PXTUploadProjectView,
 )
+from .python import PythonProjectView, PythonSubmitProjectView, PythonUploadProjectView
 
 __all__ = [
-    "PXTCreateProjectView",
     "PXTProjectByLongIdView",
     "PXTProjectByShortIdView",
     "PXTProjectContentByLongIdView",
@@ -19,5 +19,9 @@ __all__ = [
     "PXTShareProjectByLongIdView",
     "PXTShareProjectByShortIdView",
     "PXTSubmitProjectView",
+    "PXTUploadProjectView",
+    "PythonProjectView",
+    "PythonSubmitProjectView",
+    "PythonUploadProjectView",
     "ShareProject",
 ]

@@ -1,7 +1,7 @@
 from django.urls import path, re_path
 
 from ..views import (
-    PXTCreateProjectView,
+    PXTUploadProjectView,
     PXTProjectByLongIdView,
     PXTProjectByShortIdView,
     PXTProjectContentByLongIdView,
@@ -34,8 +34,8 @@ urlpatterns = [
     ),
     path(
         "pxt/scripts",
-        PXTCreateProjectView.as_view(),
-        name="pxt-project-create",
+        PXTUploadProjectView.as_view(),
+        name="pxt-project-upload",
     ),
     path(
         "pxt/submit",

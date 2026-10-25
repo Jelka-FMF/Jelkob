@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 21:00+0100\n"
+"POT-Creation-Date: 2026-10-25 21:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,11 +105,11 @@ msgstr "vrsta"
 msgid "editor"
 msgstr "urejevalnik"
 
-#: .\editor\models.py:65 .\editor\models.py:80
+#: .\editor\models.py:65 .\editor\models.py:87
 msgid "meta"
 msgstr "meta"
 
-#: .\editor\models.py:66 .\editor\models.py:81
+#: .\editor\models.py:66 .\editor\models.py:88
 msgid "content"
 msgstr "vsebina"
 
@@ -121,11 +121,11 @@ msgstr "Jelkly projekt"
 msgid "Jelkly projects"
 msgstr "Jelkly projekti"
 
-#: .\editor\models.py:84
+#: .\editor\models.py:91
 msgid "Jelkonda project"
 msgstr "Jelkonda projekt"
 
-#: .\editor\models.py:85
+#: .\editor\models.py:92
 msgid "Jelkonda projects"
 msgstr "Jelkonda projekti"
 

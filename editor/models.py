@@ -74,6 +74,13 @@ class PXTProject(Project):
             Index(fields=["longid"]),
         ]
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.shortid = f"_{uuid.uuid4().hex[:12]}"
+            self.longid = "-".join(f"{uuid.uuid4().int % 100000:05d}" for _ in range(4))
+
+        super().save(*args, **kwargs)
+
 
 class PythonProject(Project):
     # Content Information
@@ -83,13 +90,6 @@ class PythonProject(Project):
     class Meta:
         verbose_name = _("Jelkonda project")
         verbose_name_plural = _("Jelkonda projects")
-
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            self.shortid = f"_{uuid.uuid4().hex[:12]}"
-            self.longid = "-".join(f"{uuid.uuid4().int % 100000:05d}" for _ in range(4))
-
-        super().save(*args, **kwargs)
 
 
 class Submission(Model):
