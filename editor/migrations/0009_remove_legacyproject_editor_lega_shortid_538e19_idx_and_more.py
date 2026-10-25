@@ -4,21 +4,20 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('editor', '0008_alter_submission_project'),
+        ("editor", "0008_alter_submission_project"),
     ]
 
     operations = [
         migrations.RemoveIndex(
-            model_name='legacyproject',
-            name='editor_lega_shortid_538e19_idx',
+            model_name="legacyproject",
+            name="editor_lega_shortid_538e19_idx",
         ),
         migrations.RemoveIndex(
-            model_name='legacyproject',
-            name='editor_lega_longid_1a4ff3_idx',
+            model_name="legacyproject",
+            name="editor_lega_longid_1a4ff3_idx",
         ),
         migrations.DeleteModel(
-            name='LegacyProject',
+            name="LegacyProject",
         ),
     ]
