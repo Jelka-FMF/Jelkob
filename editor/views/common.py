@@ -16,7 +16,7 @@ class ShareProject(generics.GenericAPIView):
         if isinstance(project, PXTProject):
             url = f"{settings.JELKLY_EDITOR_URL}#{settings.JELKLY_EDITOR_ACTION}:{project.longid}"
         elif isinstance(project, PythonProject):
-            url = f"{settings.JELKONDA_EDITOR_URL}#{settings.JELKONDA_EDITOR_ACTION}:{project.ulid}"
+            url = f"{settings.JELKONDA_EDITOR_URL}?project={project.ulid}"
         else:
             raise NotFound("Unsupported project type.")
 

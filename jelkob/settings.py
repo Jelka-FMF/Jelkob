@@ -206,9 +206,6 @@ JELKLY_EDITOR_ACTION = os.environ.get("JELKLY_EDITOR_ACTION") or "sandbox"
 JELKONDA_EDITOR_URL = os.environ.get("JELKONDA_EDITOR_URL")
 """The full path to the Jelkonda editor website."""
 
-JELKONDA_EDITOR_ACTION = os.environ.get("JELKONDA_EDITOR_ACTION") or "open"
-"""The action to perform in the Jelkonda editor."""
-
 
 # Jelkob - Runner
 
