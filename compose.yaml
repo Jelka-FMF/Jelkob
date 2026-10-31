@@ -1,44 +1,6 @@
 name: jelkob
 
 services:
-  mariadb:
-    image: mariadb:12
-    restart: unless-stopped
-    environment:
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_AUTO_UPGRADE: "true"
-    volumes:
-      - ./volumes/mariadb:/var/lib/mysql
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-    healthcheck:
-      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
-      start_period: 10s
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-  registry:
-    image: registry:3
-    restart: unless-stopped
-    ports:
-      - "${REGISTRY_PORT:-5000}:5000"
-    environment:
-      OTEL_TRACES_EXPORTER: none
-    volumes:
-      - ./registry.config.yml:/etc/distribution/config.yml:ro
-      - ./registry.htpasswd:/etc/distribution/htpasswd:ro
-      - ./volumes/registry:/var/lib/registry
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-
   app:
     image: ghcr.io/jelka-fmf/jelkob:latest
     restart: unless-stopped
@@ -53,6 +15,7 @@ services:
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
       DJANGO_CORS_ORIGINS: ${DJANGO_CORS_ORIGINS}
       DJANGO_CSRF_ORIGINS: ${DJANGO_CSRF_ORIGINS}
+      DJANGO_SOCKET: ${DJANGO_SOCKET:-}
       DATABASE_ENGINE: django.db.backends.mysql
       DATABASE_HOST: mariadb
       DATABASE_NAME: ${MARIADB_DATABASE}
@@ -75,4 +38,42 @@ services:
     cap_drop:
       - ALL
     security_opt:
-      - no-new-privileges:true
+      - no-new-privileges=true
+
+  mariadb:
+    image: docker.io/library/mariadb:12
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_AUTO_UPGRADE: "true"
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges=true
+
+  registry:
+    image: docker.io/library/registry:3
+    restart: unless-stopped
+    ports:
+      - "${REGISTRY_PORT:-5000}:5000"
+    environment:
+      OTEL_TRACES_EXPORTER: none
+    volumes:
+      - ./registry.config.yaml:/etc/distribution/config.yml:ro
+      - ./registry.htpasswd:/etc/distribution/htpasswd:ro
+      - ./volumes/registry:/var/lib/registry
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges=true
