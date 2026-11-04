@@ -46,8 +46,8 @@ class PXTProjectSerializer(serializers.ModelSerializer):
 
 class PXTProjectCreateSerializer(serializers.Serializer):
     id = serializers.UUIDField()
-    name = serializers.CharField(max_length=50, allow_blank=True)
-    description = serializers.CharField(max_length=200, allow_blank=True)
+    name = serializers.CharField(max_length=50, allow_blank=True, required=False, default="")
+    description = serializers.CharField(max_length=200, allow_blank=True, required=False, default="")
     target = serializers.CharField(max_length=50)
     targetVersion = serializers.CharField(max_length=50)
     editor = serializers.CharField(max_length=50)

@@ -31,9 +31,8 @@ class PythonProjectSerializer(serializers.ModelSerializer):
 
 
 class PythonProjectCreateSerializer(serializers.Serializer):
-    id = serializers.CharField(max_length=26)
-    name = serializers.CharField(max_length=50, allow_blank=True)
-    description = serializers.CharField(max_length=200, allow_blank=True)
+    name = serializers.CharField(max_length=50, allow_blank=True, required=False, default="")
+    description = serializers.CharField(max_length=200, allow_blank=True, required=False, default="")
     meta = serializers.JSONField()
     source = serializers.CharField()
 
